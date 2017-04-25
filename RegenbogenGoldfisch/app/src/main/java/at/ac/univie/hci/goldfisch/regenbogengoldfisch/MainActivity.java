@@ -1,5 +1,6 @@
 package at.ac.univie.hci.goldfisch.regenbogengoldfisch;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,12 +14,57 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
+
+        Context context = getApplicationContext();
+        String filename = "testfile.dat";
+        String string = "Hello world!";
+        FileOutputStream outputStream;
+        FileInputStream inputStream;
+
+        //File file = new File(context.getFilesDir(), filename);
+        try {
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream.write(string.getBytes());
+            outputStream.close();
+            System.out.println("!!!!Freier Speicher: " + ((int)(context.getFilesDir().getFreeSpace()/1024/1024))+"MB");
+        }catch (Exception e){
+            System.err.println("Fehler bei getting free Space");
+        }
+
+        try {
+            string = "Tschuess";
+            inputStream = openFileInput(filename);
+            System.out.println("Im File: "+MainActivity.getFileContent(inputStream));
+            inputStream.close();
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream.write(string.getBytes());
+            outputStream.close();
+            inputStream = openFileInput(filename);
+            System.out.println("Im File danach: "+MainActivity.getFileContent(inputStream));
+            inputStream.close();
+        }catch (Exception e){
+            System.err.println("Fehler beim Filelesen");
+        }
+
+
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -97,5 +143,17 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    private static String getFileContent(FileInputStream fis) throws IOException {
+            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+                sb.append('\n');
+            }
+            return sb.toString();
     }
 }
