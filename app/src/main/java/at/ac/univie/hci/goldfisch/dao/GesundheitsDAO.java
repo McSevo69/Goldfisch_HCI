@@ -9,7 +9,7 @@ import at.ac.univie.hci.goldfisch.model.Gesundheitstipp;
 /**
  * Mit diesem Interface soll spezifiziert werden, welche Methoden es geben soll,
  * um mit Gesundheitstipps umzugehen
- * Created by Gerhard on 27.04.2017.
+ *
  */
 public interface GesundheitsDAO {
 

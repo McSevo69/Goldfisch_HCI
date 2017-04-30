@@ -16,7 +16,7 @@ import java.util.UUID;
 import at.ac.univie.hci.goldfisch.model.Gesundheitstipp;
 
 /**
- * Created by Gerhard on 27.04.2017.
+ *
  */
 
 public class GesundheitsDAOImpl implements GesundheitsDAO{

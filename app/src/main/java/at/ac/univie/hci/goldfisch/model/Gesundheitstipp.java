@@ -1,16 +1,17 @@
 package at.ac.univie.hci.goldfisch.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * Created by Gerhard on 27.04.2017.
+ * Diese Klasse soll die Tipps darstellen, welche dem User regelmaessig angezeigt werden
+ * Man speichert nicht nur Strings, sondern die Tipps und auch die dazugehoerigen Ueberschriften
  */
-
-public class Gesundheitstipp implements java.io.Serializable{
+public class Gesundheitstipp implements Serializable {
 
     private UUID id;
     private String tipp;
-    private String heading;
+    private String ueberschrift;
 
 
     @Override
@@ -18,13 +19,13 @@ public class Gesundheitstipp implements java.io.Serializable{
         return "Gesundheitstipp{" +
                 "id=" + id +
                 ", tipp='" + tipp + '\'' +
-                ", heading='" + heading + '\'' +
+                ", ueberschrift='" + ueberschrift + '\'' +
                 '}';
     }
 
     public Gesundheitstipp(String heading, String tipp){
         this.tipp = tipp;
-        this.heading = heading;
+        this.ueberschrift = heading;
         this.id = UUID.randomUUID();
 
     }
@@ -34,8 +35,8 @@ public class Gesundheitstipp implements java.io.Serializable{
         this.tipp = tipp;
     }
 
-    public void setHeading(String heading) {
-        this.heading = heading;
+    public void setUeberschrift(String heading) {
+        this.ueberschrift = heading;
     }
 
     public String getTipp() {
@@ -43,8 +44,8 @@ public class Gesundheitstipp implements java.io.Serializable{
         return tipp;
     }
 
-    public String getHeading() {
-        return heading;
+    public String getUeberschrift() {
+        return ueberschrift;
     }
 
     public UUID getId() {
