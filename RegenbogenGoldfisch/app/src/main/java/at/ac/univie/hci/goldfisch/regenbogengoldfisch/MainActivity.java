@@ -13,6 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,46 +26,48 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import at.ac.univie.hci.goldfisch.regenbogengoldfisch.dao.GesundheitsDAO;
+import at.ac.univie.hci.goldfisch.regenbogengoldfisch.dao.GesundheitsDAOImpl;
+import at.ac.univie.hci.goldfisch.regenbogengoldfisch.model.Gesundheitstipp;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    private EditText txt_ueberschrift;
+    private EditText txt_tipp;
+    private TextView txt_ausgabe;
+    private TextView txt_helloWorld;
+    private TextView lbl_ueberschrift;
+    private Button btn_speichern;
+    private Button btn_getSavedData;
+    private GesundheitsDAO gesDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_main);
 
-
-
-
-        Context context = getApplicationContext();
-        String filename = "testfile.dat";
-        String string = "Hello world!";
-        FileOutputStream outputStream;
-        FileInputStream inputStream;
-
-        //File file = new File(context.getFilesDir(), filename);
-        try {
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-            outputStream.write(string.getBytes());
-            outputStream.close();
-            System.out.println("!!!!Freier Speicher: " + ((int)(context.getFilesDir().getFreeSpace()/1024/1024))+"MB");
-        }catch (Exception e){
-            System.err.println("Fehler bei getting free Space");
-        }
+        lbl_ueberschrift = (TextView) findViewById(R.id.lbl_ueberschrift);
+        txt_ueberschrift = (EditText) findViewById(R.id.txt_ueberschrift);
+        txt_tipp = (EditText) findViewById(R.id.txt_tipp);
+        txt_ausgabe = (TextView) findViewById(R.id.lbl_ausgabe);
+        txt_helloWorld = (TextView) findViewById(R.id.txt_helloWorld);
+        btn_speichern = (Button) findViewById(R.id.btn_speichern);
+        btn_getSavedData = (Button) findViewById(R.id.btn_getSavedData);
 
         try {
-            string = "Tschuess";
-            inputStream = openFileInput(filename);
-            System.out.println("Im File: "+MainActivity.getFileContent(inputStream));
-            inputStream.close();
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-            outputStream.write(string.getBytes());
-            outputStream.close();
-            inputStream = openFileInput(filename);
-            System.out.println("Im File danach: "+MainActivity.getFileContent(inputStream));
-            inputStream.close();
+            this.gesDao = new GesundheitsDAOImpl(getApplicationContext(), "gesundheitstipps.dat");
+            //this.gesDao.saveTipp(new Gesundheitstipp("ich","du"));
+            System.out.println("Tipps: ");
+            for(Gesundheitstipp t : this.gesDao.getTipps()){
+                System.out.println(t);
+            }
+
         }catch (Exception e){
-            System.err.println("Fehler beim Filelesen");
+            System.err.println("Fehler beim erstellen des GesundheitsDaos!!");
+            e.printStackTrace();
         }
 
 
@@ -156,4 +163,33 @@ public class MainActivity extends AppCompatActivity
             }
             return sb.toString();
     }
+
+    public void speichereTipps(View view){
+        setContentView(R.layout.content_main);
+        System.out.println("Speichere Tipps: ");
+
+        try {
+            Gesundheitstipp t = new Gesundheitstipp("heading","tipp");
+            System.out.println("Probiere zu speichern:  " + txt_ueberschrift.getText().toString() + ": "+ txt_tipp.getText().toString());
+            gesDao.saveTipp(t);
+            System.out.println("gespeichert");
+        }catch (Exception e){
+            System.err.println("Fehler beim Speichern des neuen Tipps");
+        }
+    }
+
+    public void holeTipps(View view){
+        StringBuffer zwischen = new StringBuffer();
+        try{
+            for(Gesundheitstipp t : gesDao.getTipps()){
+                System.out.println(t);
+                zwischen = zwischen.append(t.getTipp());
+            }
+            System.out.println("Alle tipps: "+zwischen.toString());
+            txt_ausgabe.setText(zwischen.toString());
+        }catch (Exception e){
+            System.err.println("Fehler beim Holen der Tipps");
+        }
+    }
+
 }
