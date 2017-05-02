@@ -5,4 +5,19 @@ package at.ac.univie.hci.goldfisch.management;
  */
 
 public class Benutzerverwaltung {
+
+    private static Benutzerverwaltung instance;
+
+    private Benutzerverwaltung(){
+
+    }
+
+    public Benutzerverwaltung getInstance(){
+        if(instance == null)
+            instance = new Benutzerverwaltung();
+        return instance;
+    }
+
+
+
 }

@@ -16,19 +16,25 @@ import java.util.UUID;
 import at.ac.univie.hci.goldfisch.model.Gesundheitstipp;
 
 /**
- *
+ * Diese Klasse impementiert das GesundheitsDAO und benutzt dabei eine
+ * Filesspeicherung(interne App-Speicherung)
  */
-
 public class GesundheitsDAOImpl implements GesundheitsDAO{
-    File folder;
-    File myfile;
-    FileOutputStream outputStream;
-    ObjectOutputStream out;
-    FileInputStream inputStream;
-    ObjectInputStream in;
-    Context context;
-    String filename;
+    private File folder;
+    private File myfile;
+    private FileOutputStream outputStream;
+    private ObjectOutputStream out;
+    private FileInputStream inputStream;
+    private ObjectInputStream in;
+    private Context context;
+    private String filename;
 
+    /**
+     * Dieser Konstruktor baut die Verbindung mit dem Filesystem am Handy auf
+     * @param context Der aktuelle Kontext, um auf das interne App-Filesystem zuzugreifen
+     * @param filename Der Name des Files, das die Gesundheitstipps beinhaltet
+     * @throws IOException Falls die Verbindung zum Filesystem fehlschlaegt
+     */
     public GesundheitsDAOImpl(Context context, String filename) throws IOException {
         this.folder =  new File(context.getFilesDir().toString());
         this.myfile =  new File(folder.getAbsolutePath() + "/"+filename);
@@ -39,7 +45,7 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
 
 
     @Override
-    public void saveTipp(Gesundheitstipp tipp) throws Exception {
+    public void saveTipp(Gesundheitstipp tipp) throws IOException {
         List<Gesundheitstipp> liste = this.getTipps();
         liste.add(tipp);
         outputStream = new FileOutputStream(myfile);
@@ -50,7 +56,7 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
     }
 
     @Override
-    public List<Gesundheitstipp> getTipps() throws Exception {
+    public List<Gesundheitstipp> getTipps() throws IOException {
         inputStream = new FileInputStream(myfile);
         in = new ObjectInputStream(inputStream);
         List<Gesundheitstipp> liste = null;
@@ -67,18 +73,18 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
     }
 
     @Override
-    public List<Gesundheitstipp> getTippByHeading(String heading) throws Exception {
+    public List<Gesundheitstipp> getTippByUeberschrift(String ueberschrift) throws IOException {
         List<Gesundheitstipp> gefundene = new ArrayList<Gesundheitstipp>();
         List<Gesundheitstipp> liste = this.getTipps();
         for(Gesundheitstipp t : liste){
-            if(t.getHeading().equals(heading))
+            if(t.getUeberschrift().equals(ueberschrift))
                 gefundene.add(t);
         }
         return gefundene;
     }
 
     @Override
-    public Gesundheitstipp getTippByID(UUID id) throws Exception {
+    public Gesundheitstipp getTippByID(UUID id) throws IOException {
         List<Gesundheitstipp> liste = this.getTipps();
         for(Gesundheitstipp t : liste){
             if(t.getId().equals(id))
@@ -88,7 +94,7 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
     }
 
     @Override
-    public void loescheAlleTipps() throws Exception {
+    public void loescheAlleTipps() throws IOException {
         outputStream = new FileOutputStream(myfile);
         out = new ObjectOutputStream(outputStream);
         out.writeObject(new ArrayList<Gesundheitstipp>());
@@ -97,7 +103,7 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
     }
 
     @Override
-    public void loescheTippByID(UUID id) throws Exception {
+    public void loescheTippByID(UUID id) throws IOException {
         List<Gesundheitstipp> liste = this.getTipps();
         for(Gesundheitstipp t : liste){
             if(t.getId().equals(id))
@@ -109,6 +115,4 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
         out.close();
         outputStream.close();
     }
-
-
 }
