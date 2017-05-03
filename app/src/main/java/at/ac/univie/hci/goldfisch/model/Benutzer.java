@@ -9,7 +9,7 @@ import java.util.UUID;
 
 /**
  * Diese Klasse soll alle wichtigen Informationen des Users haben.
- *
+ * neu
  */
 public class Benutzer implements Serializable{
     private UUID id;
