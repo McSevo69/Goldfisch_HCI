@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/einkaufWagenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/EinkaufswagenButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/einstellungenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/einstellungenButton"
+        android:layout_alignBaseline="@+id/einkaufWagenButton"
+        android:layout_alignBottom="@+id/einkaufWagenButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/trophaenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/einstellungenButton"
+        android:layout_alignBottom="@+id/einstellungenButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp"
+        android:text="@string/trophaenButton"
+        tools:ignore="RelativeOverlap" />
+</RelativeLayout>
