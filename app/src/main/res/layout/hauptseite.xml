@@ -1,36 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/einkaufWagenButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="22dp"
-        android:text="@string/EinkaufswagenButton"
+    <ImageButton
+        android:id="@+id/shoppingButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/trophaeButton"
+        android:layout_marginStart="29dp"
+        android:background="@android:color/background_light"
+        android:contentDescription="@string/einkaufswagen_button"
+        app:srcCompat="@mipmap/shopping" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/shoppingButton"
+        android:layout_marginEnd="27dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/einstellungs_button"
+        app:srcCompat="@mipmap/settings" />
+
+    <ImageButton
+        android:id="@+id/trophaeButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/trophaen_button"
+        app:srcCompat="@mipmap/star" />
 
-    <Button
-        android:id="@+id/einstellungenButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/einstellungenButton"
-        android:layout_alignBaseline="@+id/einkaufWagenButton"
-        android:layout_alignBottom="@+id/einkaufWagenButton"
+    <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/gifTextView"
+        android:layout_width="250dp"
+        android:layout_height="185dp"
+        android:background="@drawable/goldfishk"
+        android:layout_marginTop="96dp"
+        android:layout_below="@+id/trophaeButton"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/trophaenButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/einstellungenButton"
-        android:layout_alignBottom="@+id/einstellungenButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="17dp"
-        android:text="@string/trophaenButton"
-        tools:ignore="RelativeOverlap" />
+        android:id="@+id/trinken"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="430dp"
+        android:background="@drawable/kreis"
+        app:srcCompat="@drawable/kreis" />
+
 </RelativeLayout>
