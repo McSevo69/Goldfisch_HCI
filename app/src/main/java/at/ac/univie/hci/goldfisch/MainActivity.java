@@ -22,11 +22,19 @@ import at.ac.univie.hci.goldfisch.model.AppEinstellungen;
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 
 
-/**
- * Created by Mirz'n on 03.05.2017.
- */
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+
+    //Trinkvariablen - Hardcode (müssen noch aus Menü ausgelesen werden)
+    double literProKiloNormal = 0.04031;
+    double literProKiloAktiv = 0.04535;
+    double literProKiloSitzend = 0.03359;
+    double userKiloDefault = 75; //falls keine Körperangaben gemacht werden
+    double literProTag = literProKiloNormal * userKiloDefault;
+    double behaelterDefault = 0.25;
+    double wasserstand = 0;
+    double hydrationsFaktor = 1; //per default Wasser
+
 
     //Verwaltungsklassen
     Benutzerverwaltung benver;
@@ -69,29 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         shopping.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         setting.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         trophae.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
-        trinkKreis.setOnLongClickListener(new View.OnLongClickListener() { // Listener der sofort die Rotationsbewegung ausführt wenn er lange gedrückt wird
-            @Override
-            public boolean onLongClick(View arg0) {
-                arg0.startAnimation(animRotate);
-                return true;
-            }
-        });
-		
-		
-        //beim kurzen klicken des Buttons erscheint die Getränkeauswahlseite
-        trinkKreis.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //getraenkeseite ist zustaendig für die mengeneinheiten und beinhaltet radiobuttons
-                setContentView(R.layout.getraenkeseite);
-                viewPager = (ViewPager) findViewById(R.id.view_page);
-                adapter = new CustomSwipeAdapter(getBaseContext());
-                viewPager.setAdapter(adapter);
-            }
-			
-		 });
-		
-		        //Kreis mit Prozentanzeige
+        trinkKreis.setOnClickListener(this);
+
+
+
+        //Kreis mit Prozentanzeige
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.circular);
         final ProgressBar mProgress = (ProgressBar) findViewById(R.id.circularProgressbar); // initialisierung des Kreises
@@ -99,41 +89,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProgress.setSecondaryProgress(100); // Secondary Progress
         mProgress.setMax(100); // Maximum Progress
         mProgress.setProgressDrawable(drawable);
-		
-		
-		        //Dieser Teil betrifft nur die Prozentanzeige recht Oben und lässt sie mittels Schleife bis auf 100% auffüllen
 
-         /*  ObjectAnimator animation = ObjectAnimator.ofInt(mProgress, "progress", 0, 100);
-        animation.setDuration(50000);
-        animation.setInterpolator(new DecelerateInterpolator());
-        animation.start();*/
+
         trinkStatus = (TextView) findViewById(R.id.trinkStatus);
-        new Thread(new Runnable() { // ausführung der Rotation des Kreises dieser Thread füllt den Kreis mit jeweils einem Punkt und erhöht in bis 100%
-                                    // Diese Schleife dient nur als vorführung und sollte unterbunden werden sodass nur die prozent angezeigt werden
-                                    // die auch getrunken wurden.
+        trinkStatus.setText(percentStatus + "%");
+
+        trinkKreis.setOnLongClickListener(new View.OnLongClickListener() { // Listener der sofort die Rotationsbewegung ausführt wenn er lange gedrückt wird
             @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                while (percentStatus < 100) {
-                    percentStatus += 1;
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            // TODO Auto-generated method stub
-                            mProgress.setProgress(percentStatus);
-                            trinkStatus.setText(percentStatus + "%");
-                        }
-                    });
-                    try {
-                        // Sleep for 200 milliseconds.
-                        // Just to display the progress slowly
-                        Thread.sleep(8); //thread will take approx 1.5 seconds to finish
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+            public boolean onLongClick(View arg0) {
+                arg0.startAnimation(animRotate);
+                wasserstand += (behaelterDefault*hydrationsFaktor);
+                percentStatus = (int) ((wasserstand/literProTag)*100);
+                mProgress.setProgress(percentStatus);
+                trinkStatus.setText(percentStatus + "%");
+                return true;
             }
-        }).start();
+        });
 
 
         try {
@@ -174,6 +145,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.trophaeButton:
                     //
                     break;
+
+                case R.id.trinkenKreis:
+                    //getraenkeseite ist zustaendig für die mengeneinheiten und beinhaltet radiobuttons
+                    setContentView(R.layout.getraenkeseite);
+                    viewPager = (ViewPager) findViewById(R.id.view_page);
+                    adapter = new CustomSwipeAdapter(getBaseContext());
+                    viewPager.setAdapter(adapter);
+
             }
 
 
