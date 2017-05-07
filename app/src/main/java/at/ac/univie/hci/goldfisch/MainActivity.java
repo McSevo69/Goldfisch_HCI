@@ -30,6 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton setting; //Einstellungen Button auf der Hauptseite
     ImageButton trophae;//Trophaen Button auf der Hauptseite
     Button trinkKreis; // Kreis der sich dreht beim Trinken
+	
+	
+    //Da gehts um die Getränkeseite
+    ViewPager viewPager;  //PageButton
+    CustomSwipeAdapter adapter; // von Getränkeklasse
 
     //Variable der Prozentanzeige
     int percentStatus = 0; //Variable der Prozentanzeige
@@ -58,6 +63,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return false;
             }
         });
+		
+		
+        //beim kurzen klicken des Buttons erscheint die Getränkeauswahlseite
+        trinkKreis.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //getraenkeseite ist zustaendig für die mengeneinheiten und beinhaltet radiobuttons
+                setContentView(R.layout.getraenkeseite);
+                viewPager = (ViewPager) findViewById(R.id.view_page);
+                adapter = new CustomSwipeAdapter(getBaseContext());
+                viewPager.setAdapter(adapter);
+            }
+			
+		 });
 		
 		        //Kreis mit Prozentanzeige
         Resources res = getResources();
