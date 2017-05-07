@@ -79,4 +79,16 @@
     <string name="trophaen_button">Trophaen Button</string>
     <string name="einstellungs_button">Einstellungs Button</string>
     <string name="textview">TextView</string>
+    <string name="button_teich_bild">Button Teich Bild</string>
+    <string name="button_erfolge_bild">button_erfolge_bild</string>
+    <string name="button_tipps_bild">button_tipps_bild</string>
+    <string name="_25">25%</string>
+    <string name="krei_bild">krei bild</string>
+    <string name="weisses_bild_vom_kreis">weisses Bild vom kreis</string>
+    <string name="trinkbecher_ohne_hintergrund">Trinkbecher ohne Hintergrund</string>
+    <string name="ein_bild_vom_glas">ein Bild vom Glas</string>
+    <string name="tipps">TIPPS</string>
+    <string name="erfolge">ERFOLGE</string>
+    <string name="teich">TEICH</string>
+    <string name="erfolg">ERFOLG</string>
 </resources>
