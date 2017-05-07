@@ -3,6 +3,7 @@ package at.ac.univie.hci.goldfisch.management;
 import android.content.Context;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -160,21 +161,38 @@ public class Benutzerverwaltung {
     }
 
 
-    private void statusAnlegen(){
+    private void neuenStatusAnlegen(double tagessollmenge){
         Benutzer b = this.getBenutzer();
         if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
         List<Status> alleStati = b.getStati();
-
-
-
-
-
-
-
-
-
-
+        alleStati.add(new Status(tagessollmenge));
+        b.setStati(alleStati);
         this.aktualisiereBenutzer(b);
+    }
+
+    private Status getStatus(int tag, int monat, int jahr){
+        Benutzer b = this.getBenutzer();
+        Calendar c;
+        monat -=1; //weil Calendar beim Monat bei 0 anfaengt
+        if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return null; }
+        List<Status> alleStati = b.getStati();
+        for(Status s : alleStati){
+            c=s.getDatum();
+            if(c.get(Calendar.DAY_OF_MONTH)==tag && c.get(Calendar.MONTH)==monat && c.get(Calendar.YEAR)==jahr)  //
+                return s;
+        }
+        return null;
+    }
+
+    private Status getHeutigenStatus(){
+
+        return this.getStatus()
+    }
+
+    private void tagesmengeErhoehen(double wert){
+        Benutzer b = this.getBenutzer();
+        if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
+        List<Status> alleStati = b.getStati();
     }
 
     public void neuenBenutzerTestAnlegen() throws IOException {
