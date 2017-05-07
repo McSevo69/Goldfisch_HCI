@@ -91,4 +91,13 @@
     <string name="erfolge">ERFOLGE</string>
     <string name="teich">TEICH</string>
     <string name="erfolg">ERFOLG</string>
+    <string name="hello_world">Hello World</string>
+    <string name="einbild">einbild</string>
+    <string name="firstimage">firstImage</string>
+    <string name="radiobutton">RadioButton</string>
+    <string name="hallo">hallo</string>
+    <string name="testtext">testtext</string>
+    <string name="_250ml">250ml</string>
+    <string name="_330ml">330ml</string>
+    <string name="_500ml">500ml</string>
 </resources>
