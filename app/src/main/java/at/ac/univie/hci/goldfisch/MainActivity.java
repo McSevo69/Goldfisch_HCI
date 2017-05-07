@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             System.out.println("Benutzer anlegen");
             Benutzerverwaltung.getInstance(getApplicationContext()).neuenBenutzerTestAnlegen();
-            Einstellungenverwaltung.getInstance(getApplicationContext()).speichereEinstellungen(new AppEinstellungen(new Behaeltnis(null,true,150)));
+            Einstellungenverwaltung.getInstance(getApplicationContext()).saveEinstellungen(new AppEinstellungen(new Behaeltnis(null,true,150)));
             System.out.println("Benutzer drinnen: \n "+Benutzerverwaltung.getInstance(getApplicationContext()).getBenutzer());
             Einstellungenverwaltung.getInstance(getApplicationContext()).printEinstellungen();
             System.out.println("Benutzer und Einstellungen gespeichert");
@@ -119,6 +119,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+            switch (v.getId()) {
+                case R.id.shoppingButton:
+                    //
+                    break;
+
+                case R.id.erfolgeButton:
+                    //
+                    break;
+
+                case R.id.settingsButton:
+                    //
+                    break;
+                case R.id.teichButton:
+                    //
+                    break;
+
+                case R.id.tippsButton:
+                    //
+                    break;
+
+                case R.id.trophaeButton:
+                    //
+                    break;
+            }
 
 
     }

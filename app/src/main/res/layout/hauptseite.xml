@@ -118,6 +118,7 @@
         android:layout_height="75dp"
         android:layout_alignBottom="@+id/trinkenKreis"
         android:layout_centerHorizontal="true"
+        android:clickable="false"
         android:background="@drawable/trinkbechertransparent"
         android:contentDescription="@string/ein_bild_vom_glas" />
 
