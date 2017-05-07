@@ -11,6 +11,7 @@ import at.ac.univie.hci.goldfisch.dao.BenutzerDAOImpl;
 import at.ac.univie.hci.goldfisch.model.Benutzer;
 import at.ac.univie.hci.goldfisch.model.Fisch;
 import at.ac.univie.hci.goldfisch.model.Glas;
+import at.ac.univie.hci.goldfisch.model.Status;
 
 /**
  * Created by Gerhard on 02.05.2017.
@@ -159,9 +160,21 @@ public class Benutzerverwaltung {
     }
 
 
-
     private void statusAnlegen(){
-        
+        Benutzer b = this.getBenutzer();
+        if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
+        List<Status> alleStati = b.getStati();
+
+
+
+
+
+
+
+
+
+
+        this.aktualisiereBenutzer(b);
     }
 
     public void neuenBenutzerTestAnlegen() throws IOException {

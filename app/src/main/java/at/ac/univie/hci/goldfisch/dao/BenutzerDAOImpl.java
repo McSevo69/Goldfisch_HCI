@@ -17,9 +17,9 @@ import at.ac.univie.hci.goldfisch.model.Glas;
 import at.ac.univie.hci.goldfisch.model.Teich;
 
 /**
- * Created by Gerhard on 07.05.2017.
+ * Diese Klasse impementiert das BenutzerDAO und benutzt dabei eine
+ * Filesspeicherung(interne App-Speicherung)
  */
-
 public class BenutzerDAOImpl implements BenutzerDAO {
     private File folder;
     private File myfile;
@@ -62,11 +62,6 @@ public class BenutzerDAOImpl implements BenutzerDAO {
     }
 
     @Override
-    public void aktualisiereBenutzer(Benutzer b) throws IOException {
-        this.saveBenutzer(b);
-    }
-
-    @Override
     public void saveBenutzer(Benutzer b) throws IOException {
         outputStream = new FileOutputStream(myfile);
         out = new ObjectOutputStream(outputStream);
@@ -76,12 +71,17 @@ public class BenutzerDAOImpl implements BenutzerDAO {
     }
 
     @Override
-    public Glas getGlas() {
+    public Glas getGlas() throws IOException {
+        Benutzer b = this.getBenutzer();
+        for(Glas g : b.getGlaeser()){
+            if(g.isAktiviert()) return g;
+        }
         return null;
     }
 
     @Override
-    public Teich getTeich() {
-        return null;
+    public Teich getTeich() throws IOException {
+        Benutzer b = this.getBenutzer();
+        return b.getTeich();
     }
 }

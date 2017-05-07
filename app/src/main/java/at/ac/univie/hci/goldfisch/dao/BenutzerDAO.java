@@ -20,13 +20,6 @@ public interface BenutzerDAO {
     public Benutzer getBenutzer() throws IOException;
 
     /**
-     * Mit dieser Methode kann man den Benutzer aktualisieren und dessen daten aendern
-     * ruft intern einfach saveBenutzer auf
-     * @param b Das Objekt mit den neuen Benutzerdaten
-     */
-    public void aktualisiereBenutzer(Benutzer b) throws IOException;
-
-    /**
      * Diese Methode speichert, bzw ueberschreibt einen moeglich vorhandenen Benutzer
      * @param b der neue Benutzer
      */
@@ -36,11 +29,11 @@ public interface BenutzerDAO {
      * Diese Methode liefert das Fischglas des Benutzers zurueck
      * @return Das Fischglas am Startbildschirm des Benutzers
      */
-    public Glas getGlas();
+    public Glas getGlas() throws IOException;
 
     /**
      * Diese Methode liefert den Teich des Benuzters, welches seine Fische beinhaltet
      * @return Der Teich des Benutzers
      */
-    public Teich getTeich();
+    public Teich getTeich() throws IOException;
 }

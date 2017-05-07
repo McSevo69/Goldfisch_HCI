@@ -9,6 +9,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import at.ac.univie.hci.goldfisch.management.Benutzerverwaltung;
+import at.ac.univie.hci.goldfisch.management.Einstellungenverwaltung;
+import at.ac.univie.hci.goldfisch.model.AppEinstellungen;
+import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 
 
 /**
@@ -47,8 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             System.out.println("Benutzer anlegen");
             Benutzerverwaltung.getInstance(getApplicationContext()).neuenBenutzerTestAnlegen();
+            Einstellungenverwaltung.getInstance(getApplicationContext()).speichereEinstellungen(new AppEinstellungen(new Behaeltnis(null,true,150)));
             System.out.println("Benutzer drinnen: \n "+Benutzerverwaltung.getInstance(getApplicationContext()).getBenutzer());
-            System.out.println("Benutzer gespeichert");
+            Einstellungenverwaltung.getInstance(getApplicationContext()).printEinstellungen();
+            System.out.println("Benutzer und Einstellungen gespeichert");
         }catch (Exception e){
             System.err.println("haahhah");
         }

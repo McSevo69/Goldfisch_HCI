@@ -13,14 +13,12 @@ public class AppEinstellungen implements Serializable{
     private Behaeltnis ausgewBehaeltnis;
     private Glas ausgewGlas;
 
-    public AppEinstellungen(Behaeltnis ausgewBehaeltnis, Glas ausgewGlas){
+    public AppEinstellungen(Behaeltnis ausgewBehaeltnis){
         this.willTipps = true;
         this.willErinnerungen = true;
         this.erinnerungsintervall = 6; // alle 6 Stunden erinnern
         this.ausgewBehaeltnis = ausgewBehaeltnis;
-        this.ausgewGlas = ausgewGlas;
     }
-
 
     public boolean isWillTipps() {
         return willTipps;
@@ -50,10 +48,16 @@ public class AppEinstellungen implements Serializable{
         this.ausgewBehaeltnis = ausgewBehaeltnis;
     }
 
-    public Glas getAusgewGlas() {
-        return ausgewGlas;
+    @Override
+    public String toString() {
+        return "AppEinstellungen{" +
+                "willTipps=" + willTipps +
+                ", willErinnerungen=" + willErinnerungen +
+                ", erinnerungsintervall=" + erinnerungsintervall +
+                ", ausgewBehaeltnis=" + ausgewBehaeltnis +
+                ", ausgewGlas=" + ausgewGlas +
+                '}';
     }
-    public void setAusgewGlas(Glas ausgewGlas) {
-        this.ausgewGlas = ausgewGlas;
-    }
+
+
 }

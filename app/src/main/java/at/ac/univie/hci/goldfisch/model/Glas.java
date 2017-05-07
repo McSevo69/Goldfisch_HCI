@@ -18,4 +18,28 @@ public class Glas {
         this.bild = bild;
         this.aktiviert = aktiviert;
     }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public Image getBild() {
+        return bild;
+    }
+
+    public void setBild(Image bild) {
+        this.bild = bild;
+    }
+
+    public boolean isAktiviert() {
+        return aktiviert;
+    }
+
+    public void setAktiviert(boolean aktiviert) {
+        this.aktiviert = aktiviert;
+    }
 }

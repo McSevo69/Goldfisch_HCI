@@ -21,11 +21,45 @@ public class Benutzer implements Serializable{
     private Calendar gebDatum;
     private char geschlecht;
     private Calendar nutzungsbeginn;
+    private char aktivitaet;
+
 
     private List<Fisch> fische;
     private List<Glas> glaeser;
     private List<Status> stati;
     private Teich teich;
+
+    public List<Fisch> getFische() {
+        return fische;
+    }
+
+    public void setFische(List<Fisch> fische) {
+        this.fische = fische;
+    }
+
+    public List<Glas> getGlaeser() {
+        return glaeser;
+    }
+
+    public void setGlaeser(List<Glas> glaeser) {
+        this.glaeser = glaeser;
+    }
+
+    public List<Status> getStati() {
+        return stati;
+    }
+
+    public void setStati(List<Status> stati) {
+        this.stati = stati;
+    }
+
+    public Teich getTeich() {
+        return teich;
+    }
+
+    public void setTeich(Teich teich) {
+        this.teich = teich;
+    }
 
     @Override
     public String toString() {
@@ -39,6 +73,7 @@ public class Benutzer implements Serializable{
                 ", gebDatum=" + gebDatum +
                 ", geschlecht=" + geschlecht +
                 ", nutzungsbeginn=" + nutzungsbeginn +
+                ", aktivitaet=" + aktivitaet +
                 ", fische=" + fische +
                 ", glaeser=" + glaeser +
                 ", stati=" + stati +
@@ -46,7 +81,7 @@ public class Benutzer implements Serializable{
                 '}';
     }
 
-    public Benutzer(String vorname, String nachname, String email, double groesse, double gewicht, Calendar gebDatum, char geschlecht) {
+    public Benutzer(String vorname, String nachname, String email, double groesse, double gewicht, Calendar gebDatum, char geschlecht, char aktivitaet) {
         this.id = UUID.randomUUID();
         this.nutzungsbeginn = new GregorianCalendar();
         this.vorname = vorname;
@@ -56,6 +91,7 @@ public class Benutzer implements Serializable{
         this.gewicht = gewicht;
         this.gebDatum = gebDatum;
         this.geschlecht = geschlecht;
+        this.aktivitaet = aktivitaet;
 
         this.fische = new ArrayList<Fisch>();
         this.glaeser = new ArrayList<Glas>();
@@ -125,5 +161,12 @@ public class Benutzer implements Serializable{
     }
     public void setNutzungsbeginn(Calendar nutzungsbeginn) {
         this.nutzungsbeginn = nutzungsbeginn;
+    }
+
+    public char getAktivitaet() {
+        return aktivitaet;
+    }
+    public void setAktivitaet(char aktivitaet) {
+        this.aktivitaet = aktivitaet;
     }
 }

@@ -14,14 +14,14 @@ public class Fisch  implements Serializable {
     private String name;
     private Image bild;
     private boolean imGlas;
-    private Fischkategorie kategorie;
+    private String kategorie;
 
-    public Fisch(String name, Image bild, boolean imGlas, Fischkategorie kategorie){
+
+    public Fisch(String name, Image bild, boolean imGlas){
         this.id = UUID.randomUUID();
         this.name = name;
         this.bild = bild;
         this.imGlas = imGlas;
-        this.kategorie = kategorie;
     }
 
 
@@ -53,10 +53,11 @@ public class Fisch  implements Serializable {
         this.imGlas = imGlas;
     }
 
-    public Fischkategorie getKategorie() {
+    public String getKategorie() {
         return kategorie;
     }
-    public void setKategorie(Fischkategorie kategorie) {
+    public void setKategorie(String kategorie) {
         this.kategorie = kategorie;
     }
+
 }

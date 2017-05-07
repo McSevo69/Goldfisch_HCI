@@ -53,4 +53,15 @@ public class Behaeltnis implements Serializable{
     public void setAktiviert(boolean aktiviert) {
         this.aktiviert = aktiviert;
     }
+
+
+    @Override
+    public String toString() {
+        return "Behaeltnis{" +
+                "id=" + id +
+                ", bild=" + bild +
+                ", aktiviert=" + aktiviert +
+                ", fuellmenge=" + fuellmenge +
+                '}';
+    }
 }
