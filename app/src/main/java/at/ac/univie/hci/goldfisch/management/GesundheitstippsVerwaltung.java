@@ -28,7 +28,7 @@ public class GesundheitstippsVerwaltung {
         }
     }
 
-    public GesundheitstippsVerwaltung getInstance(Context context){
+    public static GesundheitstippsVerwaltung getInstance(Context context){
         if(instance == null) instance = new GesundheitstippsVerwaltung(context);
         return instance;
     }

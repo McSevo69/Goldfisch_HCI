@@ -14,8 +14,10 @@ import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import at.ac.univie.hci.goldfisch.management.Behaelterverwaltung;
 import at.ac.univie.hci.goldfisch.management.Benutzerverwaltung;
 import at.ac.univie.hci.goldfisch.management.Einstellungenverwaltung;
+import at.ac.univie.hci.goldfisch.management.GesundheitstippsVerwaltung;
 import at.ac.univie.hci.goldfisch.model.AppEinstellungen;
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 
@@ -25,6 +27,12 @@ import at.ac.univie.hci.goldfisch.model.Behaeltnis;
  */
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //Verwaltungsklassen
+    Benutzerverwaltung benver;
+    Behaelterverwaltung behver;
+    Einstellungenverwaltung einver;
+    GesundheitstippsVerwaltung gesver;
 
     //Buttons auf der Hauptseite
     ImageButton shopping;//Einkaufswagen Button auf der Hauptseite
@@ -48,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hauptseite);
 
+        benver = Benutzerverwaltung.getInstance(getApplicationContext());
+        behver = Behaelterverwaltung.getInstance(getApplicationContext());
+        einver = Einstellungenverwaltung.getInstance(getApplicationContext());
+        gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
 
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate); // Lässt den Kreis beim Trinken rotieren
         shopping = (ImageButton) findViewById(R.id.shoppingButton); // initialisierung des shopping Buttons
@@ -61,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean onLongClick(View arg0) {
                 arg0.startAnimation(animRotate);
-                return false;
+                return true;
             }
         });
 		
@@ -125,16 +137,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         try {
-            System.out.println("Benutzer anlegen");
-            Benutzerverwaltung.getInstance(getApplicationContext()).neuenBenutzerTestAnlegen();
-            Einstellungenverwaltung.getInstance(getApplicationContext()).saveEinstellungen(new AppEinstellungen(new Behaeltnis(null,true,150)));
+            //Benutzerverwaltung.getInstance(getApplicationContext()).neuenBenutzerTestAnlegen();
+            //Einstellungenverwaltung.getInstance(getApplicationContext()).saveEinstellungen(new AppEinstellungen(new Behaeltnis("150ml",null,true,150)));
+
             System.out.println("Benutzer drinnen: \n "+Benutzerverwaltung.getInstance(getApplicationContext()).getBenutzer());
             Einstellungenverwaltung.getInstance(getApplicationContext()).printEinstellungen();
-            System.out.println("Benutzer und Einstellungen gespeichert");
+            System.out.println("Behaelter");
         }catch (Exception e){
             System.err.println("haahhah");
         }
-    }
+    }//oncreate
 
     @Override
     public void onClick(View v) {
