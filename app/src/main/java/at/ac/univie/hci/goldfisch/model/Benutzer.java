@@ -27,6 +27,25 @@ public class Benutzer implements Serializable{
     private List<Status> stati;
     private Teich teich;
 
+    @Override
+    public String toString() {
+        return "Benutzer{" +
+                "id=" + id +
+                ", vorname='" + vorname + '\'' +
+                ", nachname='" + nachname + '\'' +
+                ", email='" + email + '\'' +
+                ", groesse=" + groesse +
+                ", gewicht=" + gewicht +
+                ", gebDatum=" + gebDatum +
+                ", geschlecht=" + geschlecht +
+                ", nutzungsbeginn=" + nutzungsbeginn +
+                ", fische=" + fische +
+                ", glaeser=" + glaeser +
+                ", stati=" + stati +
+                ", teich=" + teich +
+                '}';
+    }
+
     public Benutzer(String vorname, String nachname, String email, double groesse, double gewicht, Calendar gebDatum, char geschlecht) {
         this.id = UUID.randomUUID();
         this.nutzungsbeginn = new GregorianCalendar();

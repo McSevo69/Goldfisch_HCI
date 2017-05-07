@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-
+import at.ac.univie.hci.goldfisch.management.Benutzerverwaltung;
 
 
 /**
@@ -44,7 +44,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 arg0.startAnimation(animRotate);
             }});
 
-
+        try {
+            System.out.println("Benutzer anlegen");
+            Benutzerverwaltung.getInstance(getApplicationContext()).neuenBenutzerTestAnlegen();
+            System.out.println("Benutzer drinnen: \n "+Benutzerverwaltung.getInstance(getApplicationContext()).getBenutzer());
+            System.out.println("Benutzer gespeichert");
+        }catch (Exception e){
+            System.err.println("haahhah");
+        }
     }
 
     @Override
