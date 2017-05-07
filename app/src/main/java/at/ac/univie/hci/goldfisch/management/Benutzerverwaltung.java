@@ -178,15 +178,16 @@ public class Benutzerverwaltung {
         List<Status> alleStati = b.getStati();
         for(Status s : alleStati){
             c=s.getDatum();
-            if(c.get(Calendar.DAY_OF_MONTH)==tag && c.get(Calendar.MONTH)==monat && c.get(Calendar.YEAR)==jahr)  //
+            int m = c.get(Calendar.MONTH);
+            if(c.get(Calendar.DAY_OF_MONTH)==tag && m==monat && c.get(Calendar.YEAR)==jahr)  //
                 return s;
         }
         return null;
     }
 
     private Status getHeutigenStatus(){
-
-        return this.getStatus()
+        Calendar c = new GregorianCalendar();
+        return this.getStatus(c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.MONTH), c.get(Calendar.YEAR));
     }
 
     private void tagesmengeErhoehen(double wert){
