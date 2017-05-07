@@ -12,13 +12,15 @@ import java.util.UUID;
  */
 public class Behaeltnis implements Serializable{
     private UUID id;
+    private String name;
     private Image bild;
     boolean aktiviert;
     private double fuellmenge;
 
 
-    public Behaeltnis(Image bild, boolean aktiviert, double fuellmenge){
+    public Behaeltnis(String name, Image bild, boolean aktiviert, double fuellmenge){
         this.id = UUID.randomUUID();
+        this.name = name;
         this.bild = bild;
         this.aktiviert = aktiviert;
         this.fuellmenge = fuellmenge;
@@ -54,11 +56,19 @@ public class Behaeltnis implements Serializable{
         this.aktiviert = aktiviert;
     }
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     @Override
     public String toString() {
         return "Behaeltnis{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", bild=" + bild +
                 ", aktiviert=" + aktiviert +
                 ", fuellmenge=" + fuellmenge +
