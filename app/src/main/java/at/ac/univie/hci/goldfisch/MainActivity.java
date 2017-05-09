@@ -1,7 +1,9 @@
 package at.ac.univie.hci.goldfisch;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -60,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Handler handler = new Handler(); // dient zum Aufrufen der Einstellungen des Kreises
     TextView trinkStatus; // Zeigt die Prozentzahl der Kreises im Kreis an.
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("oncreate: "+new Date());
@@ -81,8 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setting.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         trophae.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         trinkKreis.setOnClickListener(this);
-
-
 
         //Kreis mit Prozentanzeige
         Resources res = getResources();
@@ -105,6 +104,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 percentStatus = (int) ((wasserstand/literProTag)*100);
                 mProgress.setProgress(percentStatus);
                 trinkStatus.setText(percentStatus + "%");
+
+                //Pop-Up
+                String TrinkMessage = "Du hast heute " + wasserstand + " Liter von empfohlenen " + literProTag + " Liter getrunken.";
+                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                alertDialog.setTitle("Gut gemacht!");
+                alertDialog.setMessage(TrinkMessage);
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+
                 return true;
             }
         });
