@@ -81,10 +81,11 @@ public class BehaeltnisDAOImpl implements  BehaeltnisDAO {
         try{
             inputStream = new FileInputStream(myfile);
             in = new ObjectInputStream(inputStream);
-            inputStream.close();
             in.close();
+            inputStream.close();
+            System.out.println(filename + " war schon initialisiert!");
         }catch (EOFException e) {
-
+            System.out.println("Starte mit initialisierung des "+filename+"!");
             outputStream = new FileOutputStream(myfile);
             out = new ObjectOutputStream(outputStream);
             List<Behaeltnis> alleWerte = new ArrayList<Behaeltnis>();

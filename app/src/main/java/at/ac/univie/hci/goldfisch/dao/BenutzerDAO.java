@@ -36,4 +36,10 @@ public interface BenutzerDAO {
      * @return Der Teich des Benutzers
      */
     public Teich getTeich() throws IOException;
+
+    /**
+     * Zum initialisieren des FIles
+     * @throws IOException
+     */
+    public void fileInitialisieren() throws IOException;
 }

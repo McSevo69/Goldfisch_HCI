@@ -124,7 +124,11 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
         try {
             inputStream = context.openFileInput(filename);
             in = new ObjectInputStream(inputStream);
+            in.close();
+            inputStream.close();
+            System.out.println(filename + " war schon initialisiert!");
         }catch(EOFException e) {
+            System.out.println("Starte mit initialisierung des "+filename+"!");
             outputStream = new FileOutputStream(myfile);
             out = new ObjectOutputStream(outputStream);
             List<Gesundheitstipp> alleWerte = new ArrayList<Gesundheitstipp>();

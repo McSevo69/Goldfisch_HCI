@@ -205,7 +205,13 @@ public class Benutzerverwaltung implements Verwaltung {
 
     @Override
     public void initialisiere(){
-        this.aktualisiereBenutzer(new Benutzer("keinVorname", "keinNachname", "keineEmail", 1, 1, null, 'm','n'));
+
+        try{
+            dao.fileInitialisieren();
+        }catch (IOException e){
+            System.out.println("Benutzerverwaltung:initialisiere:Error");
+            e.printStackTrace();
+        }
     }
 
 }

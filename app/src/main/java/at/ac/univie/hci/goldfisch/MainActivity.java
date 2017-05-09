@@ -111,17 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         try {
-            System.out.println("Beginne mit daoTestung!!");
-/*            gesver.neuenTippAnlegen("Wasser ist gut!","Jedes Wasser außer dem Wasser des Helenentals ist gut!");
-            gesver.neuenTippAnlegen("Wasser ist billig!","Ein Schluck Wasser in Österreich ist nicht teuer, gönn dir mal einen!");
-            benver.neuenBenutzerTestAnlegen();
-            System.out.println("1:"+gesver.getRandomTipp());
-            System.out.println("2:"+gesver.getRandomTipp());
-            System.out.println("3:"+gesver.getRandomTipp());
-
-            //Einstellungenverwaltung.getInstance(getApplicationContext()).saveEinstellungen(new AppEinstellungen(new Behaeltnis("150ml",null,true,150)));
-
-*/
+            System.out.println("Beginne mit BackendStuff:");
             einver.initialisiere();
             benver.initialisiere();
             behver.initialisiere();
@@ -132,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             behver.printAll();
             benver.printAll();
 
-            System.out.println("\nNun 10 randomTipps: ");
+            System.out.println("\nNun 10 randomTipps, weil wir's koennen: ");
             for(int i=0;i<10;i++)
                 System.out.println(i+":"+gesver.getRandomTipp());
 

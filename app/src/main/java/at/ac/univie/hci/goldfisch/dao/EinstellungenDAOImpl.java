@@ -86,10 +86,11 @@ public class EinstellungenDAOImpl implements EinstellungenDAO {
         try{
             inputStream = new FileInputStream(myfile);
             in = new ObjectInputStream(inputStream);
-            inputStream.close();
             in.close();
+            inputStream.close();
+            System.out.println(filename + " war schon initialisiert!");
         }catch (EOFException e) {
-
+            System.out.println("Starte mit initialisierung des "+filename+"!");
             this.saveEinstellungen(new AppEinstellungen());
         }
     }
