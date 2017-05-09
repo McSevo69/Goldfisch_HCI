@@ -11,10 +11,10 @@ import at.ac.univie.hci.goldfisch.dao.GesundheitsDAOImpl;
 import at.ac.univie.hci.goldfisch.model.Gesundheitstipp;
 
 /**
- * Created by Gerhard on 02.05.2017.
+ *
  */
 
-public class GesundheitstippsVerwaltung {
+public class GesundheitstippsVerwaltung implements Verwaltung{
 
     private static GesundheitstippsVerwaltung instance;
 
@@ -72,19 +72,19 @@ public class GesundheitstippsVerwaltung {
             e.printStackTrace();
         }
     }
-
+    @Override
     public void printAll(){
-        System.out.println("Alle Behaelter: \n");
+        System.out.println("Alle Gesundheitstipps: \n");
         for(Gesundheitstipp b : this.getGesundheitstipps())
             System.out.println(" "+b);
     }
 
-
-    public void leereListeReingeben(){
+    @Override
+    public void initialisiere(){
         try{
-            dao.leereListeReingeben();
+            dao.fileInitialisieren();
         }catch (IOException e){
-            System.out.println("Behaelterverwaltung:leereListeReingeben:Error");
+            System.out.println("Behaelterverwaltung:initialisieren:Error");
             e.printStackTrace();
         }
     }

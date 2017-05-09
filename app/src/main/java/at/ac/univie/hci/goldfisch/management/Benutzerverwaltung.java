@@ -19,7 +19,7 @@ import at.ac.univie.hci.goldfisch.model.Status;
  * durchfuehren zu koennen
  */
 
-public class Benutzerverwaltung {
+public class Benutzerverwaltung implements Verwaltung {
 
     private static Benutzerverwaltung instance;
     private BenutzerDAO dao;
@@ -197,8 +197,15 @@ public class Benutzerverwaltung {
         List<Status> alleStati = b.getStati();
     }
 
-    public void neuenBenutzerTestAnlegen() throws IOException {
-        dao.saveBenutzer(new Benutzer("keinVorname", "keinNachname", "keineEmail", 1, 1, null, 'm','n'));
+
+    @Override
+    public void printAll(){
+        System.out.println("Benutzer: \n "+this.getBenutzer());
+    }
+
+    @Override
+    public void initialisiere(){
+        this.aktualisiereBenutzer(new Benutzer("keinVorname", "keinNachname", "keineEmail", 1, 1, null, 'm','n'));
     }
 
 }

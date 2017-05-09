@@ -2,6 +2,7 @@ package at.ac.univie.hci.goldfisch.dao;
 
 import android.content.Context;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -119,11 +120,22 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
 
 
     @Override
-    public void leereListeReingeben() throws IOException{
-        outputStream = new FileOutputStream(myfile);
-        out = new ObjectOutputStream(outputStream);
-        out.writeObject(new ArrayList<Gesundheitstipp>());
-        out.close();
-        outputStream.close();
+    public void fileInitialisieren() throws IOException{
+        try {
+            inputStream = context.openFileInput(filename);
+            in = new ObjectInputStream(inputStream);
+        }catch(EOFException e) {
+            outputStream = new FileOutputStream(myfile);
+            out = new ObjectOutputStream(outputStream);
+            List<Gesundheitstipp> alleWerte = new ArrayList<Gesundheitstipp>();
+            alleWerte.add(new Gesundheitstipp("Wasser ist gut!","Jedes Wasser außer dem Wasser des Helenentals ist gut!"));
+            alleWerte.add(new Gesundheitstipp("Wasser ist billig!","Ein Schluck Wasser in Österreich ist nicht teuer, gönn dir mal einen!"));
+            alleWerte.add(new Gesundheitstipp("Wasser ist durch rein garnichts zu ersetzen","Reines sauberes Wasser wirkt wie ein Reinigungsmittel im Körper. Sobald dieses mit Schadstoffen oder ähnlichem verunreinigt ist, verringert sich der Reinigungseffekt."));
+            alleWerte.add(new Gesundheitstipp("Nach dem Aufstehen trinken","Am besten sind 2 Gläser Wasser nach dem Aufstehen. Denn in der Nacht verliert der Körper viel Flüssigkeit. Um gut in den Tag zu starten und den Kreislauf anzukurbeln empfiehlt es sich daher dem eigenen Körper gleich wieder 'aufzufüllen'."));
+            alleWerte.add(new Gesundheitstipp("Trinken während des Essens","Immer auf den eigenen Körper hören. Wenn du Durst verspürst, trink was! Im besten Fall sogar dafür sorgen, dass dein Körper garkeine Durst-Signale aussenden muss. Dann stimmt alles."));
+            out.writeObject(alleWerte);
+            out.close();
+            outputStream.close();
+        }
     }
 }

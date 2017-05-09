@@ -13,7 +13,7 @@ import at.ac.univie.hci.goldfisch.model.Behaeltnis;
  * Diese Klasse ist fuer die Behaelterverwaltung zustaendig
  */
 
-public class Behaelterverwaltung {
+public class Behaelterverwaltung implements Verwaltung{
 
     private static Behaelterverwaltung instance;
 
@@ -80,17 +80,19 @@ public class Behaelterverwaltung {
         }
     }
 
+    @Override
     public void printAll(){
         System.out.println("Alle Behaelter: \n");
         for(Behaeltnis b : this.getBehaeltnisse())
             System.out.println(" "+b);
     }
 
-    public void leereListeReingeben(){
+    @Override
+    public void initialisiere(){
         try{
-            dao.leereListeReingeben();
+            dao.fileInitialisieren();
         }catch (IOException e){
-            System.out.println("Behaelterverwaltung:leereListeReingeben:Error");
+            System.out.println("Behaelterverwaltung:initialisiere:Error");
             e.printStackTrace();
         }
     }

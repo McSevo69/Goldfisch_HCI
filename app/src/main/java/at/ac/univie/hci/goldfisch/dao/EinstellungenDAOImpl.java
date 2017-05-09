@@ -2,6 +2,7 @@ package at.ac.univie.hci.goldfisch.dao;
 
 import android.content.Context;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -75,6 +76,22 @@ public class EinstellungenDAOImpl implements EinstellungenDAO {
         out.writeObject(ae);
         out.close();
         outputStream.close();
+    }
+
+
+
+
+    @Override
+    public void fileInitialisieren() throws IOException{ //nur falls nix drin ist, wird ne EOF Exception geworfen, dann eine leereListe reingeben
+        try{
+            inputStream = new FileInputStream(myfile);
+            in = new ObjectInputStream(inputStream);
+            inputStream.close();
+            in.close();
+        }catch (EOFException e) {
+
+            this.saveEinstellungen(new AppEinstellungen());
+        }
     }
 
 

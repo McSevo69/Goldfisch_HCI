@@ -20,4 +20,10 @@ public interface EinstellungenDAO {
      * @param ae die neuen Einstellungen
      */
     public void aktualisiereAppEinstellungen(AppEinstellungen ae) throws IOException;
+
+    /**
+     * Zum initialisieren des FIles
+     * @throws IOException
+     */
+    public void fileInitialisieren() throws IOException;
 }

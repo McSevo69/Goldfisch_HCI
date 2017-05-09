@@ -60,5 +60,5 @@ public interface GesundheitsDAO {
      * Da sonst ein error entsteht, wenn man einen inputsream auf ein leeres file setzt
      * @throws IOException
      */
-    public void leereListeReingeben() throws IOException;
+    public void fileInitialisieren() throws IOException;
 }

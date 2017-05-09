@@ -43,7 +43,8 @@ public interface BehaeltnisDAO {
 
     /**
      * Da sonst ein error entsteht, wenn man einen inputsream auf ein leeres file setzt
+     * Es wird gleich auch eine liste mit den wichtigsten getraenken reingegeben
      * @throws IOException
      */
-    public void leereListeReingeben() throws  IOException;
+    public void fileInitialisieren() throws  IOException;
 }

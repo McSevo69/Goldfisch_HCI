@@ -77,12 +77,24 @@ public class BehaeltnisDAOImpl implements  BehaeltnisDAO {
 
 
     @Override
-    public void leereListeReingeben() throws IOException{
-        outputStream = new FileOutputStream(myfile);
-        out = new ObjectOutputStream(outputStream);
-        out.writeObject(new ArrayList<Behaeltnis>());
-        out.close();
-        outputStream.close();
+    public void fileInitialisieren() throws IOException{ //nur falls nix drin ist, wird ne EOF Exception geworfen, dann eine leereListe reingeben
+        try{
+            inputStream = new FileInputStream(myfile);
+            in = new ObjectInputStream(inputStream);
+            inputStream.close();
+            in.close();
+        }catch (EOFException e) {
+
+            outputStream = new FileOutputStream(myfile);
+            out = new ObjectOutputStream(outputStream);
+            List<Behaeltnis> alleWerte = new ArrayList<Behaeltnis>();
+            alleWerte.add(new Behaeltnis("250ml",true,250));
+            alleWerte.add(new Behaeltnis("330ml",true,330));
+            alleWerte.add(new Behaeltnis("500ml",true,500));
+            out.writeObject(alleWerte);
+            out.close();
+            outputStream.close();
+        }
     }
 
 
@@ -95,7 +107,6 @@ public class BehaeltnisDAOImpl implements  BehaeltnisDAO {
 
     @Override
     public List<Behaeltnis> getBehaeltnisse() throws IOException {
-        System.out.println("Behaelterfile: "+myfile);
         inputStream = new FileInputStream(myfile);
         in = new ObjectInputStream(inputStream);
 

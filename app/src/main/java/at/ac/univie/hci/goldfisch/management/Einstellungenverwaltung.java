@@ -13,7 +13,7 @@ import at.ac.univie.hci.goldfisch.model.AppEinstellungen;
  * globalen Einstellungen
  */
 
-public class Einstellungenverwaltung {
+public class Einstellungenverwaltung implements Verwaltung{
 
     private static Einstellungenverwaltung instance;
     private EinstellungenDAO dao;
@@ -32,11 +32,19 @@ public class Einstellungenverwaltung {
         return instance;
     }
 
-    /**
-     * rein zum ausgeben der aktuellen Einstellungen
-     */
-    public void printEinstellungen(){
-        System.out.println("Einstellungenverwaltung:printEinstellungen:Einstellungen drinnen: \n" + this.getEinstellungen());
+    @Override
+    public void printAll(){
+        System.out.println("Einstellungen: \n " + this.getEinstellungen());
+    }
+
+    @Override
+    public void initialisiere(){
+        try{
+            dao.fileInitialisieren();
+        }catch (IOException e){
+            System.out.println("Einstellungenverwaltung:initialisieren:Error");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -109,5 +117,6 @@ public class Einstellungenverwaltung {
         ae.setErinnerungsintervall(hours);
         saveEinstellungen(ae);
     }
+
 
 }
