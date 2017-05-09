@@ -1,7 +1,5 @@
 package at.ac.univie.hci.goldfisch.model;
 
-import android.media.Image;
-
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -13,15 +11,13 @@ import java.util.UUID;
 public class Behaeltnis implements Serializable{
     private UUID id;
     private String name;
-    private Image bild;
     boolean aktiviert;
     private double fuellmenge;
 
 
-    public Behaeltnis(String name, Image bild, boolean aktiviert, double fuellmenge){
+    public Behaeltnis(String name,boolean aktiviert, double fuellmenge){
         this.id = UUID.randomUUID();
         this.name = name;
-        this.bild = bild;
         this.aktiviert = aktiviert;
         this.fuellmenge = fuellmenge;
 
@@ -42,12 +38,6 @@ public class Behaeltnis implements Serializable{
         this.id = id;
     }
 
-    public Image getBild() {
-        return bild;
-    }
-    public void setBild(Image bild) {
-        this.bild = bild;
-    }
 
     public boolean isAktiviert() {
         return aktiviert;
@@ -69,7 +59,6 @@ public class Behaeltnis implements Serializable{
         return "Behaeltnis{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", bild=" + bild +
                 ", aktiviert=" + aktiviert +
                 ", fuellmenge=" + fuellmenge +
                 '}';

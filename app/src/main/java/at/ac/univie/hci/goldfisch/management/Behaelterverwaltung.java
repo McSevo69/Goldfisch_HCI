@@ -7,10 +7,7 @@ import java.util.List;
 
 import at.ac.univie.hci.goldfisch.dao.BehaeltnisDAO;
 import at.ac.univie.hci.goldfisch.dao.BehaeltnisDAOImpl;
-import at.ac.univie.hci.goldfisch.dao.GesundheitsDAO;
-import at.ac.univie.hci.goldfisch.dao.GesundheitsDAOImpl;
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
-import at.ac.univie.hci.goldfisch.model.Gesundheitstipp;
 
 /**
  * Diese Klasse ist fuer die Behaelterverwaltung zustaendig
@@ -41,9 +38,11 @@ public class Behaelterverwaltung {
      */
     public List<Behaeltnis> getBehaeltnisse(){
         try{
+
             return dao.getBehaeltnisse();
         }catch (IOException e){
             System.err.println("management:Behaelterverwaltung:getBehaelter:"+e.getMessage());
+            e.printStackTrace();
         }
         return  null;
     }
@@ -57,4 +56,43 @@ public class Behaelterverwaltung {
            if(b.getName().equals(name)) return b;
         return  null;
     }
+
+
+    public void neuesBehaeltnisAnlegen(String name, double fuellmenge){
+        List<Behaeltnis> alleBehaeltnisse =  this.getBehaeltnisse();
+        for(Behaeltnis b : alleBehaeltnisse)
+            b.setAktiviert(false);
+        Behaeltnis b = new Behaeltnis(name, true,fuellmenge);
+        alleBehaeltnisse.add(b);
+        try {
+            dao.saveBehaeltnisse(alleBehaeltnisse);
+        }catch (IOException e){
+            System.err.println("Behaelterverwaltung:neuesBehaeltnisAnlegen:fehler beim saven der neuen Liste:"+e.getMessage());
+        }
+    }
+
+    public void setBehaeltnisAktiv(String name){
+        for(Behaeltnis b : this.getBehaeltnisse()){
+            if(b.getName().equals(name))
+                b.setAktiviert(true);
+            else
+                b.setAktiviert(false);
+        }
+    }
+
+    public void printAll(){
+        System.out.println("Alle Behaelter: \n");
+        for(Behaeltnis b : this.getBehaeltnisse())
+            System.out.println(" "+b);
+    }
+
+    public void leereListeReingeben(){
+        try{
+            dao.leereListeReingeben();
+        }catch (IOException e){
+            System.out.println("Behaelterverwaltung:leereListeReingeben:Error");
+            e.printStackTrace();
+        }
+    }
+
 }

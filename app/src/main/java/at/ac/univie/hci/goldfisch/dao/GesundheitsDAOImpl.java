@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 import at.ac.univie.hci.goldfisch.model.Gesundheitstipp;
 
 /**
@@ -57,7 +58,7 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
 
     @Override
     public List<Gesundheitstipp> getTipps() throws IOException {
-        inputStream = new FileInputStream(myfile);
+        inputStream = context.openFileInput(filename);
         in = new ObjectInputStream(inputStream);
         List<Gesundheitstipp> liste = null;
         try {
@@ -112,6 +113,16 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
         outputStream = new FileOutputStream(myfile);
         out = new ObjectOutputStream(outputStream);
         out.writeObject(liste);
+        out.close();
+        outputStream.close();
+    }
+
+
+    @Override
+    public void leereListeReingeben() throws IOException{
+        outputStream = new FileOutputStream(myfile);
+        out = new ObjectOutputStream(outputStream);
+        out.writeObject(new ArrayList<Gesundheitstipp>());
         out.close();
         outputStream.close();
     }

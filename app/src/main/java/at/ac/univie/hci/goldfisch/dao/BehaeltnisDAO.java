@@ -2,10 +2,8 @@ package at.ac.univie.hci.goldfisch.dao;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
-import at.ac.univie.hci.goldfisch.model.Gesundheitstipp;
 
 /**
  * Diese Klasse ist fuer den Zugriff auf die Behaeltnisse zum trinken verantwortlich
@@ -14,11 +12,18 @@ import at.ac.univie.hci.goldfisch.model.Gesundheitstipp;
 public interface BehaeltnisDAO {
 
     /**
-     * Speichern eines Behaeltnisses
-     * @param neuesBehaeltnis Der abzuspeichernde speichernde Behaelter
+     * Speichern der neuen Behaeltnisliste
+     * @param neueBehaeltnisse Der abzuspeichernde speichernde Behaelter
      * @throws Exception Falls zB ein fehler beim Lesen eines files passiert,...
      */
-    public void saveBehaeltnisse(Behaeltnis neuesBehaeltnis) throws IOException;
+    public void saveBehaeltnisse(List<Behaeltnis> neueBehaeltnisse) throws IOException;
+
+    /**
+     * Diese Methode fuegt ein neues Behaeltnis hinzu
+     * @param neuesBehaeltnis Das neue Behaeltnis
+     * @throws IOException Falls zB ein fehler beim Lesen eines files passiert,...
+     */
+    public void addBehaeltnis(Behaeltnis neuesBehaeltnis) throws IOException;
 
     /**
      * Diese Methode soll eine Liste aller gespeicherten Behaeltnisse zurueckliefern
@@ -35,4 +40,10 @@ public interface BehaeltnisDAO {
      */
     public Behaeltnis getBehaelterByName(String name) throws IOException;
 
+
+    /**
+     * Da sonst ein error entsteht, wenn man einen inputsream auf ein leeres file setzt
+     * @throws IOException
+     */
+    public void leereListeReingeben() throws  IOException;
 }

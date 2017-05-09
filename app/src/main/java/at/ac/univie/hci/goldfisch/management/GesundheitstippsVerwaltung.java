@@ -22,7 +22,7 @@ public class GesundheitstippsVerwaltung {
 
     private GesundheitstippsVerwaltung(Context context){
         try {
-            this.dao = new GesundheitsDAOImpl(context, "gesundheitstipps.dat");
+            this.dao = new GesundheitsDAOImpl(context, "gesundheitstipp.dat");
         }catch(IOException e){
             System.err.println("management:GesundheitstippsVerwaltung:Konstruktor: fehler beim anlegen des DAO Objektes!!!");
         }
@@ -38,14 +38,11 @@ public class GesundheitstippsVerwaltung {
      * @return irgendein Tipp der gespeichert ist
      */
     public Gesundheitstipp getRandomTipp() {
-        int lowerBoundInclusive=1;
-        int upperBoundInclusive;
         int random;
 
         try {
             List<Gesundheitstipp> alleTipps = dao.getTipps();
-            upperBoundInclusive = alleTipps.size()-1;
-            random = new Random().nextInt(upperBoundInclusive)+lowerBoundInclusive;
+            random = new Random().nextInt(alleTipps.size());
             return alleTipps.get(random);
         }catch (IOException e){
             System.err.println("management:GesundheitstippsVerwaltung:getRandomTipp");
@@ -61,8 +58,34 @@ public class GesundheitstippsVerwaltung {
         try{
             return dao.getTipps();
         }catch (IOException e){
-            System.err.println("management:GesundheitstippsVerwaltung:getGesundheitstipps");
+            System.err.println("management:GesundheitstippsVerwaltung:getGesundheitstipps: "+e.getMessage());
+            e.printStackTrace();
         }
         return  null;
+    }
+
+    public void neuenTippAnlegen(String ueberschrift, String tipp){
+        try{
+            dao.saveTipp(new Gesundheitstipp(ueberschrift,tipp));
+        }catch (IOException e){
+            System.err.println("management:GesundheitstippsVerwaltung:neuenTippAnlegen: "+e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void printAll(){
+        System.out.println("Alle Behaelter: \n");
+        for(Gesundheitstipp b : this.getGesundheitstipps())
+            System.out.println(" "+b);
+    }
+
+
+    public void leereListeReingeben(){
+        try{
+            dao.leereListeReingeben();
+        }catch (IOException e){
+            System.out.println("Behaelterverwaltung:leereListeReingeben:Error");
+            e.printStackTrace();
+        }
     }
 }

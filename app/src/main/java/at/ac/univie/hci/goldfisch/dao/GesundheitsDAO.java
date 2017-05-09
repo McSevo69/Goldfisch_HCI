@@ -55,4 +55,10 @@ public interface GesundheitsDAO {
      * @throws Exception
      */
     public void loescheTippByID(UUID id) throws IOException;
+
+    /**
+     * Da sonst ein error entsteht, wenn man einen inputsream auf ein leeres file setzt
+     * @throws IOException
+     */
+    public void leereListeReingeben() throws IOException;
 }

@@ -46,7 +46,7 @@ public class BenutzerDAOImpl implements BenutzerDAO {
 
     @Override
     public Benutzer getBenutzer() throws IOException {
-        inputStream = new FileInputStream(myfile);
+        inputStream = context.openFileInput(filename);
         in = new ObjectInputStream(inputStream);
         Benutzer benutzerImFile = null;
         try {

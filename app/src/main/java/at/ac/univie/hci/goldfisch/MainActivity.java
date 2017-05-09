@@ -108,14 +108,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         try {
-            //Benutzerverwaltung.getInstance(getApplicationContext()).neuenBenutzerTestAnlegen();
+            System.out.println("Beginne mit daoTestung!!");
+/*            gesver.neuenTippAnlegen("Wasser ist gut!","Jedes Wasser außer dem Wasser des Helenentals ist gut!");
+            gesver.neuenTippAnlegen("Wasser ist billig!","Ein Schluck Wasser in Österreich ist nicht teuer, gönn dir mal einen!");
+            benver.neuenBenutzerTestAnlegen();
+            System.out.println("1:"+gesver.getRandomTipp());
+            System.out.println("2:"+gesver.getRandomTipp());
+            System.out.println("3:"+gesver.getRandomTipp());
+
             //Einstellungenverwaltung.getInstance(getApplicationContext()).saveEinstellungen(new AppEinstellungen(new Behaeltnis("150ml",null,true,150)));
 
-            System.out.println("Benutzer drinnen: \n "+Benutzerverwaltung.getInstance(getApplicationContext()).getBenutzer());
-            Einstellungenverwaltung.getInstance(getApplicationContext()).printEinstellungen();
-            System.out.println("Behaelter");
+*/
+            System.out.println("\nBenutzer");
+            benver.neuenBenutzerTestAnlegen();
+            System.out.println("Benutzer drinnen: \n "+benver.getBenutzer());
+
+            System.out.println("\n\nBehaeltnisse");
+            behver.leereListeReingeben();
+            behver.neuesBehaeltnisAnlegen("250ml",250);
+            behver.neuesBehaeltnisAnlegen("330ml",330);
+            behver.neuesBehaeltnisAnlegen("500ml",500);
+            behver.printAll();
+
+            System.out.println("\n\nGesundheitstipps");
+            gesver.leereListeReingeben();
+            gesver.neuenTippAnlegen("Wasser ist gut!","Jedes Wasser außer dem Wasser des Helenentals ist gut!");
+            gesver.neuenTippAnlegen("Wasser ist billig!","Ein Schluck Wasser in Österreich ist nicht teuer, gönn dir mal einen!");
+            gesver.neuenTippAnlegen("Wasser ist durch rein garnichts zu ersetzen","Reines sauberes Wasser wirkt wie ein Reinigungsmittel im Körper. Sobald dieses mit Schadstoffen oder ähnlichem verunreinigt ist, verringert sich der Reinigungseffekt.");
+            gesver.neuenTippAnlegen("Nach dem Aufstehen trinken","Am besten sind 2 Gläser Wasser nach dem Aufstehen. Denn in der Nacht verliert der Körper viel Flüssigkeit. Um gut in den Tag zu starten und den Kreislauf anzukurbeln empfiehlt es sich daher dem eigenen Körper gleich wieder 'aufzufüllen'.");
+            gesver.neuenTippAnlegen("Trinken während des Essens","Immer auf den eigenen Körper hören. Wenn du Durst verspürst, trink was! Im besten Fall sogar dafür sorgen, dass dein Körper garkeine Durst-Signale aussenden muss. Dann stimmt alles.");
+            gesver.printAll();
+            for(int i=0;i<10;i++)
+                System.out.println(i+":"+gesver.getRandomTipp());
+
+            //Einstellungenverwaltung.getInstance(getApplicationContext()).printEinstellungen();
+            //System.out.println("Behaelter");
         }catch (Exception e){
-            System.err.println("haahhah");
+            e.printStackTrace();
         }
     }//oncreate
 

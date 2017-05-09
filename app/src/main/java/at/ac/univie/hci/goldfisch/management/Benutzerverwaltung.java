@@ -15,7 +15,8 @@ import at.ac.univie.hci.goldfisch.model.Glas;
 import at.ac.univie.hci.goldfisch.model.Status;
 
 /**
- * Created by Gerhard on 02.05.2017.
+ * Diese Klasse stellt alle wichtigen Methoden zur Verfuegung, um Benutzerspezifische Aktionen
+ * durchfuehren zu koennen
  */
 
 public class Benutzerverwaltung {
@@ -197,7 +198,7 @@ public class Benutzerverwaltung {
     }
 
     public void neuenBenutzerTestAnlegen() throws IOException {
-        dao.saveBenutzer(new Benutzer("Gerhard", "Schmidt", "gerhard@schmidt.com", 185, 90, null, 'm','n'));
+        dao.saveBenutzer(new Benutzer("keinVorname", "keinNachname", "keineEmail", 1, 1, null, 'm','n'));
     }
 
 }
