@@ -13,15 +13,23 @@ public class Behaeltnis implements Serializable{
     private String name;
     boolean aktiviert;
     private double fuellmenge;
+    private String inhalt; //zb Wasser, Kaffee,...
+    private double faktor; //zB Alkohol hat faktor von 0.8, liefert also nicht so viel Wasser wie reines Wasser
 
-
-    public Behaeltnis(String name,boolean aktiviert, double fuellmenge){
+    public Behaeltnis(String name,boolean aktiviert, double fuellmenge, String inhalt, double faktor){
         this.id = UUID.randomUUID();
         this.name = name;
         this.aktiviert = aktiviert;
         this.fuellmenge = fuellmenge;
-
+        this.inhalt = inhalt;
+        this.faktor = faktor;
     }
+
+    /**
+     * gibt die eigentlich anzurechnende Menge an
+     * @return das was eigentlich effektiv vom Koerper als Wasser aufgenommen wird
+     */
+    public double getEffektiveTrinkmenge(){return (int)(fuellmenge*faktor);}//int, damit gerundet auf ganzzahl
 
 
     public double getFuellmenge() {
@@ -29,6 +37,20 @@ public class Behaeltnis implements Serializable{
     }
     public void setFuellmenge(double fuellmenge) {
         this.fuellmenge = fuellmenge;
+    }
+
+    public String getInhalt() {
+        return inhalt;
+    }
+    public void setInhalt(String inhalt) {
+        this.inhalt = inhalt;
+    }
+
+    public double getFaktor() {
+        return faktor;
+    }
+    public void setFaktor(double faktor) {
+        this.faktor = faktor;
     }
 
     public UUID getId() {
@@ -61,6 +83,9 @@ public class Behaeltnis implements Serializable{
                 ", name='" + name + '\'' +
                 ", aktiviert=" + aktiviert +
                 ", fuellmenge=" + fuellmenge +
+                ", inhalt=" + inhalt+
+                ", faktor=" + faktor+
+                ", effektiv=" + getEffektiveTrinkmenge() +
                 '}';
     }
 }

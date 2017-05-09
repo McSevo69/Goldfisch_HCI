@@ -89,9 +89,21 @@ public class BehaeltnisDAOImpl implements  BehaeltnisDAO {
             outputStream = new FileOutputStream(myfile);
             out = new ObjectOutputStream(outputStream);
             List<Behaeltnis> alleWerte = new ArrayList<Behaeltnis>();
-            alleWerte.add(new Behaeltnis("250ml",true,250));
-            alleWerte.add(new Behaeltnis("330ml",true,330));
-            alleWerte.add(new Behaeltnis("500ml",true,500));
+            alleWerte.add(new Behaeltnis("250mlWasser",true,250,"Wasser",1));
+            alleWerte.add(new Behaeltnis("330mlWasser",true,330,"Wasser",1));
+            alleWerte.add(new Behaeltnis("500mlWasser",true,500,"Wasser",1));
+
+            alleWerte.add(new Behaeltnis("250mlLimo",true,250,"Limo",0.9));
+            alleWerte.add(new Behaeltnis("330mlLimo",true,330,"Limo",0.9));
+            alleWerte.add(new Behaeltnis("500mlLimo",true,500,"Limo",0.9));
+
+            alleWerte.add(new Behaeltnis("250mlKaffee",true,250,"Kaffee",0.8));
+            alleWerte.add(new Behaeltnis("330mlKaffee",true,330,"Kaffee",0.8));
+            alleWerte.add(new Behaeltnis("500mlKaffee",true,500,"Kaffee",0.8));
+
+            alleWerte.add(new Behaeltnis("250mlAlkohol",true,250,"Alkohol",0.7));
+            alleWerte.add(new Behaeltnis("330mlAlkohol",true,330,"Alkohol",0.7));
+            alleWerte.add(new Behaeltnis("500mlAlkohol",true,500,"Alkohol",0.7));
             out.writeObject(alleWerte);
             out.close();
             outputStream.close();

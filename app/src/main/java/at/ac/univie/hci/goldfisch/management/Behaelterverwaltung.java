@@ -58,11 +58,11 @@ public class Behaelterverwaltung implements Verwaltung{
     }
 
 
-    public void neuesBehaeltnisAnlegen(String name, double fuellmenge){
+    public void neuesBehaeltnisAnlegen(String name, double fuellmenge, String inhalt, double faktor){
         List<Behaeltnis> alleBehaeltnisse =  this.getBehaeltnisse();
         for(Behaeltnis b : alleBehaeltnisse)
             b.setAktiviert(false);
-        Behaeltnis b = new Behaeltnis(name, true,fuellmenge);
+        Behaeltnis b = new Behaeltnis(name, true, fuellmenge, inhalt, faktor);
         alleBehaeltnisse.add(b);
         try {
             dao.saveBehaeltnisse(alleBehaeltnisse);
