@@ -95,8 +95,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                 PackageManager.DONT_KILL_APP);
 
-        setAlarm();
-
         benver = Benutzerverwaltung.getInstance(getApplicationContext());
         behver = Behaelterverwaltung.getInstance(getApplicationContext());
         einver = Einstellungenverwaltung.getInstance(getApplicationContext());
@@ -208,20 +206,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void setAlarm() {
-
-        //Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
-
-        Intent alertIntent = new Intent(this, AlertReceiver.class);
-
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_FIFTEEN_MINUTES,
-                AlarmManager.INTERVAL_FIFTEEN_MINUTES, PendingIntent.getBroadcast(this, 1, alertIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT));
-
-    }
-
     @Override
     public void onClick(View v) {
 
@@ -238,6 +222,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //Intent zur Übertragung der Daten an den Endscreen
                     Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                     startActivity(intent);
+                    setContentView(R.layout.einstellungenseite);
                     break;
                 case R.id.teichButton:
                     //

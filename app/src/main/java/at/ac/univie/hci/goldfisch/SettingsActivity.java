@@ -1,9 +1,11 @@
 package at.ac.univie.hci.goldfisch;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,6 +24,8 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
     RadioGroup geschlecht;
     ToggleButton tipps;
     Spinner intervall;
+    Button saveButton, homeButton, ueberButton;
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,10 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         tipps = (ToggleButton)findViewById(R.id.tipps);
         intervall = (Spinner) findViewById(R.id.tippsIntervall);
 
+        saveButton.setOnClickListener(SettingsActivity.this);
+        homeButton.setOnClickListener(SettingsActivity.this);
+        ueberButton.setOnClickListener(SettingsActivity.this);
+
 
     }
 
@@ -49,6 +57,8 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
 
             case R.id.saveButtonSettings:
                 System.out.println("SettingsActivity:onClick:SaveButton bei den Einstellungen gedrueckt!");
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.ueberButtonSettings:
