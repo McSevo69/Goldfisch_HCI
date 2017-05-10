@@ -235,7 +235,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.settingsButton:
-                    showNotification(v);
+                    //Intent zur Übertragung der Daten an den Endscreen
+                    Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.teichButton:
                     //
