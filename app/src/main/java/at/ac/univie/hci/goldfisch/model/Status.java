@@ -21,6 +21,12 @@ public class Status implements Serializable {
         this.datum = new GregorianCalendar(); //heutiges Datum einstellen
     }
 
+    public Status(double tagesSollMenge, double tagesIstMenge){
+        this.tagesSollMenge = tagesSollMenge;
+        this.tagesIstMenge = tagesIstMenge;
+        this.datum = new GregorianCalendar(); //heutiges Datum einstellen
+    }
+
     public UUID getId() {
         return id;
     }

@@ -9,6 +9,7 @@ import java.util.List;
 
 import at.ac.univie.hci.goldfisch.dao.BenutzerDAO;
 import at.ac.univie.hci.goldfisch.dao.BenutzerDAOImpl;
+import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 import at.ac.univie.hci.goldfisch.model.Benutzer;
 import at.ac.univie.hci.goldfisch.model.Fisch;
 import at.ac.univie.hci.goldfisch.model.Glas;
@@ -195,6 +196,49 @@ public class Benutzerverwaltung implements Verwaltung {
         Benutzer b = this.getBenutzer();
         if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
         List<Status> alleStati = b.getStati();
+    }
+
+
+    public void getraenkTrinken(Behaeltnis b){
+        boolean statusHeuteVorhanden = false;
+        Benutzer benutzer = this.getBenutzer();
+        List<Status> alleStati = benutzer.getStati();
+        Calendar heute = new GregorianCalendar();
+
+        for(Status s : alleStati){
+            if(testIfSameDay(s.getDatum(),heute)){
+                s.setTagesIstMenge(s.getTagesIstMenge()+b.getEffektiveTrinkmenge());
+                statusHeuteVorhanden = true;
+            }
+        }
+        if(!statusHeuteVorhanden){ //falls aktueller status noch nicht vorhanden war
+            alleStati.add(new Status(3000,b.getEffektiveTrinkmenge()));
+        }
+
+        benutzer.setStati(alleStati);
+        this.aktualisiereBenutzer(benutzer);
+
+    }
+
+    /**
+     * Prüft ob 2 Daten gleich sind(aber nur bezogen auf den Tag)
+     * @param datum1
+     * @param datum2
+     * @return
+     */
+    private boolean testIfSameDay(Calendar datum1, Calendar datum2){
+        int jahr1 = datum1.get(Calendar.YEAR);
+        int jahr2 = datum2.get(Calendar.YEAR);;
+
+        int monat1 = datum1.get(Calendar.MONTH);
+        int monat2 = datum2.get(Calendar.MONTH);;
+
+        int tag1 = datum1.get(Calendar.DAY_OF_MONTH);
+        int tag2 = datum2.get(Calendar.DAY_OF_MONTH);
+
+        if(jahr1==jahr2 && monat1==monat2 && tag1==tag2) return true;
+        return false;
+
     }
 
 

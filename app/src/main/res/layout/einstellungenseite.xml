@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+
+    <!--Homebutton-->
+    <ImageButton
+        android:id="@+id/homeButtonSettings"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/home"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <!--Ueberschrift-->
+    <TextView
+        android:id="@+id/headingSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Settings"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <!--Name-->
+    <TextView
+        android:id="@+id/labelNameSettings"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/headingSettings"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="20dp"
+        android:text="Name:"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"/>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:paddingRight="20dp"
+        android:layout_below="@id/headingSettings"
+        android:layout_alignParentRight="true"
+        android:hint=""
+        android:layout_marginBottom="5dp"/>
+
+
+    <!--Geschlecht-->
+    <TextView
+        android:id="@+id/labelGeschlecht"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/labelNameSettings"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="20dp"
+        android:text="Geschlecht:"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"/>
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/geschlecht"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:paddingRight="20dp"
+        android:layout_below="@id/labelNameSettings"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/radio_pirates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="m"
+            android:checked="true"
+            android:layout_alignParentLeft="true"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/radio_ninjas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="w"
+            android:layout_alignParentRight="true"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
+
+
+    <!--Gewicht-->
+    <TextView
+        android:id="@+id/labelGewicht"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/labelGeschlecht"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="20dp"
+        android:text="Gewicht:"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"/>
+
+    <EditText
+        android:id="@+id/gewicht"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:paddingRight="20dp"
+        android:layout_below="@id/labelGeschlecht"
+        android:layout_alignParentRight="true"
+        android:hint=""
+        android:layout_marginBottom="5dp"/>
+
+
+    <!--Groesse-->
+    <TextView
+        android:id="@+id/labelGroesse"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/labelGewicht"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="20dp"
+        android:text="Groesse:"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"/>
+
+    <EditText
+        android:id="@+id/groesse"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:paddingRight="20dp"
+        android:layout_below="@id/labelGewicht"
+        android:layout_alignParentRight="true"
+        android:hint=""
+        android:layout_marginBottom="5dp"/>
+
+
+
+    <!--Tipps- JA NEIN -->
+    <TextView
+        android:id="@+id/labelTipps"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/labelGroesse"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="20dp"
+        android:text="Tipps:"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"/>
+
+    <ToggleButton
+        android:id="@+id/tipps"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:paddingRight="20dp"
+        android:layout_below="@id/labelGroesse"
+        android:layout_alignParentRight="true"
+        android:hint=""
+        android:layout_marginBottom="5dp"/>
+
+    <!--Tipps Intervall -->
+    <TextView
+        android:id="@+id/labelTippsIntervall"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/labelTipps"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="20dp"
+        android:text="Intervall:"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"/>
+
+    <Spinner
+        android:id="@+id/tippsIntervall"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:paddingRight="20dp"
+        android:layout_below="@id/labelTipps"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"/>
+
+
+
+    <!--Alle Buttons-->
+    <Button
+        android:id="@+id/saveButtonSettings"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tippsIntervall"
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Änderungen speichern"
+        android:textSize="15dp"
+        android:background="#CEEEDA"
+        android:padding="2dp"/>
+
+
+    <Button
+        android:id="@+id/ueberButtonSettings"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/saveButtonSettings"
+        android:layout_marginBottom="15dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Über"
+        android:textSize="15dp"
+        android:background="#979797"
+        android:padding="2dp"/>
+
+
+
+</RelativeLayout>
