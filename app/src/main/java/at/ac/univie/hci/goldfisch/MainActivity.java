@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         try {
-            System.out.println("Beginne mit BackendStuff:");
+            System.out.println("Beginne mit BackendSteuff:");
             einver.initialisiere();
             benver.initialisiere();
             behver.initialisiere();
