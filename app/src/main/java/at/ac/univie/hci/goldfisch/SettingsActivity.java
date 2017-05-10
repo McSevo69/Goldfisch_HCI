@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -23,6 +25,10 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
     ToggleButton tipps;
     Spinner intervall;
 
+    ImageButton home;
+    Button speichern;
+    Button ueber;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +43,13 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         tipps = (ToggleButton)findViewById(R.id.tipps);
         intervall = (Spinner) findViewById(R.id.tippsIntervall);
 
+        home = (ImageButton) findViewById(R.id.homeButtonSettings);
+        speichern = (Button) findViewById(R.id.saveButtonSettings);
+        ueber = (Button) findViewById(R.id.ueberButtonSettings);
 
+        home.setOnClickListener(this);
+        speichern.setOnClickListener(this);
+        ueber.setOnClickListener(this);
     }
 
     @Override
