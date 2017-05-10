@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/colorAccent"
     android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/infoButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/gifTextView"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/infobutton"
+        android:contentDescription="@string/das_ist_ein_bild_vom_infobutton" />
 
     <ImageButton
         android:id="@+id/shoppingButton"
@@ -159,7 +169,20 @@
         android:text="@string/erfolg"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
-        android:textSize="12sp"
-        android:textStyle="bold" />
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/infobuttonText"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:text="@string/i"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/infoButton"
+        android:layout_toStartOf="@+id/trophaeButton"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
