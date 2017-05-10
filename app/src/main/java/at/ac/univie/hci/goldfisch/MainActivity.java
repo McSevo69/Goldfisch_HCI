@@ -1,7 +1,17 @@
 package at.ac.univie.hci.goldfisch;
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -15,8 +25,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import at.ac.univie.hci.goldfisch.management.Behaelterverwaltung;
 import at.ac.univie.hci.goldfisch.management.Benutzerverwaltung;
@@ -28,6 +41,11 @@ import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //Notification Variablen
+    private PendingIntent pendingIntent;
+    NotificationManager notificationManager;
+    int notifID = 33;
+    boolean isNotificActive = false;
 
     //Trinkvariablen - Hardcode (müssen noch aus Menü ausgelesen werden)
     double literProKiloNormal = 0.04031;
@@ -38,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     double behaelterDefault = 0.25;
     double wasserstand = 0;
     double hydrationsFaktor = 1; //per default Wasser
-
 
     //Verwaltungsklassen
     Benutzerverwaltung benver;
@@ -51,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton setting; //Einstellungen Button auf der Hauptseite
     ImageButton trophae;//Trophaen Button auf der Hauptseite
     Button trinkKreis; // Kreis der sich dreht beim Trinken
-	
+
 	
     //Da gehts um die Getränkeseite
     ViewPager viewPager;  //PageButton
@@ -64,9 +81,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         System.out.println("oncreate: "+new Date());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hauptseite);
+
+        Context context =  getApplicationContext();
+
+        ComponentName receiver = new ComponentName(context, AlertReceiver.class);
+        PackageManager pm = context.getPackageManager();
+
+        pm.setComponentEnabledSetting(receiver,
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP);
+
+        setAlarm();
 
         benver = Benutzerverwaltung.getInstance(getApplicationContext());
         behver = Behaelterverwaltung.getInstance(getApplicationContext());
@@ -144,6 +173,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }//oncreate
 
+
+    private void showNotification(View view){
+
+        String notiTtl = "Dein Fisch braucht dich!";
+        String notiMsg = "Trink doch gleich ein Glas Wasser.";
+
+        NotificationCompat.Builder notificBuilder = new
+                NotificationCompat.Builder(this)
+                .setContentTitle(notiTtl)
+                .setContentText(notiMsg)
+                .setTicker("Zeit für ein Glas Wasser")
+                .setSmallIcon(R.drawable.notification_pic)
+                .setAutoCancel(true);
+
+        Intent notifyServiceIntent = new Intent(this , MainActivity.class);
+
+        TaskStackBuilder tStackBuilder = TaskStackBuilder.create(this);
+
+        tStackBuilder.addParentStack(MainActivity.class);
+
+        tStackBuilder.addNextIntent(notifyServiceIntent);
+
+        pendingIntent = tStackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        notificBuilder.setContentIntent(pendingIntent);
+
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(notifID, notificBuilder.build());
+
+        isNotificActive = true;
+
+    }
+
+
+    public void setAlarm() {
+
+        //Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
+
+        Intent alertIntent = new Intent(this, AlertReceiver.class);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_FIFTEEN_MINUTES,
+                AlarmManager.INTERVAL_FIFTEEN_MINUTES, PendingIntent.getBroadcast(this, 1, alertIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT));
+
+    }
+
     @Override
     public void onClick(View v) {
 
@@ -157,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.settingsButton:
-                    //
+                    showNotification(v);
                     break;
                 case R.id.teichButton:
                     //

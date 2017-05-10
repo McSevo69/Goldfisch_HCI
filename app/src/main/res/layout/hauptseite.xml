@@ -22,7 +22,8 @@
         android:background="@drawable/settings"
         android:contentDescription="@string/einstellungs_button"
         android:layout_alignTop="@+id/trophaeButton"
-        android:layout_toEndOf="@+id/teichButton" />
+        android:layout_toEndOf="@+id/teichButton"
+        android:clickable="true"/>
 
     <ImageButton
         android:id="@+id/trophaeButton"
