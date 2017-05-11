@@ -50,6 +50,7 @@ public class EinstellungenDAOImpl implements EinstellungenDAO {
         AppEinstellungen einstellungen= null;
         try {
             einstellungen = (AppEinstellungen) in.readObject();
+            System.out.println("efg:" +einstellungen);
         }catch (Exception e){
             System.err.println("EinstellungenDAOImpl:getAppEinstellungen:fehler bei in.readObject!");
         }
@@ -84,14 +85,26 @@ public class EinstellungenDAOImpl implements EinstellungenDAO {
     @Override
     public void fileInitialisieren() throws IOException{ //nur falls nix drin ist, wird ne EOF Exception geworfen, dann eine leereListe reingeben
         try{
-            inputStream = new FileInputStream(myfile);
-            in = new ObjectInputStream(inputStream);
-            in.close();
-            inputStream.close();
-            System.out.println(filename + " war schon initialisiert!");
+            if(this.getEinstellungen() == null) {
+                System.out.println("Starte mit initialisierung des " + filename + "!");
+                outputStream = new FileOutputStream(myfile);
+                out = new ObjectOutputStream(outputStream);
+                AppEinstellungen e = new AppEinstellungen();
+                out.writeObject(e);
+                out.close();
+                outputStream.close();
+            }else{
+                System.out.println(filename + " war schon initialisiert!");
+            }
+
         }catch (EOFException e) {
-            System.out.println("Starte mit initialisierung des "+filename+"!");
-            this.saveEinstellungen(new AppEinstellungen());
+            System.out.println("Starte mit initialisierung des "+filename+"!(exception)");
+            outputStream = new FileOutputStream(myfile);
+            out = new ObjectOutputStream(outputStream);
+            AppEinstellungen ex = new AppEinstellungen();
+            out.writeObject(ex);
+            out.close();
+            outputStream.close();
         }
     }
 
