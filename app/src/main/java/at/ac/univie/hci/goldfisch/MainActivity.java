@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
+
         System.out.println("oncreate: " + new Date());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hauptseite);
@@ -105,6 +107,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         behver = Behaelterverwaltung.getInstance(getApplicationContext());
         einver = Einstellungenverwaltung.getInstance(getApplicationContext());
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
+
+        System.out.println("Teste status: "+benver.getBenutzer());
+
 
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate); // Lässt den Kreis beim Trinken rotieren
         shopping = (ImageButton) findViewById(R.id.shoppingButton); // initialisierung des shopping Buttons
