@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Einstellungenverwaltung einver;
     GesundheitstippsVerwaltung gesver;
 
+    Benutzer aktBenutzer;
+
     //Buttons auf der Hauptseite
     ImageButton shopping;//Einkaufswagen Button auf der Hauptseite
     ImageButton setting; //Einstellungen Button auf der Hauptseite
@@ -103,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         einver = Einstellungenverwaltung.getInstance(getApplicationContext());
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
 
+        aktBenutzer = benver.getBenutzer();
+
         System.out.println("Teste status: "+benver.getheutigenStatus());
 
 
@@ -120,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.circular);
         final ProgressBar mProgress = (ProgressBar) findViewById(R.id.circularProgressbar); // initialisierung des Kreises
-        int percentage = (int) ((AppStatus.getTagesIstMenge()/AppStatus.getTagesSollMenge())*100);
+        int percentage = (int) ((benver.getheutigenStatus().getTagesIstMenge()/benver.getheutigenStatus().getTagesSollMenge())*100);
         mProgress.setProgress(percentage);   // Main Progress
         mProgress.setSecondaryProgress(100); // Secondary Progress
         mProgress.setMax(100); // Maximum Progress
@@ -137,15 +141,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 //Berechnungen
-                double literProKilo = (AppBenutzer.getAktivitaet()=='n') ? 0.04031 : (AppBenutzer.getAktivitaet()=='a') ? 0.04535 : 0.03359;
+                //double literProKilo = (AppBenutzer.getAktivitaet()=='n') ? 0.04031 : (AppBenutzer.getAktivitaet()=='a') ? 0.04535 : 0.03359;
 
-                AppStatus.Trinken(behaelterDefault*hydrationsFaktor);
-                percentStatus = (int) ((AppStatus.getTagesIstMenge()/AppStatus.getTagesSollMenge())*100);
+                String name = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+
+
+                benver.getraenkTrinken(behver.getBehaeltnisByName(name));
+                percentStatus = (int) ((benver.getheutigenStatus().getTagesIstMenge()/benver.getheutigenStatus().getTagesSollMenge())*100);
                 mProgress.setProgress(percentStatus);
                 trinkStatus.setText(percentStatus + "%");
 
                 //Pop-Up
-                String TrinkMessage = "Du hast heute " + AppStatus.getTagesIstMenge() + " Liter von empfohlenen " + AppStatus.getTagesSollMenge() + " Liter getrunken.";
+                String TrinkMessage = "Du hast heute " + benver.getheutigenStatus().getTagesIstMenge() + " Liter von empfohlenen " + benver.getheutigenStatus().getTagesSollMenge() + " Liter getrunken.";
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                 alertDialog.setTitle("Gut gemacht!");
                 alertDialog.setMessage(TrinkMessage);
