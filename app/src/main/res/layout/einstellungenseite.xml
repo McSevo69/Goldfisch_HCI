@@ -77,15 +77,13 @@
             android:layout_height="wrap_content"
             android:text="m"
             android:checked="true"
-            android:layout_alignParentLeft="true"
-            android:onClick="onRadioButtonClicked"/>
+            android:layout_alignParentLeft="true"/>
         <RadioButton
             android:id="@+id/radio_w"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="w"
-            android:layout_alignParentRight="true"
-            android:onClick="onRadioButtonClicked"/>
+            android:layout_alignParentRight="true"/>
     </RadioGroup>
 
 

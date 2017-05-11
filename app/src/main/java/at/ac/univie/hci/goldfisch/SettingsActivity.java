@@ -121,8 +121,8 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
 
                 String vorname = name.getText().toString();
                 //String geschlecht = geschlecht.getSe
-                double gewichtKilo = Double.parseDouble(gewicht.getText().toString());
-                double groesseCM = Double.parseDouble(groesse.getText().toString());
+                double gewichtKilo = 0;//Double.parseDouble(gewicht.getText().toString());
+                double groesseCM = 0;//Double.parseDouble(groesse.getText().toString());
 
                 char geschlechtTest = 'm';
 
@@ -136,10 +136,52 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
 
                 MainActivity.AppStatus.setTagesSollMenge(gewichtKilo*kiloFaktor);
 
+
+                double gewichtDouble;
+                double groesseDouble;
+                int intervallInt;
+                char geschlechtChar;
+
+                try{
+                    gewichtDouble = Double.parseDouble(gewicht.getText().toString());
+                }catch (NumberFormatException e){
+                    gewicht.setText("ZAHL!!!");
+                    break;
+                }
+                try{
+                    groesseDouble = Double.parseDouble(groesse.getText().toString());
+                }catch (NumberFormatException e){
+                    groesse.setText("ZAHL!!!");
+                    break;
+                }
+                try{
+                    intervallInt = Integer.parseInt(intervall.getSelectedItem().toString());
+                }catch (NumberFormatException e){
+                    intervallInt = 0; //falls die Antwort 'gar keine' gewaehlt wurde
+                }
+
+                if(geschlechtM.isChecked()) geschlechtChar='m';
+                else geschlechtChar = 'w';
+
+                aktBenutzer.setGroesse(groesseDouble);
+                aktBenutzer.setGewicht(gewichtDouble);
+                aktBenutzer.setVorname(name.getText().toString());
+                aktBenutzer.setGeschlecht(geschlechtChar);
+                einstellungen.setWillTipps(tipps.isChecked());
+                einstellungen.setErinnerungsintervall(intervallInt);
+
+                benver.aktualisiereBenutzer(aktBenutzer);
+                einver.saveEinstellungen(einstellungen);
+
+
+
                 System.out.println("SettingsActivity:onClick:SaveButton bei den Einstellungen gedrueckt!");
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 setContentView(R.layout.hauptseite);
+
+
+
                 break;
 
             case R.id.ueberButtonSettings:
