@@ -71,14 +71,16 @@
         android:layout_below="@id/labelNameSettings"
         android:layout_alignParentRight="true"
         android:orientation="horizontal">
-        <RadioButton android:id="@+id/radio_pirates"
+        <RadioButton
+            android:id="@+id/radio_m"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="m"
             android:checked="true"
             android:layout_alignParentLeft="true"
             android:onClick="onRadioButtonClicked"/>
-        <RadioButton android:id="@+id/radio_ninjas"
+        <RadioButton
+            android:id="@+id/radio_w"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="w"

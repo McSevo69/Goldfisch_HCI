@@ -2,9 +2,9 @@ package at.ac.univie.hci.goldfisch;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -13,9 +13,10 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
 
-import java.util.Calendar;
-import java.util.UUID;
-
+import at.ac.univie.hci.goldfisch.management.Behaelterverwaltung;
+import at.ac.univie.hci.goldfisch.management.Benutzerverwaltung;
+import at.ac.univie.hci.goldfisch.management.Einstellungenverwaltung;
+import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 import at.ac.univie.hci.goldfisch.model.Benutzer;
 
 import static at.ac.univie.hci.goldfisch.MainActivity.AppBenutzer;
@@ -26,10 +27,16 @@ import static at.ac.univie.hci.goldfisch.MainActivity.AppBenutzer;
 
 public class SettingsActivity  extends AppCompatActivity implements View.OnClickListener {
 
+    Behaelterverwaltung behver;
+    Benutzerverwaltung benver;
+    Einstellungenverwaltung einver;
     EditText name;
     EditText gewicht;
     EditText groesse;
     RadioGroup geschlecht;
+    RadioButton geschlechtM;
+    RadioButton geschlechtW;
+
     ToggleButton tipps;
     Spinner intervall;
 
@@ -37,6 +44,7 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
     Button speichern;
     Button ueber;
 
+    Benutzer aktBenutzer;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,16 +52,41 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
 
         System.out.println("Einstellungen gestartet");
 
+        benver = Benutzerverwaltung.getInstance(getApplicationContext());
+        behver = Behaelterverwaltung.getInstance(getApplicationContext());
+        einver = Einstellungenverwaltung.getInstance(getApplicationContext());
+
         name = (EditText) findViewById(R.id.name);
         gewicht = (EditText) findViewById(R.id.gewicht);
         groesse = (EditText) findViewById(R.id.groesse);
         geschlecht = (RadioGroup) findViewById(R.id.geschlecht);
+        geschlechtM = (RadioButton) findViewById(R.id.radio_m);
+        geschlechtW = (RadioButton) findViewById(R.id.radio_w);
         tipps = (ToggleButton)findViewById(R.id.tipps);
         intervall = (Spinner) findViewById(R.id.tippsIntervall);
 
         home = (ImageButton) findViewById(R.id.homeButtonSettings);
         speichern = (Button) findViewById(R.id.saveButtonSettings);
         ueber = (Button) findViewById(R.id.ueberButtonSettings);
+
+        aktBenutzer = benver.getBenutzer();
+
+        //name feld setzen
+        name.setText(aktBenutzer.getVorname());
+        //gewicht feld setzen
+        gewicht.setText(String.valueOf(aktBenutzer.getGewicht()));
+        //groesse setzen
+        groesse.setText(String.valueOf(aktBenutzer.getGroesse()));
+        //geschlecht setzen
+        if(aktBenutzer.getGeschlecht()=='m') geschlechtM.setChecked(true);
+        else geschlechtW.setChecked(true);
+        //tipps ein aus setzen
+        tipps.setChecked(einver.getEinstellungen().isWillTipps());
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.intervallArray, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        intervall.setAdapter(adapter);
 
         home.setOnClickListener(this);
         speichern.setOnClickListener(this);
@@ -96,6 +129,14 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.ueberButtonSettings:
+                Behaeltnis kaffeeKlein = behver.getBehaeltnisByName("250mlKaffee");
+
+                System.out.println("Behaelter: " + kaffeeKlein);
+
+                System.out.println("Heutiger Status: "+benver.getheutigenStatus());
+                benver.getraenkTrinken(kaffeeKlein);
+                System.out.println("Heutiger Status: "+benver.getheutigenStatus());
+
                 System.out.println("SettingsActivity:onClick:UeberButton bei den Einstellungen gedrueckt!");
         }
     }
