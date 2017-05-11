@@ -24,13 +24,13 @@
         android:layout_marginStart="31dp"
         android:layout_marginTop="33dp"
         android:background="@drawable/orangefish"
-        android:contentDescription="@string/fish1" />
+        android:contentDescription="fish1" />
 
     <ImageButton
         android:id="@+id/fishgray"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:contentDescription="@string/fish2"
+        android:contentDescription="fish2"
         android:background="@drawable/coolesfish_2"
         android:layout_alignTop="@+id/fishgreen"
         android:layout_alignEnd="@+id/fishshop"
@@ -44,13 +44,13 @@
         android:layout_alignStart="@+id/fishorange"
         android:layout_marginBottom="17dp"
         android:background="@drawable/fish1"
-        android:contentDescription="@string/fish4" />
+        android:contentDescription="fish4" />
 
     <ImageButton
         android:id="@+id/fishblue"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:contentDescription="@string/fish3"
+        android:contentDescription="fish3"
         android:background="@drawable/fish_2"
         android:layout_alignTop="@+id/fishorange"
         android:layout_alignStart="@+id/fishgray" />

@@ -61,7 +61,7 @@
         android:layout_width="100dp"
         android:layout_height="120dp"
         android:background="@drawable/amountt"
-        android:contentDescription="@string/amount"
+        android:contentDescription="amount"
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="27dp" />
@@ -71,7 +71,7 @@
         android:layout_width="95dp"
         android:layout_height="105dp"
         android:background="@drawable/amountt"
-        android:contentDescription="@string/glas2"
+        android:contentDescription="glas2"
         app:srcCompat="@drawable/amountt"
         android:layout_alignBottom="@+id/imageButton2"
         android:layout_centerHorizontal="true" />
@@ -81,7 +81,7 @@
         android:layout_width="70dp"
         android:layout_height="80dp"
         android:background="@drawable/amountt"
-        android:contentDescription="@string/glas3"
+        android:contentDescription="glas3"
         app:srcCompat="@drawable/amountt"
         android:layout_alignBottom="@+id/imageButton3"
         android:layout_alignEnd="@+id/textView1" />
