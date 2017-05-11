@@ -205,7 +205,8 @@ public class Benutzerverwaltung implements Verwaltung {
 
         for(Status s : alleStati){
             if(testIfSameDay(s.getDatum(),heute)){
-                s.setTagesIstMenge(s.getTagesIstMenge()+b.getEffektiveTrinkmenge());
+                double tagesist = s.getTagesIstMenge();
+                s.setTagesIstMenge(tagesist+b.getEffektiveTrinkmenge());
                 statusHeuteVorhanden = true;
             }
         }
