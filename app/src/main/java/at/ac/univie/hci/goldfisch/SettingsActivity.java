@@ -132,11 +132,6 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
                 AppBenutzer.setGeschlecht(geschlechtTest);
                 AppBenutzer.setAktivitaet('n');
 
-                double kiloFaktor = (AppBenutzer.getAktivitaet()=='n') ? 0.04031 : (AppBenutzer.getAktivitaet()=='a') ? 0.04535 : 0.03359;
-
-                MainActivity.AppStatus.setTagesSollMenge(gewichtKilo*kiloFaktor);
-
-
                 double gewichtDouble;
                 double groesseDouble;
                 int intervallInt;
@@ -162,6 +157,7 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
 
                 if(geschlechtM.isChecked()) geschlechtChar='m';
                 else geschlechtChar = 'w';
+
 
                 aktBenutzer.setGroesse(groesseDouble);
                 aktBenutzer.setGewicht(gewichtDouble);

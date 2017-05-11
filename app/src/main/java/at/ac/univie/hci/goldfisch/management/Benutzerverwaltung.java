@@ -210,7 +210,9 @@ public class Benutzerverwaltung implements Verwaltung {
             }
         }
         if(!statusHeuteVorhanden){ //falls aktueller status noch nicht vorhanden war
-            alleStati.add(new Status(3000,b.getEffektiveTrinkmenge()));
+            double kiloFaktor = (benutzer.getAktivitaet()=='n') ? 0.04031 : (benutzer.getAktivitaet()=='a') ? 0.04535 : 0.03359;
+            double tagessollmenge = benutzer.getGewicht()*kiloFaktor;
+            alleStati.add(new Status(tagessollmenge, b.getEffektiveTrinkmenge()));
         }
 
         benutzer.setStati(alleStati);
