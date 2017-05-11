@@ -101,7 +101,6 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
             intervall.setSelection(spinnerPosition);
         }
 
-
         home.setOnClickListener(this);
         speichern.setOnClickListener(this);
         ueber.setOnClickListener(this);
@@ -119,18 +118,6 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
 
             case R.id.saveButtonSettings:
 
-                String vorname = name.getText().toString();
-                //String geschlecht = geschlecht.getSe
-                double gewichtKilo = 0;//Double.parseDouble(gewicht.getText().toString());
-                double groesseCM = 0;//Double.parseDouble(groesse.getText().toString());
-
-                char geschlechtTest = 'm';
-
-                AppBenutzer.setVorname(vorname);
-                AppBenutzer.setGewicht(gewichtKilo);
-                AppBenutzer.setGroesse(groesseCM);
-                AppBenutzer.setGeschlecht(geschlechtTest);
-                AppBenutzer.setAktivitaet('n');
 
                 double gewichtDouble;
                 double groesseDouble;
@@ -168,7 +155,6 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
 
                 benver.aktualisiereBenutzer(aktBenutzer);
                 einver.saveEinstellungen(einstellungen);
-
 
 
                 System.out.println("SettingsActivity:onClick:SaveButton bei den Einstellungen gedrueckt!");
