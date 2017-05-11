@@ -60,18 +60,6 @@ public class Benutzerverwaltung implements Verwaltung {
         }
     }
 
-    /**
-     * Methode zum Aendern des Geburtsdatums
-     * @param tag
-     * @param monat
-     * @param jahr
-     */
-    public void geburtsdatumAendern(int tag, int monat, int jahr){
-        Benutzer b = this.getBenutzer();
-        if(b == null){ System.err.println("Benutzerverwaltung:geburtsdatumAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
-        b.setGebDatum(new GregorianCalendar(jahr,monat-1,tag)); //-1, weil monat bei 0 anfaengt zu zaehlen(Jaenner = 0)
-        this.aktualisiereBenutzer(b);
-    }
 
     /**
      * Methode zum Aendern der Groesse

@@ -37,9 +37,27 @@ import at.ac.univie.hci.goldfisch.management.Einstellungenverwaltung;
 import at.ac.univie.hci.goldfisch.management.GesundheitstippsVerwaltung;
 import at.ac.univie.hci.goldfisch.model.AppEinstellungen;
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
+import at.ac.univie.hci.goldfisch.model.Benutzer;
+import at.ac.univie.hci.goldfisch.model.Status;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+
+    //Trinkvariablen - Hardcode (müssen noch aus Menü ausgelesen werden)
+    static double  literProKiloNormal = 0.04031;
+    static double literProKiloAktiv = 0.04535;
+    static  double literProKiloSitzend = 0.03359;
+
+    double userKiloDefault = 75; //falls keine Körperangaben gemacht werden
+    double literProTag = literProKiloNormal * userKiloDefault;
+    double behaelterDefault = 0.25;
+    double wasserstand = 0;
+    double hydrationsFaktor = 1; //per default Wasser
+
+    //Default-User
+    public static Benutzer AppBenutzer = new Benutzer("Max",180,75,'m','n');
+    public static Status AppStatus = new Status(0.04031*75);
 
     //Notification Variablen
     private PendingIntent pendingIntent;
@@ -47,15 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int notifID = 33;
     boolean isNotificActive = false;
 
-    //Trinkvariablen - Hardcode (müssen noch aus Menü ausgelesen werden)
-    double literProKiloNormal = 0.04031;
-    double literProKiloAktiv = 0.04535;
-    double literProKiloSitzend = 0.03359;
-    double userKiloDefault = 75; //falls keine Körperangaben gemacht werden
-    double literProTag = literProKiloNormal * userKiloDefault;
-    double behaelterDefault = 0.25;
-    double wasserstand = 0;
-    double hydrationsFaktor = 1; //per default Wasser
 
     //Verwaltungsklassen
     Benutzerverwaltung benver;
@@ -114,26 +123,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.circular);
         final ProgressBar mProgress = (ProgressBar) findViewById(R.id.circularProgressbar); // initialisierung des Kreises
-        mProgress.setProgress(0);   // Main Progress
+        int percentage = (int) ((AppStatus.getTagesIstMenge()/AppStatus.getTagesSollMenge())*100);
+        mProgress.setProgress(percentage);   // Main Progress
         mProgress.setSecondaryProgress(100); // Secondary Progress
         mProgress.setMax(100); // Maximum Progress
         mProgress.setProgressDrawable(drawable);
 
 
         trinkStatus = (TextView) findViewById(R.id.trinkStatus);
-        trinkStatus.setText(percentStatus + "%");
+        trinkStatus.setText(percentage + "%");
 
         trinkKreis.setOnLongClickListener(new View.OnLongClickListener() { // Listener der sofort die Rotationsbewegung ausführt wenn er lange gedrückt wird
             @Override
             public boolean onLongClick(View arg0) {
                 arg0.startAnimation(animRotate);
-                wasserstand += (behaelterDefault*hydrationsFaktor);
-                percentStatus = (int) ((wasserstand/literProTag)*100);
+
+
+                //Berechnungen
+                double literProKilo = (AppBenutzer.getAktivitaet()=='n') ? 0.04031 : (AppBenutzer.getAktivitaet()=='a') ? 0.04535 : 0.03359;
+
+                AppStatus.Trinken(behaelterDefault*hydrationsFaktor);
+                percentStatus = (int) ((AppStatus.getTagesIstMenge()/AppStatus.getTagesSollMenge())*100);
                 mProgress.setProgress(percentStatus);
                 trinkStatus.setText(percentStatus + "%");
 
                 //Pop-Up
-                String TrinkMessage = "Du hast heute " + wasserstand + " Liter von empfohlenen " + literProTag + " Liter getrunken.";
+                String TrinkMessage = "Du hast heute " + AppStatus.getTagesIstMenge() + " Liter von empfohlenen " + AppStatus.getTagesSollMenge() + " Liter getrunken.";
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                 alertDialog.setTitle("Gut gemacht!");
                 alertDialog.setMessage(TrinkMessage);

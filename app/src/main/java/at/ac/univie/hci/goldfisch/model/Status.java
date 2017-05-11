@@ -27,6 +27,10 @@ public class Status implements Serializable {
         this.datum = new GregorianCalendar(); //heutiges Datum einstellen
     }
 
+    public void Trinken (double menge) {
+        this.tagesIstMenge += menge;
+    }
+
     public UUID getId() {
         return id;
     }

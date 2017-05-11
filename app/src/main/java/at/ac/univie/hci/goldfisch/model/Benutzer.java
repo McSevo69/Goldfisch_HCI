@@ -14,11 +14,8 @@ import java.util.UUID;
 public class Benutzer implements Serializable{
     private UUID id;
     private String vorname;
-    private String nachname;
-    private String email;
     private double groesse;
     private double gewicht;
-    private Calendar gebDatum;
     private char geschlecht;
     private Calendar nutzungsbeginn;
     private char aktivitaet;
@@ -66,11 +63,8 @@ public class Benutzer implements Serializable{
         return "Benutzer{" +
                 "id=" + id +
                 ", vorname='" + vorname + '\'' +
-                ", nachname='" + nachname + '\'' +
-                ", email='" + email + '\'' +
                 ", groesse=" + groesse +
                 ", gewicht=" + gewicht +
-                ", gebDatum=" + gebDatum +
                 ", geschlecht=" + geschlecht +
                 ", nutzungsbeginn=" + nutzungsbeginn +
                 ", aktivitaet=" + aktivitaet +
@@ -81,15 +75,12 @@ public class Benutzer implements Serializable{
                 '}';
     }
 
-    public Benutzer(String vorname, String nachname, String email, double groesse, double gewicht, Calendar gebDatum, char geschlecht, char aktivitaet) {
+    public Benutzer(String vorname, double groesse, double gewicht, char geschlecht, char aktivitaet) {
         this.id = UUID.randomUUID();
         this.nutzungsbeginn = new GregorianCalendar();
         this.vorname = vorname;
-        this.nachname = nachname;
-        this.email = email;
         this.groesse = groesse;
         this.gewicht = gewicht;
-        this.gebDatum = gebDatum;
         this.geschlecht = geschlecht;
         this.aktivitaet = aktivitaet;
 
@@ -114,20 +105,6 @@ public class Benutzer implements Serializable{
         this.vorname = vorname;
     }
 
-    public String getNachname() {
-        return nachname;
-    }
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public double getGroesse() {
         return groesse;
     }
@@ -140,13 +117,6 @@ public class Benutzer implements Serializable{
     }
     public void setGewicht(double gewicht) {
         this.gewicht = gewicht;
-    }
-
-    public Calendar getGebDatum() {
-        return gebDatum;
-    }
-    public void setGebDatum(Calendar gebDatum) {
-        this.gebDatum = gebDatum;
     }
 
     public char getGeschlecht() {
