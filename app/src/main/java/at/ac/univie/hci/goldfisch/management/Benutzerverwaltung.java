@@ -187,6 +187,16 @@ public class Benutzerverwaltung implements Verwaltung {
     }
 
 
+    public Status getheutigenStatus(){
+        Benutzer b = this.getBenutzer();
+        System.out.println("Benutzerverwaltung: getheutigenStatus: gestartet"+b);
+        List<Status> alleStati = this.getBenutzer().getStati();
+        for(Status s : alleStati)
+            if(this.testIfSameDay(s.getDatum(),new GregorianCalendar()))
+                return s;
+        return null;
+    }
+
     public void getraenkTrinken(Behaeltnis b){
         boolean statusHeuteVorhanden = false;
         Benutzer benutzer = this.getBenutzer();

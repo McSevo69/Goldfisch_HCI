@@ -21,6 +21,16 @@ public class Status implements Serializable {
         this.datum = new GregorianCalendar(); //heutiges Datum einstellen
     }
 
+    @Override
+    public String toString() {
+        return "Status{" +
+                "id=" + id +
+                ", tagesSollMenge=" + tagesSollMenge +
+                ", tagesIstMenge=" + tagesIstMenge +
+                ", datum=" + datum.get(Calendar.DAY_OF_MONTH)+"."+(datum.get(Calendar.MONTH) +1)+ "."+datum.get(Calendar.YEAR)+
+                '}';
+    }
+
     public Status(double tagesSollMenge, double tagesIstMenge){
         this.tagesSollMenge = tagesSollMenge;
         this.tagesIstMenge = tagesIstMenge;

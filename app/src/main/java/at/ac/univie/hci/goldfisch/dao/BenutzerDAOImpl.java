@@ -55,6 +55,7 @@ public class BenutzerDAOImpl implements BenutzerDAO {
             benutzerImFile = (Benutzer) in.readObject();
         }catch (Exception e){
             System.err.println("BenutzerDAOImpl:getBenutzer:fehler bei in.readObject!");
+            e.printStackTrace();
         }
         in.close();
         inputStream.close();
@@ -91,20 +92,16 @@ public class BenutzerDAOImpl implements BenutzerDAO {
 
     @Override
     public void fileInitialisieren() throws IOException{
-        try {
-            inputStream = context.openFileInput(filename);
-            in = new ObjectInputStream(inputStream);
-            in.close();
-            inputStream.close();
-            System.out.println(filename + " war schon initialisiert!");
-        }catch(EOFException e) {
+        if(this.getBenutzer()==null){
             System.out.println("Starte mit initialisierung des "+filename+"!");
             outputStream = new FileOutputStream(myfile);
             out = new ObjectOutputStream(outputStream);
-            Benutzer b = new Benutzer("keinVorname", 1, 1, 'm','n');
+            Benutzer b = new Benutzer("keinName", 1, 1, 'm','n');
             out.writeObject(b);
             out.close();
             outputStream.close();
         }
+        else
+            System.out.println(filename + " war schon initialisiert!");
     }
 }
