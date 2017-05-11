@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         einver = Einstellungenverwaltung.getInstance(getApplicationContext());
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
 
-        System.out.println("Teste status: "+benver.getBenutzer());
+        System.out.println("Teste status: "+benver.getheutigenStatus());
 
 
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate); // Lässt den Kreis beim Trinken rotieren
