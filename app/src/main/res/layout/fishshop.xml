@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/fishshop"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/fishshoplogocopy"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription=""
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/fishorange"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/fishshop"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/orangefish"
+        android:contentDescription="@string/fish1" />
+
+    <ImageButton
+        android:id="@+id/fishgray"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/fish2"
+        android:background="@drawable/coolesfish_2"
+        android:layout_alignTop="@+id/fishgreen"
+        android:layout_alignEnd="@+id/fishshop"
+        android:layout_marginEnd="22dp" />
+
+    <ImageButton
+        android:id="@+id/fishgreen"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/fishorange"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/fish1"
+        android:contentDescription="@string/fish4" />
+
+    <ImageButton
+        android:id="@+id/fishblue"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/fish3"
+        android:background="@drawable/fish_2"
+        android:layout_alignTop="@+id/fishorange"
+        android:layout_alignStart="@+id/fishgray" />
+
+</RelativeLayout>
