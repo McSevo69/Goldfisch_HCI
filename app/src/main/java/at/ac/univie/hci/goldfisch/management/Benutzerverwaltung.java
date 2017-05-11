@@ -42,8 +42,8 @@ public class Benutzerverwaltung implements Verwaltung {
     public Benutzer getBenutzer(){
         try {
             return dao.getBenutzer();
-        }catch (IOException e){
-            System.err.println("Benutzerverwaltung.getBenutzer: "+e.getMessage());
+        }catch (IOException e) {
+            System.err.println("Benutzerverwaltung.getBenutzer: " + e.getMessage());
             return null;
         }
     }

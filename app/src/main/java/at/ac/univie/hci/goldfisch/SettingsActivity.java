@@ -16,6 +16,7 @@ import android.widget.ToggleButton;
 import at.ac.univie.hci.goldfisch.management.Behaelterverwaltung;
 import at.ac.univie.hci.goldfisch.management.Benutzerverwaltung;
 import at.ac.univie.hci.goldfisch.management.Einstellungenverwaltung;
+import at.ac.univie.hci.goldfisch.model.AppEinstellungen;
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 import at.ac.univie.hci.goldfisch.model.Benutzer;
 
@@ -45,6 +46,7 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
     Button ueber;
 
     Benutzer aktBenutzer;
+    AppEinstellungen einstellungen;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,7 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         ueber = (Button) findViewById(R.id.ueberButtonSettings);
 
         aktBenutzer = benver.getBenutzer();
+        einstellungen = einver.getEinstellungen();
 
         //name feld setzen
         name.setText(aktBenutzer.getVorname());
@@ -81,12 +84,23 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         if(aktBenutzer.getGeschlecht()=='m') geschlechtM.setChecked(true);
         else geschlechtW.setChecked(true);
         //tipps ein aus setzen
-        tipps.setChecked(einver.getEinstellungen().isWillTipps());
+        tipps.setChecked(einstellungen.isWillTipps());
 
+        //intervall setzen alle werte reingeben
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.intervallArray, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         intervall.setAdapter(adapter);
+        //intervall setzen wie gespeichert
+        int intervallSaved = einstellungen.getErinnerungsintervall();
+        if(intervallSaved ==0)  intervall.setSelection(3);
+        else{
+            int spinnerPosition = adapter.getPosition(String.valueOf(intervallSaved));
+            System.out.println("Intervall eigentlich: "+intervallSaved + ", Position: "+spinnerPosition);
+
+            intervall.setSelection(spinnerPosition);
+        }
+
 
         home.setOnClickListener(this);
         speichern.setOnClickListener(this);

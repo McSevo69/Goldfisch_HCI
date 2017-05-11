@@ -91,17 +91,27 @@ public class BenutzerDAOImpl implements BenutzerDAO {
 
 
     @Override
-    public void fileInitialisieren() throws IOException{
-        if(this.getBenutzer()==null){
-            System.out.println("Starte mit initialisierung des "+filename+"!");
+    public void fileInitialisieren() throws IOException {
+        try {
+
+            if (this.getBenutzer() == null) {
+                System.out.println("Starte mit initialisierung des " + filename + "!");
+                outputStream = new FileOutputStream(myfile);
+                out = new ObjectOutputStream(outputStream);
+                Benutzer b = new Benutzer("keinName", 1, 1, 'm', 'n');
+                out.writeObject(b);
+                out.close();
+                outputStream.close();
+            } else
+                System.out.println(filename + " war schon initialisiert!");
+        } catch (EOFException e) {
+            System.out.println("Starte mit initialisierung des " + filename + "!");
             outputStream = new FileOutputStream(myfile);
             out = new ObjectOutputStream(outputStream);
-            Benutzer b = new Benutzer("keinName", 1, 1, 'm','n');
+            Benutzer b = new Benutzer("keinName", 1, 1, 'm', 'n');
             out.writeObject(b);
             out.close();
             outputStream.close();
         }
-        else
-            System.out.println(filename + " war schon initialisiert!");
     }
 }
