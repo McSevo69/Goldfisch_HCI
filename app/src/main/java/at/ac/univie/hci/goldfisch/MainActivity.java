@@ -52,9 +52,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     double behaelterDefault = 0.25;
     double hydrationsFaktor = 1; //per default Wasser
 
-    //Default-User
-    public static Benutzer AppBenutzer = new Benutzer("Max",180,75,'m','n');
-    public static Status AppStatus = new Status(0.04031*75); //normal*75Kilo
 
     //Notification Variablen
     private PendingIntent pendingIntent;
@@ -87,8 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
         System.out.println("oncreate: " + new Date());
         super.onCreate(savedInstanceState);

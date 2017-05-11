@@ -17,10 +17,6 @@ public class FishShop extends AppCompatActivity implements View.OnClickListener 
             ImageButton fish_gray;
 
 
-
-
-
-
             @Override
             protected void onCreate(Bundle savedInstanceState) {
 
