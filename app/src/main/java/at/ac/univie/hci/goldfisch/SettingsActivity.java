@@ -20,8 +20,6 @@ import at.ac.univie.hci.goldfisch.model.AppEinstellungen;
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 import at.ac.univie.hci.goldfisch.model.Benutzer;
 
-import static at.ac.univie.hci.goldfisch.MainActivity.AppBenutzer;
-
 /**
  *
  */

@@ -124,7 +124,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.circular);
         final ProgressBar mProgress = (ProgressBar) findViewById(R.id.circularProgressbar); // initialisierung des Kreises
-        int percentage = (int) ((benver.getheutigenStatus().getTagesIstMenge()/benver.getheutigenStatus().getTagesSollMenge())*100);
+
+        int percentage;
+
+        try {
+            percentage = (int) ((benver.getheutigenStatus().getTagesIstMenge() / benver.getheutigenStatus().getTagesSollMenge()) * 100);
+        } catch (Exception e) {
+            percentage = 0;
+            System.out.println("Heutigen Status setzen!");
+        }
         mProgress.setProgress(percentage);   // Main Progress
         mProgress.setSecondaryProgress(100); // Secondary Progress
         mProgress.setMax(100); // Maximum Progress
@@ -145,9 +153,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 String name = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
 
+                try {
+                    benver.getraenkTrinken(behver.getBehaeltnisByName(name));
+                } catch (Exception e) {
+                    System.out.println("Trinken geht nicht. Administrator regelt das ;-)");
+                }
 
-                benver.getraenkTrinken(behver.getBehaeltnisByName(name));
-                percentStatus = (int) ((benver.getheutigenStatus().getTagesIstMenge()/benver.getheutigenStatus().getTagesSollMenge())*100);
+                try {
+                    percentStatus = (int) ((benver.getheutigenStatus().getTagesIstMenge()/benver.getheutigenStatus().getTagesSollMenge())*100);
+                } catch (Exception e) {
+                    System.out.println("ADMIN!!!!");
+                }
                 mProgress.setProgress(percentStatus);
                 trinkStatus.setText(percentStatus + "%");
 
@@ -230,6 +246,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             switch (v.getId()) {
                 case R.id.shoppingButton:
+                    Intent fishIntent = new Intent(getApplicationContext(), FishShop.class);
+                    startActivity(fishIntent);
                     setContentView(R.layout.fishshop);
                     break;
 
