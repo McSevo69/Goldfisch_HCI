@@ -68,16 +68,10 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
 
-            case R.id.homeButtonSettings:
-                Intent intentHome = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intentHome);
-                setContentView(R.layout.hauptseite);
-                break;
             case R.id.gesundheitstippFeld0:
                 Intent intent0 = new Intent(v.getContext(), Tippslesen.class);
                 intent0.putExtra(ueberschriftTipps, tipp0.getUeberschrift());
                 intent0.putExtra(textTipps, tipp0.getTipp());
-                setContentView(R.layout.tippslesen);
                 System.out.println(tipp0.getUeberschrift());
                 System.out.println(tipp0.getTipp());
                 startActivity(intent0);
@@ -86,7 +80,6 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
                 Intent intent1 = new Intent(v.getContext(), Tippslesen.class);
                 intent1.putExtra(ueberschriftTipps, tipp1.getUeberschrift());
                 intent1.putExtra(textTipps, tipp1.getTipp());
-                setContentView(R.layout.tippslesen);
                 startActivity(intent1);
                 break;
             case R.id.gesundheitstippFeld2:
