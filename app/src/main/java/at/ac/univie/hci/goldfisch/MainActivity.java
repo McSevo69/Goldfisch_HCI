@@ -107,7 +107,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         aktBenutzer = benver.getBenutzer();
 
-        System.out.println("Teste status: "+benver.getheutigenStatus());
+
+        System.out.println("Teste status: " + benver.getheutigenStatus());
 
 
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate); // Lässt den Kreis beim Trinken rotieren

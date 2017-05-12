@@ -151,6 +151,7 @@ public class Benutzerverwaltung implements Verwaltung {
     }
 
 
+
     private void neuenStatusAnlegen(double tagessollmenge){
         Benutzer b = this.getBenutzer();
         if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
@@ -160,6 +161,13 @@ public class Benutzerverwaltung implements Verwaltung {
         this.aktualisiereBenutzer(b);
     }
 
+    /**
+     * Diese Methode liefert den Status fuer einen bestimmten Tag
+     * @param tag Der Tag
+     * @param monat Der Monat
+     * @param jahr Das Jahr
+     * @return Der Status fuer den speziellen Tag
+     */
     private Status getStatus(int tag, int monat, int jahr){
         Benutzer b = this.getBenutzer();
         Calendar c;
@@ -175,31 +183,33 @@ public class Benutzerverwaltung implements Verwaltung {
         return null;
     }
 
-    private Status getHeutigenStatus(){
-        Calendar c = new GregorianCalendar();
-        return this.getStatus(c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.MONTH), c.get(Calendar.YEAR));
-    }
-
-    private void tagesmengeErhoehen(double wert){
-        Benutzer b = this.getBenutzer();
-        if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
-        List<Status> alleStati = b.getStati();
-    }
 
 
+    /**
+     * Diese Methode liefert immer den heutigen Status zurueck
+     * Falls keiner noch vorahnden ist, wird einer angelegt durch die Methode getraenkTrinken
+     * @return der heutige Status
+     */
     public Status getheutigenStatus(){
         Benutzer b = this.getBenutzer();
-        System.out.println("Benutzerverwaltung: getheutigenStatus: gestartet"+b);
-        List<Status> alleStati = this.getBenutzer().getStati();
-        for(Status s : alleStati)
-            if(this.testIfSameDay(s.getDatum(),new GregorianCalendar()))
-                return s;
-        //falls noch kein heutiger status existiert
-        getraenkTrinken(new Behaeltnis("leer, nur wegen Status anlegen",false,0,"leer",1));
+        Calendar c = new GregorianCalendar();
+        for(Status st : b.getStati())
+            if(this.testIfSameDay(st.getDatum(),c))
+                return st;
 
-        return getheutigenStatus();
+        getraenkTrinken(new Behaeltnis("leer, nur wegen Status anlegen",false,0,"leer",1));
+        b = this.getBenutzer();
+        for(Status st : b.getStati())
+            if(this.testIfSameDay(st.getDatum(),c))
+                return st;
+
+        return null;//return getheutigenStatus();
     }
 
+    /**
+     * Mit dieser Methode kann man verschiedene Behaeltnisse trinken
+     * @param b das Behaeltnis, welches getrunken wird
+     */
     public void getraenkTrinken(Behaeltnis b){
         boolean statusHeuteVorhanden = false;
         Benutzer benutzer = this.getBenutzer();
