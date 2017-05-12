@@ -10,7 +10,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="12dp"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/das_ist_ein_homebutton"
+        android:contentDescription="das_ist_ein_homebutton"
         app:srcCompat="@drawable/home4" />
 
 </RelativeLayout>

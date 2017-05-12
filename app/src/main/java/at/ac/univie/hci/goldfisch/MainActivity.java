@@ -106,8 +106,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
 
 
-
-
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate); // Lässt den Kreis beim Trinken rotieren
         shopping = (ImageButton) findViewById(R.id.shoppingButton); // initialisierung des shopping Buttons
         setting = (ImageButton) findViewById(R.id.settingsButton);  // initialisierung des settings Buttons
@@ -208,6 +206,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             e.printStackTrace();
         }
     }//oncreate
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
 
     private void showNotification(View view){

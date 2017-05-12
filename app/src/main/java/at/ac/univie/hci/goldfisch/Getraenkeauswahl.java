@@ -50,7 +50,6 @@ public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickL
         */
 
 
-
         firstGlass_250ml = (ImageButton) findViewById(R.id.imageButton2);  // initialisierung des firstGlass250ml Buttons erstes Glas
         secondGlass_330ml = (ImageButton) findViewById(R.id.imageButton3); // initialisierung des secondGlass_330ml Buttons (330ml-menge)
         thirdGlass_500ml = (ImageButton) findViewById(R.id.imageButton4); // initialisierung des thirdGlass_500ml Buttons (500ml-menge)
