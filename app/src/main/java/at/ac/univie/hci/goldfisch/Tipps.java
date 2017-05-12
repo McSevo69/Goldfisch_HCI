@@ -21,7 +21,7 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
     public final static String textTipps = "textTipps";
 
     Button feld0,feld1,feld2,feld3,feld4;
-    ImageButton home;
+    ImageButton homeTipp;
     GesundheitstippsVerwaltung gesver;
     Gesundheitstipp tipp0,tipp1,tipp2,tipp3,tipp4;
 
@@ -36,13 +36,15 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
         feld2 = (Button)findViewById(R.id.gesundheitstippFeld2);
         feld3 = (Button)findViewById(R.id.gesundheitstippFeld3);
         feld4 = (Button)findViewById(R.id.gesundheitstippFeld4);
-        home = (ImageButton)findViewById(R.id.homeButtonTippsAnzeige);
-        home.setOnClickListener(this);
+        homeTipp = (ImageButton)findViewById(R.id.homeButtonTippsAnzeige);
+
+        homeTipp.setOnClickListener(this);
         feld0.setOnClickListener(this);
         feld1.setOnClickListener(this);
         feld2.setOnClickListener(this);
         feld3.setOnClickListener(this);
         feld4.setOnClickListener(this);
+
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
         gesver.initialisiere();
 
@@ -57,8 +59,6 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
         feld2.setText(tipp2.getUeberschrift());
         feld3.setText(tipp3.getUeberschrift());
         feld4.setText(tipp4.getUeberschrift());
-
-
 
     }
 
@@ -107,6 +107,9 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
                 intent4.putExtra(textTipps, tipp4.getTipp());
                 startActivity(intent4);
                 break;
+            case R.id.homeButtonTippsAnzeige:
+                Intent backHomeIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(backHomeIntent);
         }
     }
 

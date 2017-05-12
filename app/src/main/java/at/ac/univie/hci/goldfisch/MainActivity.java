@@ -328,6 +328,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 case R.id.tippsButton:
 
+                    Intent tippsIntent = new Intent(getApplicationContext(), Tipps.class);
+                    startActivity(tippsIntent);
+
                     break;
 
                 case R.id.infoButton:
