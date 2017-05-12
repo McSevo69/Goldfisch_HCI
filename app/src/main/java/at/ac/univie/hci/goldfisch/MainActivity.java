@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Context context =  getApplicationContext();
 
+        //Receiver für Benachrichtungen
         ComponentName receiver = new ComponentName(context, AlertReceiver.class);
         PackageManager pm = context.getPackageManager();
 
@@ -104,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         behver = Behaelterverwaltung.getInstance(getApplicationContext());
         einver = Einstellungenverwaltung.getInstance(getApplicationContext());
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
-
 
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate); // Lässt den Kreis beim Trinken rotieren
         shopping = (ImageButton) findViewById(R.id.shoppingButton); // initialisierung des shopping Buttons

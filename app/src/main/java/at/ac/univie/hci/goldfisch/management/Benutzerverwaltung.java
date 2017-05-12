@@ -190,8 +190,6 @@ public class Benutzerverwaltung implements Verwaltung {
         return null;
     }
 
-
-
     /**
      * Diese Methode liefert immer den heutigen Status zurueck
      * Falls keiner noch vorahnden ist, wird einer angelegt durch die Methode getraenkTrinken
@@ -232,6 +230,7 @@ public class Benutzerverwaltung implements Verwaltung {
         }
         if(!statusHeuteVorhanden){ //falls aktueller status noch nicht vorhanden war
             System.out.println("Benutzerverwaltung:getraenkTrinken:neuer Status wird angelegt fuer den heutigen tag, da noch keiner vorhanden war!");
+            //Hier werden die entsprechenden Liter/Kilo-Werte je nach Aktivität festgelegt
             double kiloFaktor = (benutzer.getAktivitaet()=='n') ? 0.04031 : (benutzer.getAktivitaet()=='a') ? 0.04535 : 0.03359;
             double tagessollmenge = benutzer.getGewicht()*kiloFaktor;
             alleStati.add(new Status(tagessollmenge, b.getEffektiveTrinkmenge()));
