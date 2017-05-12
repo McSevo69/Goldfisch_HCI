@@ -215,7 +215,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
-
     private void showNotification(View view){
 
         String notiTtl = "Dein Fisch braucht dich!";
