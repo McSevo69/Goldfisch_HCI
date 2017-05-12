@@ -20,16 +20,18 @@
         android:id="@+id/shoppingButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="@drawable/shopping"
-        android:contentDescription="@string/einkaufswagen_button"
         android:layout_alignTop="@+id/trophaeButton"
-        android:layout_toStartOf="@+id/teichButton" />
+        android:layout_toStartOf="@+id/teichButton"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/einkaufswagen_button"
+        app:srcCompat="@drawable/shoppincart2" />
 
     <ImageButton
         android:id="@+id/settingsButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="@drawable/settings"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/settings2"
         android:contentDescription="@string/einstellungs_button"
         android:layout_alignTop="@+id/trophaeButton"
         android:layout_toEndOf="@+id/teichButton"
@@ -39,11 +41,12 @@
         android:id="@+id/trophaeButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:background="@drawable/star"
-        android:contentDescription="@string/trophaen_button"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
         android:layout_toStartOf="@+id/gifTextView"
-        android:layout_marginTop="18dp" />
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/trophaen_button"
+        app:srcCompat="@drawable/star2" />
 
     <pl.droidsonroids.gif.GifTextView
         android:id="@+id/gifTextView"
@@ -170,19 +173,5 @@
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/infobuttonText"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="15dp"
-        android:text="@string/i"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:layout_alignTop="@+id/infoButton"
-        android:layout_toStartOf="@+id/trophaeButton"
-        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
