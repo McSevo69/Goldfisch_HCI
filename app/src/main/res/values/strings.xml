@@ -109,6 +109,12 @@
     <string name="tipps1">TIPPS</string>
     <string name="teich1">TEICH</string>
     <string name="erfolge1">ERFOLGE</string>
+	 <string name="textview1">TextView</string>
+    <string name="textview2">TextView</string>
+    <string name="textview3">TextView</string>
+    <string name="textview4">TextView</string>
+	<string name="gesundheitstipp">TextView</string>
+    <string name="ueberschrift1">TextView</string>
 
 
     <!-- fuer spinner Intervall in einstellungen -->

@@ -10,7 +10,90 @@
         android:layout_height="45dp"
         android:layout_marginStart="12dp"
         android:background="@android:color/transparent"
-        android:contentDescription="das_ist_ein_homebutton"
+        android:contentDescription="@string/das_ist_ein_homebutton"
         app:srcCompat="@drawable/home4" />
+
+    <TextView
+        android:id="@+id/tippsanzeigeÜberschrift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/homeButtonTippsAnzeige"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:text="@string/gesundheitstipps"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/gesundheitstippFeld0"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/gesundheitstippFeld1"
+        android:layout_alignStart="@+id/gesundheitstippFeld1"
+        android:background="#FFC3FB5D"
+        android:text="@string/textview1"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/gesundheitstippFeld1"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="11dp"
+        android:background="#FFF9F582"
+        android:text="@string/textview1"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/gesundheitstippFeld2"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/gesundheitstippFeld1"
+        android:layout_below="@id/gesundheitstippFeld1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="11dp"
+        android:background="#FFC3FB5D"
+        android:text="@string/textview2"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/gesundheitstippFeld3"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/gesundheitstippFeld2"
+        android:layout_below="@+id/gesundheitstippFeld2"
+        android:layout_marginTop="11dp"
+        android:background="#FFF9F582"
+        android:text="@string/textview3"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/gesundheitstippFeld4"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/gesundheitstippFeld3"
+        android:layout_below="@+id/gesundheitstippFeld3"
+        android:layout_marginTop="11dp"
+        android:background="#FFC3FB5D"
+        android:text="@string/textview4"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
