@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton setting; //Einstellungen Button auf der Hauptseite
     ImageButton trophae;//Trophaen Button auf der Hauptseite
     ImageButton info;
+    ImageButton tipps;
     Button trinkKreis; // Kreis der sich dreht beim Trinken
 
 	
@@ -113,11 +114,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         trophae = (ImageButton) findViewById(R.id.trophaeButton);  // initialisierung des Stern Buttons
         trinkKreis = (Button) findViewById(R.id.trinkenKreis);  // initialisierung des Trinktreises der sich beim lange drücken dreht
         info = (ImageButton) findViewById(R.id.infoButton);
+        tipps = (ImageButton) findViewById(R.id.tippsButton);
+
+
         shopping.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         setting.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         trophae.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         trinkKreis.setOnClickListener(this);
         info.setOnClickListener(this);
+        tipps.setOnClickListener(this);
 
         //Kreis mit Prozentanzeige
         Resources res = getResources();
@@ -312,11 +317,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     setContentView(R.layout.einstellungenseite);
                     break;
                 case R.id.teichButton:
-                    //
+
                     break;
 
                 case R.id.tippsButton:
-                    //
+                    setContentView(R.layout.fischteich);
                     break;
 
                 case R.id.infoButton:
