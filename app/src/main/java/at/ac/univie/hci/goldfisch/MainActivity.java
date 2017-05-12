@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton shopping;//Einkaufswagen Button auf der Hauptseite
     ImageButton setting; //Einstellungen Button auf der Hauptseite
     ImageButton trophae;//Trophaen Button auf der Hauptseite
+    ImageButton info;
     Button trinkKreis; // Kreis der sich dreht beim Trinken
 
 	
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Context context =  getApplicationContext();
 
+        //Receiver für Benachrichtungen
         ComponentName receiver = new ComponentName(context, AlertReceiver.class);
         PackageManager pm = context.getPackageManager();
 
@@ -105,16 +107,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         einver = Einstellungenverwaltung.getInstance(getApplicationContext());
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
 
-
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate); // Lässt den Kreis beim Trinken rotieren
         shopping = (ImageButton) findViewById(R.id.shoppingButton); // initialisierung des shopping Buttons
         setting = (ImageButton) findViewById(R.id.settingsButton);  // initialisierung des settings Buttons
         trophae = (ImageButton) findViewById(R.id.trophaeButton);  // initialisierung des Stern Buttons
         trinkKreis = (Button) findViewById(R.id.trinkenKreis);  // initialisierung des Trinktreises der sich beim lange drücken dreht
+        info = (ImageButton) findViewById(R.id.infoButton);
         shopping.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         setting.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         trophae.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         trinkKreis.setOnClickListener(this);
+        info.setOnClickListener(this);
 
         //Kreis mit Prozentanzeige
         Resources res = getResources();
@@ -196,8 +199,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             System.out.println("Teste status: " + benver.getheutigenStatus());
             System.out.println("Teste status2: " + benver.getStatus(12, 5, 2017));
 
-
-
             System.out.println("\nNun 10 randomTipps, weil wir's koennen: ");
             for(int i=0;i<10;i++)
                 System.out.println(i+":"+gesver.getRandomTipp());
@@ -205,7 +206,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        //Begrueßungstext
+        checkFirstRun();
+
     }//oncreate
+
+    //Diese Funktion checkt ob der User die App gerade das erste mal geöffnet hat und zeigt ihm ein Tutorial
+    public void checkFirstRun() {
+        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
+        if (isFirstRun){
+            // Place your dialog code here to display the dialog
+
+             //Pop-Up
+            String HelloMessage = "Ziehe einen Fisch groß indem du regelmäßig genug trinkst." +
+                    "\nTrinkst Du zu wenig, sinkt der Wasserstand im Goldfisch Glas und das gilt " +
+                    "es zu vermeiden." +
+                    "\nDrücke kurz auf das Glas um Behältergröße und Getränketyp festzulegen." +
+                    "\nDrückst Du lang auf das Glas wird die effektive Wassermenge (je nach Getränketyp) " +
+                    "dem aktuellen Tagesstand hinzugefügt." +
+                    "\nUm deinen empfohlenen Tagesbedarf ausrechnen zu können gib bitte dein Gewicht " +
+                    "und deine Körpergröße in den Einstellungen an. " +
+                    "Keine Sorge - wir speichern keine personenbezogenen Daten ;-)" +
+                    "\n\nViel Spaß mit deinem neuem Haustier wünscht Dir dein Goldfisch-Team!";
+
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Herzlich Willkommen bei Goldfisch!");
+            alertDialog.setMessage(HelloMessage);
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            //Intent zur Übertragung der Daten an den Endscreen
+                            Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                            startActivity(intent);
+                            setContentView(R.layout.einstellungenseite);
+                        }
+                    });
+            alertDialog.show();
+
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("isFirstRun", false)
+                    .apply();
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -275,6 +320,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 case R.id.tippsButton:
                     //
+                    break;
+
+                case R.id.infoButton:
+
+                    //Pop-Up
+                    String InfoMessage = "Drücke kurz auf das Glas um Behältergröße und Getränketyp festzulegen." +
+                            "\nDrückst du lang auf das Glas wird die effektive Wassermenge (je nach Getränketyp) " +
+                            "dem aktuellen Tagesstand hinzugefügt." +
+                            "\nUm deinen empfohlenen Tagesbedarf ausrechnen zu können gib bitte dein Gewicht " +
+                            "und deine Körpergröße in den Einstellungen an. " +
+                            "\nKeine Sorge - wir speichern keine personenbezogenen Daten ;-)";
+
+                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                    alertDialog.setTitle("How to use");
+                    alertDialog.setMessage(InfoMessage);
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
                     break;
 
                 case R.id.trophaeButton:

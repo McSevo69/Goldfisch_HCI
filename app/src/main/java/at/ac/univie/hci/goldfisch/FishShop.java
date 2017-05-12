@@ -46,7 +46,7 @@ public class FishShop extends AppCompatActivity implements View.OnClickListener 
                 //Pop-Up
                 String TrinkMessage = "Cooler Fisch! Um ihn auswählen zu können musst du aber noch deinen aktuellen Fisch großziehen. ;-)";
                 AlertDialog alertDialog = new AlertDialog.Builder(FishShop.this).create();
-                alertDialog.setTitle("Gut gemacht!");
+                alertDialog.setTitle("Upps!");
                 alertDialog.setMessage(TrinkMessage);
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {

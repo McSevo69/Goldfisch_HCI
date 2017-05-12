@@ -12,7 +12,7 @@ public class Behaeltnis implements Serializable{
     private UUID id;
     private String name;
     boolean aktiviert;
-    private double fuellmenge;
+    private double fuellmenge; //in Liter
     private String inhalt; //zb Wasser, Kaffee,...
     private double faktor; //zB Alkohol hat faktor von 0.8, liefert also nicht so viel Wasser wie reines Wasser
 
@@ -29,7 +29,7 @@ public class Behaeltnis implements Serializable{
      * gibt die eigentlich anzurechnende Menge an
      * @return das was eigentlich effektiv vom Koerper als Wasser aufgenommen wird
      */
-    public double getEffektiveTrinkmenge(){return (int)(fuellmenge*faktor);}//int, damit gerundet auf ganzzahl
+    public double getEffektiveTrinkmenge(){return (fuellmenge*faktor);}
 
 
     public double getFuellmenge() {

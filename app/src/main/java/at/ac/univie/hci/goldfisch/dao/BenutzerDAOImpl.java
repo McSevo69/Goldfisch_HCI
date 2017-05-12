@@ -88,8 +88,6 @@ public class BenutzerDAOImpl implements BenutzerDAO {
         return b.getTeich();
     }
 
-
-
     @Override
     public void fileInitialisieren() throws IOException {
         try {
