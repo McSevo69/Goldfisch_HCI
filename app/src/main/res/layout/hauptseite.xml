@@ -83,6 +83,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="@drawable/circle"
+        android:clickable="true"
         android:contentDescription="@string/button_tipps_bild"
         android:layout_alignTop="@+id/erfolgeButton"
         android:layout_alignStart="@+id/gifTextView" />
