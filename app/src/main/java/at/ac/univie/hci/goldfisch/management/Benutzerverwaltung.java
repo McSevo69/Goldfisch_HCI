@@ -194,7 +194,10 @@ public class Benutzerverwaltung implements Verwaltung {
         for(Status s : alleStati)
             if(this.testIfSameDay(s.getDatum(),new GregorianCalendar()))
                 return s;
-        return null;
+        //falls noch kein heutiger status existiert
+        getraenkTrinken(new Behaeltnis("leer, nur wegen Status anlegen",false,0,"leer",1));
+
+        return getheutigenStatus();
     }
 
     public void getraenkTrinken(Behaeltnis b){
@@ -211,6 +214,7 @@ public class Benutzerverwaltung implements Verwaltung {
             }
         }
         if(!statusHeuteVorhanden){ //falls aktueller status noch nicht vorhanden war
+            System.out.println("Benutzerverwaltung:getraenkTrinken:neuer Status wird angelegt fuer den heutigen tag, da noch keiner vorhanden war!");
             double kiloFaktor = (benutzer.getAktivitaet()=='n') ? 0.04031 : (benutzer.getAktivitaet()=='a') ? 0.04535 : 0.03359;
             double tagessollmenge = benutzer.getGewicht()*kiloFaktor;
             alleStati.add(new Status(tagessollmenge, b.getEffektiveTrinkmenge()));
