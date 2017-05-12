@@ -48,7 +48,7 @@ public class FischTeich extends AppCompatActivity implements View.OnClickListene
                 String TeilenMessage = "Willst du wirklich ein Bild deines Fisches mit deinen Freunden teilen?";
 
                 AlertDialog alertDialog = new AlertDialog.Builder(FischTeich.this).create();
-                alertDialog.setTitle("Share it");
+                alertDialog.setTitle("Zeig es der ganzen Welt ;-)");
                 alertDialog.setMessage(TeilenMessage);
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {

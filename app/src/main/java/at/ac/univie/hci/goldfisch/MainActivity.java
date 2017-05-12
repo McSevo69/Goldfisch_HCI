@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             "\nKeine Sorge - wir speichern keine personenbezogenen Daten ;-)";
 
                     AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                    alertDialog.setTitle("How to use");
+                    alertDialog.setTitle("Du brauchst Hilfe?");
                     alertDialog.setMessage(InfoMessage);
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                             new DialogInterface.OnClickListener() {
