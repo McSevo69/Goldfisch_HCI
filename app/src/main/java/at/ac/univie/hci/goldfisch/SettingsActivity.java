@@ -16,6 +16,7 @@ import android.widget.ToggleButton;
 import at.ac.univie.hci.goldfisch.management.Behaelterverwaltung;
 import at.ac.univie.hci.goldfisch.management.Benutzerverwaltung;
 import at.ac.univie.hci.goldfisch.management.Einstellungenverwaltung;
+import at.ac.univie.hci.goldfisch.management.GesundheitstippsVerwaltung;
 import at.ac.univie.hci.goldfisch.model.AppEinstellungen;
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 import at.ac.univie.hci.goldfisch.model.Benutzer;
@@ -26,6 +27,7 @@ import at.ac.univie.hci.goldfisch.model.Benutzer;
 
 public class SettingsActivity  extends AppCompatActivity implements View.OnClickListener {
 
+    GesundheitstippsVerwaltung gesver;
     Behaelterverwaltung behver;
     Benutzerverwaltung benver;
     Einstellungenverwaltung einver;
@@ -55,6 +57,7 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         benver = Benutzerverwaltung.getInstance(getApplicationContext());
         behver = Behaelterverwaltung.getInstance(getApplicationContext());
         einver = Einstellungenverwaltung.getInstance(getApplicationContext());
+        gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
 
         name = (EditText) findViewById(R.id.name);
         gewicht = (EditText) findViewById(R.id.gewicht);
