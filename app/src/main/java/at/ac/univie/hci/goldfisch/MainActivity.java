@@ -245,7 +245,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             //Intent zur Übertragung der Daten an den Endscreen
                             Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                             startActivity(intent);
-                            setContentView(R.layout.einstellungenseite);
                         }
                     });
             alertDialog.show();
@@ -306,7 +305,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.shoppingButton:
                     Intent fishIntent = new Intent(getApplicationContext(), FishShop.class);
                     startActivity(fishIntent);
-                    //setContentView(R.layout.fishshop);
                     break;
 
                 case R.id.erfolgeButton:
@@ -317,16 +315,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //Intent zur Übertragung der Daten an den Endscreen
                     Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                     startActivity(intent);
-                    //setContentView(R.layout.einstellungenseite);
                     break;
                 case R.id.teichButton:
 
                     Intent teichIntent = new Intent(getApplicationContext(), FischTeich.class);
                     startActivity(teichIntent);
-                    //setContentView(R.layout.fischteich);
                     break;
 
                 case R.id.tippsButton:
+
+                    Intent tippsIntent = new Intent(getApplicationContext(), Tipps.class);
+                    startActivity(tippsIntent);
 
                     break;
 

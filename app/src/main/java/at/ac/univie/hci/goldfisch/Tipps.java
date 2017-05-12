@@ -21,7 +21,7 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
     public final static String textTipps = "textTipps";
 
     Button feld0,feld1,feld2,feld3,feld4;
-    ImageButton home;
+    ImageButton homeTipp;
     GesundheitstippsVerwaltung gesver;
     Gesundheitstipp tipp0,tipp1,tipp2,tipp3,tipp4;
 
@@ -36,13 +36,15 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
         feld2 = (Button)findViewById(R.id.gesundheitstippFeld2);
         feld3 = (Button)findViewById(R.id.gesundheitstippFeld3);
         feld4 = (Button)findViewById(R.id.gesundheitstippFeld4);
-        home = (ImageButton)findViewById(R.id.homeButtonTippsAnzeige);
-        home.setOnClickListener(this);
+        homeTipp = (ImageButton)findViewById(R.id.homeButtonTippsAnzeige);
+
+        homeTipp.setOnClickListener(this);
         feld0.setOnClickListener(this);
         feld1.setOnClickListener(this);
         feld2.setOnClickListener(this);
         feld3.setOnClickListener(this);
         feld4.setOnClickListener(this);
+
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
         gesver.initialisiere();
 
@@ -58,8 +60,6 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
         feld3.setText(tipp3.getUeberschrift());
         feld4.setText(tipp4.getUeberschrift());
 
-
-
     }
 
 
@@ -68,16 +68,10 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
 
-            case R.id.homeButtonSettings:
-                Intent intentHome = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intentHome);
-                setContentView(R.layout.hauptseite);
-                break;
             case R.id.gesundheitstippFeld0:
                 Intent intent0 = new Intent(v.getContext(), Tippslesen.class);
                 intent0.putExtra(ueberschriftTipps, tipp0.getUeberschrift());
                 intent0.putExtra(textTipps, tipp0.getTipp());
-                setContentView(R.layout.tippslesen);
                 System.out.println(tipp0.getUeberschrift());
                 System.out.println(tipp0.getTipp());
                 startActivity(intent0);
@@ -86,7 +80,6 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
                 Intent intent1 = new Intent(v.getContext(), Tippslesen.class);
                 intent1.putExtra(ueberschriftTipps, tipp1.getUeberschrift());
                 intent1.putExtra(textTipps, tipp1.getTipp());
-                setContentView(R.layout.tippslesen);
                 startActivity(intent1);
                 break;
             case R.id.gesundheitstippFeld2:
@@ -107,6 +100,9 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
                 intent4.putExtra(textTipps, tipp4.getTipp());
                 startActivity(intent4);
                 break;
+            case R.id.homeButtonTippsAnzeige:
+                Intent backHomeIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(backHomeIntent);
         }
     }
 

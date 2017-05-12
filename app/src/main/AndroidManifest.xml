@@ -48,6 +48,12 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity
+            android:name=".Tipps"
+            android:label="Tipps"
+            android:parentActivityName=".Tipps">
+        </activity>
 		
 		<activity
             android:name=".Tippslesen"

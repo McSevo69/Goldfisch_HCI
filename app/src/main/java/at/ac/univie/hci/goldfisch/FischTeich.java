@@ -39,7 +39,7 @@ public class FischTeich extends AppCompatActivity implements View.OnClickListene
             case R.id.homeButtonTeich:
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainIntent);
-                setContentView(R.layout.hauptseite);
+                //setContentView(R.layout.hauptseite);
                 break;
 
             case R.id.teilenButton:
