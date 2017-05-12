@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/gifTextView"
+        android:layout_width="500dp"
+        android:layout_height="800dp"
+        android:background="@drawable/fishpond"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="0dp" />
+
+
+
+
+
+
+</RelativeLayout>
