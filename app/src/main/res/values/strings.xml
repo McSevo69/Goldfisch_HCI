@@ -102,6 +102,8 @@
     <string name="_500ml">500ml</string>
     <string name="das_ist_ein_bild_vom_infobutton">das ist ein bild vom infobutton</string>
     <string name="i">i</string>
+    <string name="das_ist_ein_homebutton">das ist ein HomeButton</string>
+    <string name="gesundheitstipps">Gesundheitstipps</string>
 
 
     <!-- fuer spinner Intervall in einstellungen -->
