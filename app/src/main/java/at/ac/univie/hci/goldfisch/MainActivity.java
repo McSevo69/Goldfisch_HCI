@@ -109,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         System.out.println("Teste status: " + benver.getheutigenStatus());
+        System.out.println("Teste status2: " + benver.getStatus(12,5,2017));
+
 
 
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate); // Lässt den Kreis beim Trinken rotieren

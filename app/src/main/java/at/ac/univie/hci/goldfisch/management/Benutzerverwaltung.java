@@ -168,16 +168,14 @@ public class Benutzerverwaltung implements Verwaltung {
      * @param jahr Das Jahr
      * @return Der Status fuer den speziellen Tag
      */
-    private Status getStatus(int tag, int monat, int jahr){
+    public Status getStatus(int tag, int monat, int jahr){
         Benutzer b = this.getBenutzer();
         Calendar c;
         monat -=1; //weil Calendar beim Monat bei 0 anfaengt
         if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return null; }
         List<Status> alleStati = b.getStati();
         for(Status s : alleStati){
-            c=s.getDatum();
-            int m = c.get(Calendar.MONTH);
-            if(c.get(Calendar.DAY_OF_MONTH)==tag && m==monat && c.get(Calendar.YEAR)==jahr)  //
+            if(this.testIfSameDay(s.getDatum(),new GregorianCalendar(jahr, monat,tag)))
                 return s;
         }
         return null;
