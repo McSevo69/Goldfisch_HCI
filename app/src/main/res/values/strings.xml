@@ -104,6 +104,11 @@
     <string name="i">i</string>
     <string name="das_ist_ein_homebutton">das ist ein HomeButton</string>
     <string name="gesundheitstipps">Gesundheitstipps</string>
+    <string name="homebutton">homebutton</string>
+    <string name="das_ist_ein_bild_von_share">das_ist_ein_bild_von_share</string>
+    <string name="tipps1">TIPPS</string>
+    <string name="teich1">TEICH</string>
+    <string name="erfolge1">ERFOLGE</string>
 
 
     <!-- fuer spinner Intervall in einstellungen -->
