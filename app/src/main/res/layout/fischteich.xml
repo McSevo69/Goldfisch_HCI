@@ -18,7 +18,7 @@
         android:contentDescription="@string/teich" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/homeButtonTeich"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_alignParentStart="true"
@@ -30,16 +30,16 @@
         tools:ignore="ContentDescription" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/teilenButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageButton"
+        android:layout_marginStart="17dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/das_ist_ein_bild_von_share"
         app:srcCompat="@drawable/sharebutton"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/homeButtonTeich" />
 
 
 </RelativeLayout>

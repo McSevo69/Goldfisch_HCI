@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton trophae;//Trophaen Button auf der Hauptseite
     ImageButton info;
     ImageButton tipps;
+    ImageButton teich;
     Button trinkKreis; // Kreis der sich dreht beim Trinken
 
 	
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         trinkKreis = (Button) findViewById(R.id.trinkenKreis);  // initialisierung des Trinktreises der sich beim lange drücken dreht
         info = (ImageButton) findViewById(R.id.infoButton);
         tipps = (ImageButton) findViewById(R.id.tippsButton);
+        teich = (ImageButton) findViewById(R.id.teichButton);
 
 
         shopping.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
@@ -123,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         trinkKreis.setOnClickListener(this);
         info.setOnClickListener(this);
         tipps.setOnClickListener(this);
+        teich.setOnClickListener(this);
 
         //Kreis mit Prozentanzeige
         Resources res = getResources();
@@ -303,7 +306,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.shoppingButton:
                     Intent fishIntent = new Intent(getApplicationContext(), FishShop.class);
                     startActivity(fishIntent);
-                    setContentView(R.layout.fishshop);
+                    //setContentView(R.layout.fishshop);
                     break;
 
                 case R.id.erfolgeButton:
@@ -314,14 +317,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //Intent zur Übertragung der Daten an den Endscreen
                     Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
                     startActivity(intent);
-                    setContentView(R.layout.einstellungenseite);
+                    //setContentView(R.layout.einstellungenseite);
                     break;
                 case R.id.teichButton:
 
+                    Intent teichIntent = new Intent(getApplicationContext(), FischTeich.class);
+                    startActivity(teichIntent);
+                    //setContentView(R.layout.fischteich);
                     break;
 
                 case R.id.tippsButton:
-                    setContentView(R.layout.fischteich);
+
                     break;
 
                 case R.id.infoButton:
