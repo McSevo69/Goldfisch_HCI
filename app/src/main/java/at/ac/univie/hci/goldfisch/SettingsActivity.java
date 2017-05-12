@@ -160,8 +160,6 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 setContentView(R.layout.hauptseite);
 
-
-
                 break;
 
             case R.id.ueberButtonSettings:
