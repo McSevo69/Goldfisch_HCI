@@ -108,7 +108,7 @@ public class BenutzerDAOImpl implements BenutzerDAO {
             System.out.println("Starte mit initialisierung des " + filename + "!");
             outputStream = new FileOutputStream(myfile);
             out = new ObjectOutputStream(outputStream);
-            Benutzer b = new Benutzer("keinName", 1, 1, 'm', 'n');
+            Benutzer b = new Benutzer("keinName", 75, 185, 'm', 'n');
             out.writeObject(b);
             out.close();
             outputStream.close();

@@ -161,6 +161,15 @@ public class Benutzerverwaltung implements Verwaltung {
         this.aktualisiereBenutzer(b);
     }
 
+    public void deleteAllStatic(){
+        Benutzer b = this.getBenutzer();
+        if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
+        List<Status> alleStati = b.getStati();
+        alleStati.clear();
+        b.setStati(alleStati);
+        this.aktualisiereBenutzer(b);
+    }
+
     /**
      * Diese Methode liefert den Status fuer einen bestimmten Tag
      * @param tag Der Tag

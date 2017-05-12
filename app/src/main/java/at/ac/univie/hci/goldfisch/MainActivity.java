@@ -105,11 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         einver = Einstellungenverwaltung.getInstance(getApplicationContext());
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
 
-        aktBenutzer = benver.getBenutzer();
-
-
-        System.out.println("Teste status: " + benver.getheutigenStatus());
-        System.out.println("Teste status2: " + benver.getStatus(12,5,2017));
 
 
 
@@ -199,6 +194,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             gesver.printAll();
             behver.printAll();
             benver.printAll();
+
+            System.out.println("Teste status: " + benver.getheutigenStatus());
+            System.out.println("Teste status2: " + benver.getStatus(12, 5, 2017));
+
+
 
             System.out.println("\nNun 10 randomTipps, weil wir's koennen: ");
             for(int i=0;i<10;i++)
