@@ -10,6 +10,8 @@ package at.ac.univie.hci.goldfisch;
         import android.widget.ProgressBar;
         import android.widget.TextView;
 
+        import java.text.NumberFormat;
+
         import at.ac.univie.hci.goldfisch.management.Benutzerverwaltung;
 
 
@@ -41,9 +43,13 @@ public class FishStatus extends AppCompatActivity implements View.OnClickListene
             fishLvl = 0;
         }
 
+        //Zur schöneren Darstellung
+        NumberFormat n = NumberFormat.getInstance();
+        n.setMaximumFractionDigits(2);
+
         fishstatusProgress.setProgress(20);   // hardcode
 
-        textInfoFishStatus.setText("Du hast bereits "+fishLvl + " Wasser getrunken dir fehlen noch wenige ml, um dein Tagesziel zu erreichen");
+        textInfoFishStatus.setText("Du hast bereits "+n.format(fishLvl) + " Wasser getrunken dir fehlen noch wenige ml, um dein Tagesziel zu erreichen");
 
     }
 

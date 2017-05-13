@@ -163,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProgress.setSecondaryProgress(100); // Secondary Progress
         mProgress.setMax(100); // Maximum Progress
         mProgress.setProgressDrawable(drawable);
+        mProgress.setOnClickListener(this);
 
 
         trinkStatus = (TextView) findViewById(R.id.trinkStatus);
@@ -396,6 +397,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //setContentView(R.layout.getraenkeseite);
                     Intent FischStatusIntent = new Intent(getApplicationContext(), FishStatus.class);
                     startActivity(FischStatusIntent);
+                    break;
+
+                case R.id.circularProgressbar:
+                    //setContentView(R.layout.getraenkeseite);
+                    Intent FischStatusIntent2 = new Intent(getApplicationContext(), FishStatus.class);
+                    startActivity(FischStatusIntent2);
                     break;
             }
 
