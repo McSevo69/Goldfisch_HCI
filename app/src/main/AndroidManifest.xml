@@ -52,13 +52,21 @@
         <activity
             android:name=".Tipps"
             android:label="Tipps"
-            android:parentActivityName=".Tipps">
+            android:parentActivityName=".Tipps"
+            android:screenOrientation="portrait">
         </activity>
 		
 		<activity
             android:name=".Tippslesen"
             android:label="Tippslesen"
-            android:parentActivityName=".Tipps">
+            android:parentActivityName=".Tipps"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".Getraenkeauswahl"
+            android:label="Getraenkeauswahl"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>

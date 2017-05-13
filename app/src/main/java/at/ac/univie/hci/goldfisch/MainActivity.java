@@ -27,6 +27,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -44,13 +45,8 @@ import at.ac.univie.hci.goldfisch.model.Status;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    //Trinkvariablen - Hardcode (müssen noch aus Menü ausgelesen werden)
-    static double  literProKiloNormal = 0.04031;
-    static double literProKiloAktiv = 0.04535;
-    static  double literProKiloSitzend = 0.03359;
-
-    double behaelterDefault = 0.25;
-    double hydrationsFaktor = 1; //per default Wasser
+    //default Behaelter
+    String AktiverBehaelter = "250mlWasser";
 
 
     //Notification Variablen
@@ -77,11 +73,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton teich;
     Button trinkKreis; // Kreis der sich dreht beim Trinken
 
-	
-    //Da gehts um die Getränkeseite
-    ViewPager viewPager;  //PageButton
-    CustomSwipeAdapter adapter; // von Getränkeklasse
-
     //Variable der Prozentanzeige
     int percentStatus = 0; //Variable der Prozentanzeige
     private Handler handler = new Handler(); // dient zum Aufrufen der Einstellungen des Kreises
@@ -103,6 +94,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pm.setComponentEnabledSetting(receiver,
                 PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                 PackageManager.DONT_KILL_APP);
+
+        //Getränke einstellungen
+        try {
+            Intent intent = getIntent();
+            AktiverBehaelter = intent.getStringExtra(Getraenkeauswahl.TRINKEN_MESSAGE);
+        } catch (Exception e) {
+            System.out.println("Noch kein Getraenk ausgewaehlt!");
+        }
+
 
         benver = Benutzerverwaltung.getInstance(getApplicationContext());
         behver = Behaelterverwaltung.getInstance(getApplicationContext());
@@ -154,14 +154,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public boolean onLongClick(View arg0) {
                 arg0.startAnimation(animRotate);
 
-
-                //Berechnungen
-                //double literProKilo = (AppBenutzer.getAktivitaet()=='n') ? 0.04031 : (AppBenutzer.getAktivitaet()=='a') ? 0.04535 : 0.03359;
-
-                String name = "250mlWasser";
-
                 try {
-                    benver.getraenkTrinken(behver.getBehaeltnisByName(name));
+                    benver.getraenkTrinken(behver.getBehaeltnisByName(AktiverBehaelter));
                 } catch (Exception e) {
                     System.out.println("Trinken geht nicht. Administrator regelt das ;-)");
                 }
@@ -174,8 +168,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mProgress.setProgress(percentStatus);
                 trinkStatus.setText(percentStatus + "%");
 
+                //Zur schöneren Darstellung
+                NumberFormat n = NumberFormat.getInstance();
+                n.setMaximumFractionDigits(2);
+
                 //Pop-Up
-                String TrinkMessage = "Du hast heute " + benver.getheutigenStatus().getTagesIstMenge() + " Liter von empfohlenen " + benver.getheutigenStatus().getTagesSollMenge() + " Liter getrunken.";
+                String TrinkMessage = "Du hast heute " + n.format(benver.getheutigenStatus().getTagesIstMenge()) +
+                        " Liter von empfohlenen " + n.format(benver.getheutigenStatus().getTagesSollMenge()) + " Liter getrunken.";
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                 alertDialog.setTitle("Gut gemacht!");
                 alertDialog.setMessage(TrinkMessage);
@@ -233,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     "\nUm deinen empfohlenen Tagesbedarf ausrechnen zu können gib bitte dein Gewicht " +
                     "und deine Körpergröße in den Einstellungen an. " +
                     "Keine Sorge - wir speichern keine personenbezogenen Daten ;-)" +
-                    "\n\nViel Spaß mit deinem neuem Haustier wünscht Dir dein Goldfisch-Team!";
+                    "\n\nViel Spaß mit deinem neuen Haustier wünscht Dir dein Goldfisch-Team!";
 
             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
             alertDialog.setTitle("Herzlich Willkommen bei Goldfisch!");
@@ -357,11 +356,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 case R.id.trinkenKreis:
                     //getraenkeseite ist zustaendig für die mengeneinheiten und beinhaltet radiobuttons
-                    setContentView(R.layout.getraenkeseite);
-                    viewPager = (ViewPager) findViewById(R.id.view_page);
-                    adapter = new CustomSwipeAdapter(getBaseContext());
-                    viewPager.setAdapter(adapter);
-
+                    //setContentView(R.layout.getraenkeseite);
+                    Intent trinkIntent = new Intent(getApplicationContext(), Getraenkeauswahl.class);
+                    startActivity(trinkIntent);
             }
 
 
