@@ -202,7 +202,7 @@
         android:layout_marginBottom="15dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="Feedback geben"
+        android:text="Feedback abgeben"
         android:textSize="15dp"
         android:background="#979797"
         android:padding="2dp"/>
