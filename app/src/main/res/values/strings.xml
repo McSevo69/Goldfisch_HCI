@@ -115,6 +115,21 @@
     <string name="textview4">TextView</string>
 	<string name="gesundheitstipp">TextView</string>
     <string name="ueberschrift1">TextView</string>
+    <string name="homebutton_der_erfolgeseite">Homebutton der Erfolgeseite</string>
+    <string name="erfolge12">Erfolge</string>
+    <string name="das_ist_ein_bronze_stern">Das ist ein Bronze Stern</string>
+    <string name="titan_stern_erfolg">Titan Stern Erfolg</string>
+    <string name="das_ist_ein_silbener_stern">Das ist ein Silbener Stern</string>
+    <string name="das_ist_ein_goldener_stern">Das ist ein goldener Stern</string>
+    <string name="das_ist_ein_titanstern_bild">Das ist ein TitanStern Bild</string>
+    <string name="das_sind_2_sternne_ineinander_titanbild1">Das sind 2 Sternne ineinander TitanBild1</string>
+    <string name="das_sind_2_sternne_ineinander_titanbild2">Das sind 2 Sternne ineinander TitanBild2</string>
+    <string name="bronze_stern_trinke_250_einheiten_der_330ml_menge">Bronze Stern: Trinke 250 Einheiten der 330ml Menge</string>
+    <string name="bronze_stern_erhalten_trinke_250_einheiten">Bronze Stern: Erhalten Trinke 250 Einheiten</string>
+    <string name="silber_stern_erhalten_trinke_500_einheiten">Silber Stern: Erhalten Trinke 500 Einheiten</string>
+    <string name="gold_stern_erhalten_trinke_1000_einheiten">Gold Stern: Erhalten Trinke 1000 Einheiten</string>
+    <string name="titan_stern_offen_besitze_5_fische">Titan Stern: Offen Besitze 5 Fische</string>
+    <string name="titan_stern_offen_besitze_10_fische">Titan Stern: Offen Besitze 10 Fische</string>
 
 
     <!-- fuer spinner Intervall in einstellungen -->

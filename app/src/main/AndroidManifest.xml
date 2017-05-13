@@ -71,6 +71,12 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name=".Erfolge"
+            android:label="Erfolge"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>

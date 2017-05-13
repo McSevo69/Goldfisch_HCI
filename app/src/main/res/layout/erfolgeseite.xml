@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <ImageButton
+        android:id="@+id/homeButtonErfolgeSeite"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="12dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/homebutton_der_erfolgeseite"
+        app:srcCompat="@drawable/home4" />
+
+    <TextView
+        android:id="@+id/UeberschriftErfolgeSeite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/erfolge12"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/homeButtonErfolgeSeite"
+        android:layout_centerHorizontal="true" />
+
+
+
+    <ImageView
+        android:id="@+id/SternBronzeErfolgeSeite"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/das_ist_ein_bronze_stern"
+        app:srcCompat="@drawable/bronzestar"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/UeberschriftErfolgeSeite"
+        android:layout_alignStart="@+id/SternTitanErfolgeSeite1" />
+
+
+    <ImageView
+        android:id="@+id/SternSilverErfolgeSeite"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignStart="@+id/SternBronzeErfolgeSeite"
+        android:layout_below="@+id/SternBronzeErfolgeSeite"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/das_ist_ein_silbener_stern"
+        app:srcCompat="@drawable/starssilver" />
+
+    <ImageView
+        android:id="@+id/SternGoldErfolgeSeite"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/das_ist_ein_goldener_stern"
+        app:srcCompat="@drawable/sterngold"
+        android:layout_below="@+id/SternSilverErfolgeSeite"
+        android:layout_alignStart="@+id/SternTitanErfolgeSeite1" />
+
+    <ImageView
+        android:id="@+id/SternTitanErfolgeSeite1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/titan_stern_erfolg"
+        app:srcCompat="@drawable/star2"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@+id/SternGoldErfolgeSeite"
+        android:layout_alignEnd="@+id/SternTitanzweiErfolgeSeite1" />
+
+    <ImageView
+        android:id="@+id/SternTitanzweiErfolgeSeite1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/SternTitanErfolgeSeite1"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/homeButtonErfolgeSeite"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/das_sind_2_sternne_ineinander_titanbild2"
+        app:srcCompat="@drawable/star2" />
+
+    <ImageView
+        android:id="@+id/SternTitanzwei2ErfolgeSeite1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignStart="@+id/SternTitanErfolgeSeite1"
+        android:layout_below="@+id/SternTitanErfolgeSeite1"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/das_sind_2_sternne_ineinander_titanbild1"
+        app:srcCompat="@drawable/star2" />
+
+    <TextView
+        android:id="@+id/TextSternBronzeErfolgeSeite"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/SternBronzeErfolgeSeite"
+        android:layout_marginEnd="24dp"
+        android:text="@string/bronze_stern_erhalten_trinke_250_einheiten"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextSternSilverErfolgeSeite"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/SternSilverErfolgeSeite"
+        android:layout_marginEnd="24dp"
+        android:text="@string/silber_stern_erhalten_trinke_500_einheiten"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextSternGoldErfolgeSeite"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/SternGoldErfolgeSeite"
+        android:layout_marginEnd="24dp"
+        android:text="@string/gold_stern_erhalten_trinke_1000_einheiten"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextSternTitanErfolgeSeite"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/SternTitanErfolgeSeite1"
+        android:layout_marginEnd="24dp"
+        android:text="@string/titan_stern_offen_besitze_5_fische"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextSternTitan2ErfolgeSeite"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/SternTitanzwei2ErfolgeSeite1"
+        android:layout_marginEnd="24dp"
+        android:text="@string/titan_stern_offen_besitze_10_fische"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</RelativeLayout>
