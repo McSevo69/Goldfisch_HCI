@@ -130,6 +130,7 @@
     <string name="gold_stern_erhalten_trinke_1000_einheiten">Gold Stern: Erhalten Trinke 1000 Einheiten</string>
     <string name="titan_stern_offen_besitze_5_fische">Titan Stern: Offen Besitze 5 Fische</string>
     <string name="titan_stern_offen_besitze_10_fische">Titan Stern: Offen Besitze 10 Fische</string>
+	<string name="fishbutton_home_von_der_fishshopseite">fishbutton_home_von der_fishshopSeite</string>
 
 
     <!-- fuer spinner Intervall in einstellungen -->
