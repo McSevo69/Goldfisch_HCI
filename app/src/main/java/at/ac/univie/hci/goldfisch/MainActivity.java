@@ -372,7 +372,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.trophaeButton:
-                    //
+                    Intent trophaeIntent = new Intent(getApplicationContext(), Erfolge.class);
+                    startActivity(trophaeIntent);
                     break;
 
                 case R.id.trinkenKreis:
