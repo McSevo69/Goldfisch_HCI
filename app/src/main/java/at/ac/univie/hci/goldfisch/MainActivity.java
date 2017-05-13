@@ -41,12 +41,16 @@ import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 import at.ac.univie.hci.goldfisch.model.Benutzer;
 import at.ac.univie.hci.goldfisch.model.Status;
 
+import static java.lang.Double.parseDouble;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     //default Behaelter
-    String AktiverBehaelter = "250mlWasser";
+    String GetraenkeTyp = "Wasser";
+    String Menge = "250";
+    String AktiverBehaelter = Menge + "ml" + GetraenkeTyp;
 
 
     //Notification Variablen
@@ -98,7 +102,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Getränke einstellungen
         try {
             Intent intent = getIntent();
-            AktiverBehaelter = intent.getStringExtra(Getraenkeauswahl.TRINKEN_MESSAGE);
+            Menge = intent.getStringExtra(Getraenkeauswahl.LITER_MESSAGE);
+            GetraenkeTyp = intent.getStringExtra(Getraenkeauswahl.TYP_MESSAGE);
+
+            if (Menge==null) Menge="250";
+            if (GetraenkeTyp==null) GetraenkeTyp="Wasser";
+            AktiverBehaelter = Menge + "ml" + GetraenkeTyp;
         } catch (Exception e) {
             System.out.println("Noch kein Getraenk ausgewaehlt!");
         }
@@ -172,9 +181,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 NumberFormat n = NumberFormat.getInstance();
                 n.setMaximumFractionDigits(2);
 
+                double effektiv;
+
+                try {
+                    effektiv = behver.getBehaeltnisByName(AktiverBehaelter).getEffektiveTrinkmenge();
+                } catch (Exception e) {
+                    System.out.println("Effektiv geht nicht. Administrator regelt das ;-)");
+                    effektiv = 0.33; //per default
+                }
+
                 //Pop-Up
-                String TrinkMessage = "Du hast heute " + n.format(benver.getheutigenStatus().getTagesIstMenge()) +
-                        " Liter von empfohlenen " + n.format(benver.getheutigenStatus().getTagesSollMenge()) + " Liter getrunken.";
+                String TrinkMessage = "Du hast gerade " + Menge + "ml " + GetraenkeTyp +
+                        " getrunken. Das entspricht der Menge an reinem Wasser von " +
+                        n.format(effektiv) + " Litern.\n"
+                + "Insgesamt hast Du heute " + n.format(benver.getheutigenStatus().getTagesIstMenge()) +
+                        " Liter von empfohlenen " + n.format(benver.getheutigenStatus().getTagesSollMenge()) + " Litern Wasser getrunken.";
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                 alertDialog.setTitle("Gut gemacht!");
                 alertDialog.setMessage(TrinkMessage);
