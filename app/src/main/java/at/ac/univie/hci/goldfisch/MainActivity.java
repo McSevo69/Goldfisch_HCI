@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton info;
     ImageButton tipps;
     ImageButton teich;
+    ImageButton statistikButton;
     Button trinkKreis; // Kreis der sich dreht beim Trinken
     TextView trinkInfo;
 
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         teich = (ImageButton) findViewById(R.id.teichButton);
         trinkInfo = (TextView)findViewById(R.id.trinkInfoText);
         trinkInfo.setText(trinkInfobutton);
+        statistikButton = (ImageButton) findViewById(R.id.erfolgeButton);
 
         shopping.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         setting.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
@@ -138,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         info.setOnClickListener(this);
         tipps.setOnClickListener(this);
         teich.setOnClickListener(this);
+        statistikButton.setOnClickListener(this);
 
         //Kreis mit Prozentanzeige
         Resources res = getResources();
@@ -320,7 +323,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 case R.id.erfolgeButton:
-                    //
+                    Intent statistikIntent = new Intent(getApplicationContext(), Statistik.class);
+                    startActivity(statistikIntent);
                     break;
 
                 case R.id.settingsButton:
