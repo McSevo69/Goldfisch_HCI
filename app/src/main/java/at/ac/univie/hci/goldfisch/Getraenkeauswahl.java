@@ -23,7 +23,8 @@ import android.widget.LinearLayout;
 public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickListener {
 
     //final keys for Intents
-    public final static String TRINKEN_MESSAGE = "TRINKEN";
+    public final static String LITER_MESSAGE = "LITER";
+    public final static String TYP_MESSAGE = "TYP";
 
     //Buttons auf der Getraenkeseite
     ImageButton firstGlass_250ml;
@@ -37,9 +38,8 @@ public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickL
     //Da gehts um die Getränkeseite
     CustomSwipeAdapter adapter; // von Getränkeklasse
 
-    String MiliLiter = "330ml";
+    String MiliLiter = "330";
     String Getraenk = "Wasser";
-    String TrinkenGlas = MiliLiter+Getraenk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +54,9 @@ public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickL
             @Override
             public void onItemClick(int position) {
                 Getraenk = (position==0) ? "Wasser" : (position==1) ? "Limo" : (position==2) ? "Kaffee" : "Alkohol";
-                TrinkenGlas = MiliLiter+Getraenk;
                 Intent trinkIntent = new Intent(getApplicationContext(), MainActivity.class);
-                trinkIntent.putExtra(TRINKEN_MESSAGE, TrinkenGlas);
+                trinkIntent.putExtra(LITER_MESSAGE, MiliLiter);
+                trinkIntent.putExtra(TYP_MESSAGE, Getraenk);
                 startActivity(trinkIntent);
             }
         });
@@ -79,20 +79,20 @@ public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickL
                 firstGlass_250ml.setBackgroundDrawable(getResources().getDrawable(R.drawable.amountt3));
                 secondGlass_330ml.setBackgroundDrawable(getResources().getDrawable(R.drawable.amountt));
                 thirdGlass_500ml.setBackgroundDrawable(getResources().getDrawable(R.drawable.amountt));
-                MiliLiter = "500ml";
+                MiliLiter = "500";
                 break;
 
             case R.id.imageButton3:
                 firstGlass_250ml.setBackgroundDrawable(getResources().getDrawable(R.drawable.amountt));
                 secondGlass_330ml.setBackgroundDrawable(getResources().getDrawable(R.drawable.amountt3));
                 thirdGlass_500ml.setBackgroundDrawable(getResources().getDrawable(R.drawable.amountt));
-                MiliLiter = "330ml";
+                MiliLiter = "330";
                 break;
             case R.id.imageButton4:
                 firstGlass_250ml.setBackgroundDrawable(getResources().getDrawable(R.drawable.amountt));
                 secondGlass_330ml.setBackgroundDrawable(getResources().getDrawable(R.drawable.amountt));
                 thirdGlass_500ml.setBackgroundDrawable(getResources().getDrawable(R.drawable.amountt3));
-                MiliLiter = "250ml";
+                MiliLiter = "250";
                 break;
         }
     }
