@@ -381,12 +381,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //setContentView(R.layout.getraenkeseite);
                     Intent trinkIntent = new Intent(getApplicationContext(), Getraenkeauswahl.class);
                     startActivity(trinkIntent);
+                    break;
 
                 case R.id.gifTextView:
-                    //getraenkeseite ist zustaendig für die mengeneinheiten und beinhaltet radiobuttons
+
                     //setContentView(R.layout.getraenkeseite);
                     Intent FischStatusIntent = new Intent(getApplicationContext(), FishStatus.class);
                     startActivity(FischStatusIntent);
+                    break;
             }
 
 
