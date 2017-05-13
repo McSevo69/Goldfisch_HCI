@@ -136,6 +136,7 @@
     <string name="fish3">fish3</string>
     <string name="fish4">fish4</string>
 	<string name="wasser_330ml">Wasser : 330ml</string>
+	 <string name="homebuttonstatistik">HomeButtonStatistik</string>
 	<string name="statistik">Statistik</string>
     <string name="text_statistik">text_statistik</string>
 
