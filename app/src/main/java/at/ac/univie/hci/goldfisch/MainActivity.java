@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 String WasserText = "Dein Fisch freut sich besonders über reines Wasser!";
 
-                String TrinkMessage = (GetraenkeTyp=="Wasser") ? WasserText+TagesStandString : KeinWasserText+TagesStandString;
+                String TrinkMessage = (GetraenkeTyp.equals("Wasser")) ? WasserText+TagesStandString : KeinWasserText+TagesStandString;
 
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                 alertDialog.setTitle("Gut gemacht!");
