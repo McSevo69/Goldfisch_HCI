@@ -19,7 +19,7 @@ public class FishStatus extends AppCompatActivity implements View.OnClickListene
 
     ImageButton homeFishStatus;
     TextView textInfoFishStatus;
-    int fishLvl=20;
+    double fishLvl=0;
     Benutzerverwaltung benver;
 
 
@@ -35,12 +35,13 @@ public class FishStatus extends AppCompatActivity implements View.OnClickListene
         textInfoFishStatus = (TextView)findViewById(R.id.FishstatusInfoText);
         final ProgressBar fishstatusProgress = (ProgressBar)findViewById(R.id.FishStatusBar);
         try {
-            fishLvl = (int) ((benver.getheutigenStatus().getTagesIstMenge()));
+            benver = Benutzerverwaltung.getInstance(getApplicationContext());
+            fishLvl = ((benver.getheutigenStatus().getTagesIstMenge()));
         } catch (Exception e) {
             fishLvl = 0;
         }
 
-        fishstatusProgress.setProgress(fishLvl);   // Main Progress
+        fishstatusProgress.setProgress(20);   // hardcode
 
         textInfoFishStatus.setText("Du hast bereits "+fishLvl + " Wasser getrunken dir fehlen noch wenige ml, um dein Tagesziel zu erreichen");
 

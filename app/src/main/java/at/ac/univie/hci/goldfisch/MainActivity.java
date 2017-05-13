@@ -200,10 +200,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     effektiv = 0.33; //per default
                 }
 
-                //Pop-Up
-                String TrinkMessage = "Du hast soeben ein Getränk mit " + n.format(effektiv)
-                + " Liter reinem Wasser getrunken! \n\nTagesstand: " + n.format(benver.getheutigenStatus().getTagesIstMenge()) +
-                        "/" + n.format(benver.getheutigenStatus().getTagesSollMenge()) + " Liter";
+                //Hier wird die Message je nach Getränketyp zusammengebaut
+                String KeinWasserText = "Dein";
+                KeinWasserText += (GetraenkeTyp.equals("Limo")) ? "e getrunkene Limo " : (GetraenkeTyp.equals("Kaffee")) ?
+                        " getrunkener Kaffee " : " getrunkenes alkoholisches Getränk ";
+                KeinWasserText += "beinhaltet ";
+                KeinWasserText += n.format(effektiv) + " Liter reines Wasser.";
+
+                String TagesStandString = "\n\nTagesstand: " + n.format(benver.getheutigenStatus().getTagesIstMenge()) +
+                "/" + n.format(benver.getheutigenStatus().getTagesSollMenge()) + " Liter";
+
+                String WasserText = "Dein Fisch freut sich besonders über reines Wasser!";
+
+                String TrinkMessage = (GetraenkeTyp=="Wasser") ? WasserText+TagesStandString : KeinWasserText+TagesStandString;
+
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                 alertDialog.setTitle("Gut gemacht!");
                 alertDialog.setMessage(TrinkMessage);
