@@ -6,15 +6,6 @@
     android:paddingRight="16dp" >
 
 
-    <!--Homebutton-->
-    <ImageButton
-        android:id="@+id/homeButtonSettings"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/home_etting"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
-
     <!--Ueberschrift-->
     <TextView
         android:id="@+id/headingSettings"
@@ -255,5 +246,13 @@
         android:padding="2dp"/>
 
 
-
+    <ImageButton
+        android:id="@+id/homeButtonSettings"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        
+        android:background="@android:color/transparent"
+        android:paddingLeft="0dp"
+        android:contentDescription="@string/fishbutton_home_von_der_fishshopseite"
+        android:src="@drawable/home4" />
 </RelativeLayout>
