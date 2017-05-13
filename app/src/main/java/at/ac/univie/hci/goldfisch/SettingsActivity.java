@@ -87,9 +87,9 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         //name feld setzen
         name.setText(aktBenutzer.getVorname());
         //gewicht feld setzen
-        gewicht.setText(String.valueOf(aktBenutzer.getGewicht()));
+        gewicht.setText(String.valueOf((int)(aktBenutzer.getGewicht())));
         //groesse setzen
-        groesse.setText(String.valueOf(aktBenutzer.getGroesse()));
+        groesse.setText(String.valueOf((int)(aktBenutzer.getGroesse())));
         //geschlecht setzen
         if(aktBenutzer.getGeschlecht()=='m') geschlechtM.setChecked(true);
         else geschlechtW.setChecked(true);
