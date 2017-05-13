@@ -139,6 +139,11 @@
 	 <string name="homebuttonstatistik">HomeButtonStatistik</string>
 	<string name="statistik">Statistik</string>
     <string name="text_statistik">text_statistik</string>
+	<string name="homebutton_f_r_die_fishstatus_seite">homebutton_f_r_die_fishstatus_seite</string>
+    <string name="aktueller_status">Aktueller Status</string>
+    <string name="ein_bild_von_einem_fisch_f_r_den_fischstatus">ein_bild_von_einem_fisch_f_r_den_fischstatus</string>
+    <string name="sie_haben_bereits_2222ml_wasser_getrunken_ihnen_fehlen_noch_778ml_um_ihren_gesamten_bedarf_zu_decken">sie_haben_bereits_2222ml_wasser_getrunken_ihnen_fehlen_noch_778ml_um_ihren_gesamten_bedarf_zu_decken</string>
+
 
 
     <!-- fuer spinner Intervall in einstellungen -->
