@@ -66,7 +66,7 @@
         app:srcCompat="@drawable/kreis"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="18dp" />
+        android:layout_marginBottom="30dp" />
 
     <ImageButton
         android:id="@+id/teichButton"
@@ -161,18 +161,28 @@
         android:text="@string/tipps1"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/erfolgeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/teichButton"
+        android:layout_below="@+id/gifTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp"
+        android:layout_marginTop="21dp"
         android:text="@string/teich1"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/trinkInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wasser_330ml"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold"
+        android:layout_below="@+id/trinkbecher"
+        android:layout_alignStart="@+id/trinkenKreis" />
 
 </RelativeLayout>

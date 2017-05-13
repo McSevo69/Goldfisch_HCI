@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String GetraenkeTyp = "Wasser";
     String Menge = "250";
     String AktiverBehaelter = Menge + "ml" + GetraenkeTyp;
+    String trinkInfobutton = GetraenkeTyp+" : "+Menge + "ml";
 
 
     //Notification Variablen
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton tipps;
     ImageButton teich;
     Button trinkKreis; // Kreis der sich dreht beim Trinken
+    TextView trinkInfo;
 
     //Variable der Prozentanzeige
     int percentStatus = 0; //Variable der Prozentanzeige
@@ -85,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        System.out.println("oncreate: " + new Date());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hauptseite);
 
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (Menge==null) Menge="250";
             if (GetraenkeTyp==null) GetraenkeTyp="Wasser";
             AktiverBehaelter = Menge + "ml" + GetraenkeTyp;
+            trinkInfobutton = GetraenkeTyp+" : "+Menge + "ml";
         } catch (Exception e) {
             System.out.println("Noch kein Getraenk ausgewaehlt!");
         }
@@ -126,7 +128,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         info = (ImageButton) findViewById(R.id.infoButton);
         tipps = (ImageButton) findViewById(R.id.tippsButton);
         teich = (ImageButton) findViewById(R.id.teichButton);
-
+        trinkInfo = (TextView)findViewById(R.id.trinkInfoText);
+        trinkInfo.setText(trinkInfobutton);
 
         shopping.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         setting.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
@@ -213,21 +216,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         try {
-            System.out.println("Beginne mit BackendSteuff:");
             einver.initialisiere();
             benver.initialisiere();
             behver.initialisiere();
             gesver.initialisiere();
-
-            einver.printAll();
-            gesver.printAll();
-            behver.printAll();
-            benver.printAll();
-
-            System.out.println("\nNun 10 randomTipps, weil wir's koennen: ");
-            for(int i=0;i<10;i++)
-                System.out.println(i+":"+gesver.getRandomTipp());
-
         }catch (Exception e){
             e.printStackTrace();
         }
