@@ -156,7 +156,7 @@
         android:layout_below="@id/labelGewicht"
         android:layout_alignParentLeft="true"
         android:paddingLeft="20dp"
-        android:text="Groesse:"
+        android:text="Größe:"
         android:textSize="20dp"
         android:layout_marginBottom="5dp"/>
 
