@@ -201,11 +201,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 //Pop-Up
-                String TrinkMessage = "Du hast gerade " + Menge + "ml " + GetraenkeTyp +
-                        " getrunken. Das entspricht der Menge an reinem Wasser von " +
-                        n.format(effektiv) + " Litern.\n"
-                + "Insgesamt hast Du heute " + n.format(benver.getheutigenStatus().getTagesIstMenge()) +
-                        " Liter von empfohlenen " + n.format(benver.getheutigenStatus().getTagesSollMenge()) + " Litern Wasser getrunken.";
+                String TrinkMessage = "Du hast soeben ein Getränk mit " + n.format(effektiv)
+                + " Liter reinem Wasser getrunken! \n\nTagesstand: " + n.format(benver.getheutigenStatus().getTagesIstMenge()) +
+                        "/" + n.format(benver.getheutigenStatus().getTagesSollMenge()) + " Liter";
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                 alertDialog.setTitle("Gut gemacht!");
                 alertDialog.setMessage(TrinkMessage);
