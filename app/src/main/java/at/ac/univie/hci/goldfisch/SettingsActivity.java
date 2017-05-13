@@ -184,7 +184,7 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.ueberButtonSettings:
-                String TrinkMessage = "Feedback ist uns wichtig, rufe uns an und teile uns deine leiden mit. \nMfG, dein Goldfisch ;-)";
+                String TrinkMessage = "Feedback ist uns wichtig, rufe uns an und teile uns deine Leiden mit. \nMfG, dein Goldfisch ;-)";
                 AlertDialog alertDialog = new AlertDialog.Builder(SettingsActivity.this).create();
                 alertDialog.setTitle("Wir sind nichts ohne dich!");
                 alertDialog.setMessage(TrinkMessage);
