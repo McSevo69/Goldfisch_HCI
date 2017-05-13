@@ -22,18 +22,15 @@ public class Statistik extends AppCompatActivity implements View.OnClickListener
 
 
     BarChart barchart;
-    ImageButton homeStatistik;
+    ImageButton home_statistik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistik);
-
-        homeStatistik = (ImageButton) findViewById(R.id.homebuttonStatistik);
-        homeStatistik.setOnClickListener(this);
-
         //Setting the Data per Days
         barchart = (BarChart) findViewById(R.id.bargrapf);
+
 
         ArrayList<BarEntry> theAmount = new ArrayList<>();
         theAmount.add(new BarEntry(3000f, 0));
@@ -44,7 +41,7 @@ public class Statistik extends AppCompatActivity implements View.OnClickListener
         theAmount.add(new BarEntry(3000f, 5));
         theAmount.add(new BarEntry(2100f, 6));
         BarDataSet barDataSet = new BarDataSet(theAmount, "Menge in ml");
-        barDataSet.setColor(getResources().getColor(R.color.colorAccent));
+        barDataSet.setColor(Color.rgb(110, 149, 234));
 
         ArrayList<String> theDays = new ArrayList<>();
         theDays.add("Montag");
