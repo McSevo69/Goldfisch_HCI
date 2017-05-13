@@ -131,6 +131,10 @@
     <string name="titan_stern_offen_besitze_5_fische">Titan Stern: Offen Besitze 5 Fische</string>
     <string name="titan_stern_offen_besitze_10_fische">Titan Stern: Offen Besitze 10 Fische</string>
 	<string name="fishbutton_home_von_der_fishshopseite">fishbutton_home_von der_fishshopSeite</string>
+	<string name="fish1">fish1</string>
+    <string name="fish2">fish2</string>
+    <string name="fish3">fish3</string>
+    <string name="fish4">fish4</string>
 
 
     <!-- fuer spinner Intervall in einstellungen -->
