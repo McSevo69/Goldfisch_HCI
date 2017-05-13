@@ -144,6 +144,9 @@
     <string name="ein_bild_von_einem_fisch_f_r_den_fischstatus">ein_bild_von_einem_fisch_f_r_den_fischstatus</string>
     <string name="sie_haben_bereits_2222ml_wasser_getrunken_ihnen_fehlen_noch_778ml_um_ihren_gesamten_bedarf_zu_decken">sie_haben_bereits_2222ml_wasser_getrunken_ihnen_fehlen_noch_778ml_um_ihren_gesamten_bedarf_zu_decken</string>
 	<string name="troph_en">Trophäen</string>
+	<string name="bronze_stern_offen_trinke_250_einheiten">Bronze Stern: Offen Trinke 250 Einheiten</string>
+    <string name="silber_stern_offen_trinke_500_einheiten">Silber Stern: Offen Trinke 500 Einheiten</string>
+    <string name="gold_stern_offen_trinke_1000_einheiten">Gold Stern: Offen Trinke 1000 Einheiten</string>
 
 
     <!-- fuer spinner Intervall in einstellungen -->

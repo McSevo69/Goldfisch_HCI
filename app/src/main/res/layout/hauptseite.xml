@@ -72,11 +72,10 @@
         android:id="@+id/teichButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_above="@+id/erfolgeButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp"
         android:background="@drawable/circle"
-        android:contentDescription="@string/button_teich_bild" />
+        android:contentDescription="@string/button_teich_bild"
+        android:layout_above="@+id/trinkenKreis"
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:id="@+id/tippsButton"
@@ -91,11 +90,10 @@
         android:id="@+id/erfolgeButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignEnd="@+id/gifTextView"
-        android:layout_alignTop="@+id/trinkenKreis"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/circle"
-        android:contentDescription="@string/button_erfolge_bild" />
+        android:background="@drawable/statistikbuton"
+        android:contentDescription="@string/button_erfolge_bild"
+        android:layout_alignBottom="@+id/trinkenKreis"
+        android:layout_alignEnd="@+id/gifTextView" />
 
 
     <ProgressBar
@@ -137,31 +135,20 @@
         android:background="@drawable/trinkbechertransparent"
         android:contentDescription="@string/ein_bild_vom_glas" />
 
-    <TextView
-        android:id="@+id/tippsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/erfolgeButton"
-        android:layout_alignStart="@+id/erfolgeButton"
-        android:layout_alignTop="@+id/erfolgeButton"
-        android:layout_marginTop="21dp"
-        android:text="@string/erfolge1"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/teichText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tippsText"
-        android:layout_alignBottom="@+id/tippsText"
-        android:layout_alignEnd="@+id/tippsButton"
-        android:layout_alignStart="@+id/tippsButton"
         android:text="@string/tipps1"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:layout_marginBottom="22dp"
+        android:layout_alignBottom="@+id/tippsButton"
+        android:layout_alignStart="@+id/tippsButton"
+        android:layout_toStartOf="@+id/shoppingButton"
+        android:layout_alignEnd="@+id/tippsButton" />
 
     <TextView
         android:id="@+id/erfolgeText"
