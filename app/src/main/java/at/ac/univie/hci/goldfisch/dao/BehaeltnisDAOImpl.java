@@ -111,13 +111,6 @@ public class BehaeltnisDAOImpl implements BehaeltnisDAO {
     }
 
 
-
-
-
-
-
-
-
     @Override
     public List<Behaeltnis> getBehaeltnisse() throws IOException {
         inputStream = new FileInputStream(myfile);
@@ -138,19 +131,6 @@ public class BehaeltnisDAOImpl implements BehaeltnisDAO {
             liste = new ArrayList<Behaeltnis>();
         return liste;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @Override

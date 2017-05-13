@@ -10,7 +10,9 @@ import at.ac.univie.hci.goldfisch.dao.BehaeltnisDAOImpl;
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 
 /**
- * Diese Klasse ist fuer die Behaelterverwaltung zustaendig
+ * Diese Klasse ist fuer die Behaelterverwaltung zustaendig, darin werden alle Methoden zusammengefasst,
+ * welche in irgendeiner weise mit den Behaeltern in verbindung stehen. dabei ist unter einem
+ * Behaelter das gefaess zu verstehen, welches man trinken kann, nicht das goldfischglas
  */
 
 public class Behaelterverwaltung implements Verwaltung{
@@ -19,6 +21,10 @@ public class Behaelterverwaltung implements Verwaltung{
 
     private BehaeltnisDAO dao;
 
+    /**
+     * Singleton
+     * @param context braucht man zum aufbauen der fileverbindung
+     */
     private Behaelterverwaltung(Context context){
         try {
             this.dao = new BehaeltnisDAOImpl(context, "behaelter.dat");
@@ -27,6 +33,10 @@ public class Behaelterverwaltung implements Verwaltung{
         }
     }
 
+    /**
+     * Singleton
+     * @param context braucht man zum aufbauen der fileverbindung
+     */
     public static Behaelterverwaltung getInstance(Context context){
         if(instance == null) instance = new Behaelterverwaltung(context);
         return instance;
@@ -58,6 +68,13 @@ public class Behaelterverwaltung implements Verwaltung{
     }
 
 
+    /**
+     * Mit dieser Methode kann man ein neues Behaeltnis anlegen
+     * @param name der Name des neuen Behaeltnisses
+     * @param fuellmenge die fuellmenge des neuen behaeltnisses
+     * @param inhalt der inhalt des neuen behaeltnisses
+     * @param faktor der faktor, mit dem man den inhalt multipliziert, um die effektive menge an wasser zu ermitteln
+     */
     public void neuesBehaeltnisAnlegen(String name, double fuellmenge, String inhalt, double faktor){
         List<Behaeltnis> alleBehaeltnisse =  this.getBehaeltnisse();
         for(Behaeltnis b : alleBehaeltnisse)
@@ -71,6 +88,10 @@ public class Behaelterverwaltung implements Verwaltung{
         }
     }
 
+    /**
+     * damit kann man einen Behaelter aktiv setzen
+     * @param name der name des Behaeltnisses, welches aktiv werden soll
+     */
     public void setBehaeltnisAktiv(String name){
         for(Behaeltnis b : this.getBehaeltnisse()){
             if(b.getName().equals(name))

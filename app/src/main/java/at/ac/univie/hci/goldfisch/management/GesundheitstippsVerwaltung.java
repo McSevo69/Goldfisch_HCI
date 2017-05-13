@@ -20,6 +20,10 @@ public class GesundheitstippsVerwaltung implements Verwaltung{
 
     private GesundheitsDAO dao;
 
+    /**
+     * Singleton
+     * @param context braucht man zum aufbauen der fileverbindung
+     */
     private GesundheitstippsVerwaltung(Context context){
         try {
             this.dao = new GesundheitsDAOImpl(context, "gesundheitstipp.dat");
@@ -28,6 +32,10 @@ public class GesundheitstippsVerwaltung implements Verwaltung{
         }
     }
 
+    /**
+     * Singleton
+     * @param context braucht man zum aufbauen der fileverbindung
+     */
     public static GesundheitstippsVerwaltung getInstance(Context context){
         if(instance == null) instance = new GesundheitstippsVerwaltung(context);
         return instance;

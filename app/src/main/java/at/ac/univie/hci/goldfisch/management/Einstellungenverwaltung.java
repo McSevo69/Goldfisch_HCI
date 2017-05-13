@@ -18,6 +18,10 @@ public class Einstellungenverwaltung implements Verwaltung{
     private static Einstellungenverwaltung instance;
     private EinstellungenDAO dao;
 
+    /**
+     * Singleton
+     * @param context braucht man zum aufbauen der fileverbindung
+     */
     private Einstellungenverwaltung(Context context){
         try {
             this.dao = new EinstellungenDAOImpl(context, "einstellungen.dat");
@@ -26,6 +30,10 @@ public class Einstellungenverwaltung implements Verwaltung{
         }
     }
 
+    /**
+     * Singleton
+     * @param context braucht man zum aufbauen der fileverbindung
+     */
     public static Einstellungenverwaltung getInstance(Context context){
         if(instance == null)
             instance = new Einstellungenverwaltung(context);
@@ -60,7 +68,6 @@ public class Einstellungenverwaltung implements Verwaltung{
         }
     }
 
-
     /**
      * Diese Methode speichert die uebergebenen Einstellungen
      * @param ae die neuen zu speichernden Einstellungen
@@ -72,9 +79,6 @@ public class Einstellungenverwaltung implements Verwaltung{
             System.err.println("Einstellungenverwaltung.saveEinstellungen:Fehler: "+e.getMessage());
         }
     }
-
-
-
 
     /**
      * Diese Methode aktiviert Tipps beim Systemstart
@@ -112,6 +116,10 @@ public class Einstellungenverwaltung implements Verwaltung{
         saveEinstellungen(ae);
     }
 
+    /**
+     * Damit kann man das erinnerungsintervall aendern
+     * @param hours das in stunden angegebene intervall
+     */
     public void erinnerungsintervallAendern(int hours){
         AppEinstellungen ae = this.getEinstellungen();
         ae.setErinnerungsintervall(hours);

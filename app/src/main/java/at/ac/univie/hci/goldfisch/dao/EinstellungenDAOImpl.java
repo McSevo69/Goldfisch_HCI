@@ -79,9 +79,6 @@ public class EinstellungenDAOImpl implements EinstellungenDAO {
         outputStream.close();
     }
 
-
-
-
     @Override
     public void fileInitialisieren() throws IOException{ //nur falls nix drin ist, wird ne EOF Exception geworfen, dann eine leereListe reingeben
         try{

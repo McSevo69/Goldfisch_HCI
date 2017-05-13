@@ -1,6 +1,5 @@
 package at.ac.univie.hci.goldfisch.dao;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import at.ac.univie.hci.goldfisch.model.AppEinstellungen;

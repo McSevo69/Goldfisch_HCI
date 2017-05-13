@@ -25,6 +25,10 @@ public class Benutzerverwaltung implements Verwaltung {
     private static Benutzerverwaltung instance;
     private BenutzerDAO dao;
 
+    /**
+     * Singleton
+     * @param context braucht man zum aufbauen der fileverbindung
+     */
     private Benutzerverwaltung(Context context){
         try {
             this.dao = new BenutzerDAOImpl(context, "benutzer.dat");
@@ -33,12 +37,20 @@ public class Benutzerverwaltung implements Verwaltung {
         }
     }
 
+    /**
+     * Singleton
+     * @param context braucht man zum aufbauen der fileverbindung
+     */
     public static Benutzerverwaltung getInstance(Context context){
         if(instance == null)
             instance = new Benutzerverwaltung(context);
         return instance;
     }
 
+    /**
+     * liefert den benutzer, samt dessen daten in einem Benutzer-objekt
+     * @return das benutzerobjekt mit allen benutzerrelevanten-daten
+     */
     public Benutzer getBenutzer(){
         try {
             return dao.getBenutzer();
@@ -151,7 +163,10 @@ public class Benutzerverwaltung implements Verwaltung {
     }
 
 
-
+    /**
+     * Mit dieser Methode wird ein neuer status mit vorgegebener tagessollemnge angegeben
+     * @param tagessollmenge die vorgegebene Tagessollmenge
+     */
     private void neuenStatusAnlegen(double tagessollmenge){
         Benutzer b = this.getBenutzer();
         if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
@@ -161,6 +176,9 @@ public class Benutzerverwaltung implements Verwaltung {
         this.aktualisiereBenutzer(b);
     }
 
+    /**
+     * Damit werden ALLE Stati geloescht!! Fatal
+     */
     public void deleteAllStatic(){
         Benutzer b = this.getBenutzer();
         if(b == null){ System.err.println("Benutzerverwaltung:groesseAendern:ACHTUNG: KEIN BENUTZER!!"); return; }
@@ -235,16 +253,14 @@ public class Benutzerverwaltung implements Verwaltung {
             double tagessollmenge = benutzer.getGewicht()*kiloFaktor;
             alleStati.add(new Status(tagessollmenge, b.getEffektiveTrinkmenge()));
         }
-
         benutzer.setStati(alleStati);
         this.aktualisiereBenutzer(benutzer);
-
     }
 
     /**
      * Prüft ob 2 Daten gleich sind(aber nur bezogen auf den Tag)
-     * @param datum1
-     * @param datum2
+     * @param datum1 Datum 1
+     * @param datum2 Datum 2
      * @return
      */
     private boolean testIfSameDay(Calendar datum1, Calendar datum2){
@@ -259,7 +275,6 @@ public class Benutzerverwaltung implements Verwaltung {
 
         if(jahr1==jahr2 && monat1==monat2 && tag1==tag2) return true;
         return false;
-
     }
 
 

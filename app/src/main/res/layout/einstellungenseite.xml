@@ -250,7 +250,7 @@
         android:id="@+id/homeButtonSettings"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        
+
         android:background="@android:color/transparent"
         android:paddingLeft="0dp"
         android:contentDescription="@string/fishbutton_home_von_der_fishshopseite"
