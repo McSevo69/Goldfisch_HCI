@@ -40,6 +40,7 @@ import at.ac.univie.hci.goldfisch.model.AppEinstellungen;
 import at.ac.univie.hci.goldfisch.model.Behaeltnis;
 import at.ac.univie.hci.goldfisch.model.Benutzer;
 import at.ac.univie.hci.goldfisch.model.Status;
+import pl.droidsonroids.gif.GifTextView;
 
 import static java.lang.Double.parseDouble;
 
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton statistikButton;
     Button trinkKreis; // Kreis der sich dreht beim Trinken
     TextView trinkInfo;
+    GifTextView fischStatusView;
 
     //Variable der Prozentanzeige
     int percentStatus = 0; //Variable der Prozentanzeige
@@ -132,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         trinkInfo = (TextView)findViewById(R.id.trinkInfoText);
         trinkInfo.setText(trinkInfobutton);
         statistikButton = (ImageButton) findViewById(R.id.erfolgeButton);
+        fischStatusView = (GifTextView) findViewById(R.id.gifTextView);
 
         shopping.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
         setting.setOnClickListener(this); // listerner aktivieren damit die Button wissen wenn sie gedrückt werden
@@ -141,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tipps.setOnClickListener(this);
         teich.setOnClickListener(this);
         statistikButton.setOnClickListener(this);
+        fischStatusView.setOnClickListener(this);
 
         //Kreis mit Prozentanzeige
         Resources res = getResources();
@@ -377,6 +381,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //setContentView(R.layout.getraenkeseite);
                     Intent trinkIntent = new Intent(getApplicationContext(), Getraenkeauswahl.class);
                     startActivity(trinkIntent);
+
+                case R.id.gifTextView:
+                    //getraenkeseite ist zustaendig für die mengeneinheiten und beinhaltet radiobuttons
+                    //setContentView(R.layout.getraenkeseite);
+                    Intent FischStatusIntent = new Intent(getApplicationContext(), FishStatus.class);
+                    startActivity(FischStatusIntent);
             }
 
 

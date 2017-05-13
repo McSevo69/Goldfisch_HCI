@@ -23,8 +23,6 @@ public class FishStatus extends AppCompatActivity implements View.OnClickListene
     Benutzerverwaltung benver;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +34,12 @@ public class FishStatus extends AppCompatActivity implements View.OnClickListene
 
         textInfoFishStatus = (TextView)findViewById(R.id.FishstatusInfoText);
         final ProgressBar fishstatusProgress = (ProgressBar)findViewById(R.id.FishStatusBar);
-        fishLvl = (int) ((benver.getheutigenStatus().getTagesIstMenge()));
+        try {
+            fishLvl = (int) ((benver.getheutigenStatus().getTagesIstMenge()));
+        } catch (Exception e) {
+            fishLvl = 0;
+        }
+
         fishstatusProgress.setProgress(fishLvl);   // Main Progress
 
         textInfoFishStatus.setText("Du hast bereits "+fishLvl + " Wasser getrunken dir fehlen noch wenige ml, um dein Tagesziel zu erreichen");

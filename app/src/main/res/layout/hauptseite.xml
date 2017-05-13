@@ -53,6 +53,7 @@
         android:id="@+id/gifTextView"
         android:layout_width="250dp"
         android:layout_height="185dp"
+        android:clickable="true"
         android:background="@drawable/goldfishk"
         android:layout_above="@+id/teichButton"
         android:layout_centerHorizontal="true"
