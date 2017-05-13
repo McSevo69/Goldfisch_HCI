@@ -22,12 +22,16 @@ public class Statistik extends AppCompatActivity implements View.OnClickListener
 
 
     BarChart barchart;
-    ImageButton home_statistik;
+    ImageButton homeStatistik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistik);
+
+        homeStatistik = (ImageButton) findViewById(R.id.homebuttonStatistik);
+        homeStatistik.setOnClickListener(this);
+
         //Setting the Data per Days
         barchart = (BarChart) findViewById(R.id.bargrapf);
 
