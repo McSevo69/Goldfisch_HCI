@@ -22,8 +22,7 @@
         android:layout_marginTop="34dp"
         android:text="@string/gesundheitstipps"
         android:textColor="@android:color/background_dark"
-        android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/gesundheitstippFeld0"

@@ -18,12 +18,12 @@
         android:id="@+id/UeberschriftErfolgeSeite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/erfolge12"
+        android:layout_below="@+id/homeButtonErfolgeSeite"
+        android:layout_centerHorizontal="true"
+        android:text="@string/troph_en"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
-        android:textSize="36sp"
-        android:layout_below="@+id/homeButtonErfolgeSeite"
-        android:layout_centerHorizontal="true" />
+        android:textSize="30sp" />
 
 
 
@@ -33,7 +33,7 @@
         android:layout_height="70dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/das_ist_ein_bronze_stern"
-        app:srcCompat="@drawable/bronzestar"
+        app:srcCompat="@drawable/star2"
         android:layout_marginTop="35dp"
         android:layout_below="@+id/UeberschriftErfolgeSeite"
         android:layout_alignStart="@+id/SternTitanErfolgeSeite1" />
@@ -47,7 +47,7 @@
         android:layout_below="@+id/SternBronzeErfolgeSeite"
         android:background="@android:color/transparent"
         android:contentDescription="@string/das_ist_ein_silbener_stern"
-        app:srcCompat="@drawable/starssilver" />
+        app:srcCompat="@drawable/star2" />
 
     <ImageView
         android:id="@+id/SternGoldErfolgeSeite"
@@ -55,7 +55,7 @@
         android:layout_height="70dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/das_ist_ein_goldener_stern"
-        app:srcCompat="@drawable/sterngold"
+        app:srcCompat="@drawable/star2"
         android:layout_below="@+id/SternSilverErfolgeSeite"
         android:layout_alignStart="@+id/SternTitanErfolgeSeite1" />
 
