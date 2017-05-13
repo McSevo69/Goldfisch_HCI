@@ -22,7 +22,7 @@ public class Statistik extends AppCompatActivity implements View.OnClickListener
 
 
     BarChart barchart;
-    ImageButton home_statistik;
+    ImageButton homeStatistik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,8 @@ public class Statistik extends AppCompatActivity implements View.OnClickListener
         //Setting the Data per Days
         barchart = (BarChart) findViewById(R.id.bargrapf);
 
+        homeStatistik = (ImageButton) findViewById(R.id.homebuttonStatistik);
+        homeStatistik.setOnClickListener(this);
 
         ArrayList<BarEntry> theAmount = new ArrayList<>();
         theAmount.add(new BarEntry(3000f, 0));
