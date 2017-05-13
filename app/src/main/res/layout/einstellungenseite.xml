@@ -75,14 +75,16 @@
             android:id="@+id/radio_m"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="m"
+            android:text="männl"
+            android:textSize="10dp"
             android:checked="true"
             android:layout_alignParentLeft="true"/>
         <RadioButton
             android:id="@+id/radio_w"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="w"
+            android:text="weibl"
+            android:textSize="10dp"
             android:layout_alignParentRight="true"/>
     </RadioGroup>
 
@@ -111,20 +113,23 @@
             android:id="@+id/taetigkeit_sitzend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="s"
+            android:text="sitzen"
+            android:textSize="10dp"
             android:checked="true"
             android:layout_alignParentLeft="true"/>
         <RadioButton
             android:id="@+id/taetigkeit_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="n"
+            android:text="normal"
+            android:textSize="10dp"
             android:layout_alignParentRight="true"/>
         <RadioButton
             android:id="@+id/taetigkeit_aktiv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="a"
+            android:text="aktiv"
+            android:textSize="10dp"
             android:layout_alignParentRight="true"/>
     </RadioGroup>
 
