@@ -87,12 +87,54 @@
     </RadioGroup>
 
 
+<!-- Taetigkeit -->
+    <TextView
+        android:id="@+id/labelTaetigkeit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/labelGeschlecht"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="20dp"
+        android:text="Tätigkeit:"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"/>
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/taetigkeit"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:paddingRight="20dp"
+                android:layout_below="@id/labelGeschlecht"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/taetigkeit_sitzend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="m"
+            android:checked="true"
+            android:layout_alignParentLeft="true"/>
+        <RadioButton
+            android:id="@+id/taetigkeit_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="w"
+            android:layout_alignParentRight="true"/>
+        <RadioButton
+            android:id="@+id/taetigkeit_aktiv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="w"
+            android:layout_alignParentRight="true"/>
+    </RadioGroup>
+
+
     <!--Gewicht-->
     <TextView
         android:id="@+id/labelGewicht"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/labelGeschlecht"
+        android:layout_below="@id/labelTaetigkeit"
         android:layout_alignParentLeft="true"
         android:paddingLeft="20dp"
         android:text="Gewicht:"
@@ -104,7 +146,7 @@
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:paddingRight="20dp"
-        android:layout_below="@id/labelGeschlecht"
+        android:layout_below="@id/labelTaetigkeit"
         android:layout_alignParentRight="true"
         android:hint=""
         android:layout_marginBottom="5dp"/>

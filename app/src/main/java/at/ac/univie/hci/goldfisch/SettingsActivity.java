@@ -37,6 +37,9 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
     RadioGroup geschlecht;
     RadioButton geschlechtM;
     RadioButton geschlechtW;
+    RadioButton taetigkeit_sitzend;
+    RadioButton taetigkeit_normal;
+    RadioButton taetigkeit_aktiv;
 
     ToggleButton tipps;
     Spinner intervall;
@@ -65,6 +68,10 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         geschlecht = (RadioGroup) findViewById(R.id.geschlecht);
         geschlechtM = (RadioButton) findViewById(R.id.radio_m);
         geschlechtW = (RadioButton) findViewById(R.id.radio_w);
+        taetigkeit_sitzend = (RadioButton) findViewById(R.id.taetigkeit_sitzend);
+        taetigkeit_normal = (RadioButton) findViewById(R.id.taetigkeit_normal);
+        taetigkeit_aktiv = (RadioButton) findViewById(R.id.taetigkeit_aktiv);
+
         tipps = (ToggleButton)findViewById(R.id.tipps);
         intervall = (Spinner) findViewById(R.id.tippsIntervall);
 
@@ -84,6 +91,10 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         //geschlecht setzen
         if(aktBenutzer.getGeschlecht()=='m') geschlechtM.setChecked(true);
         else geschlechtW.setChecked(true);
+        //aktivitaet setzen
+        if(aktBenutzer.getAktivitaet() == 'n') taetigkeit_normal.setChecked(true);
+        if(aktBenutzer.getAktivitaet() == 's') taetigkeit_sitzend.setChecked(true);
+        if(aktBenutzer.getAktivitaet() == 'a') taetigkeit_aktiv.setChecked(true);
         //tipps ein aus setzen
         tipps.setChecked(einstellungen.isWillTipps());
 
@@ -124,6 +135,7 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
                 double groesseDouble;
                 int intervallInt;
                 char geschlechtChar;
+                char taetigkeitChar = 'n';
 
                 try{
                     gewichtDouble = Double.parseDouble(gewicht.getText().toString());
@@ -146,7 +158,11 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
                 if(geschlechtM.isChecked()) geschlechtChar='m';
                 else geschlechtChar = 'w';
 
+                if(taetigkeit_sitzend.isChecked()) taetigkeitChar = 's';
+                if(taetigkeit_normal.isChecked()) taetigkeitChar = 'n';
+                if(taetigkeit_aktiv.isChecked()) taetigkeitChar = 'a';
 
+                aktBenutzer.setAktivitaet(taetigkeitChar);
                 aktBenutzer.setGroesse(groesseDouble);
                 aktBenutzer.setGewicht(gewichtDouble);
                 aktBenutzer.setVorname(name.getText().toString());
