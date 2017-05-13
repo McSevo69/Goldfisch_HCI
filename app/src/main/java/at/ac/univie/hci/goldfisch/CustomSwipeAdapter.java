@@ -24,7 +24,7 @@ import android.widget.TextView;
  */
 
 public class CustomSwipeAdapter extends PagerAdapter {
-    private int [] getraenke_fotos = {R.drawable.wasserglas, R.drawable.juice2, R.drawable.coffeeee, R.drawable.martini3};
+    private int [] getraenke_fotos = {R.drawable.wasserglas, R.drawable.juicewithoutbackround, R.drawable.cup, R.drawable.newbeer};
     private String [] text = {"Wasser", "Limonade", "Kaffee", "Alkohol"};
     private Context context;
     private LayoutInflater layoutinflater;
