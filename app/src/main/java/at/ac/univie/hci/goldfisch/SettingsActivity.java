@@ -1,7 +1,9 @@
 package at.ac.univie.hci.goldfisch;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -182,15 +184,17 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.ueberButtonSettings:
-                Behaeltnis kaffeeKlein = behver.getBehaeltnisByName("250mlKaffee");
-
-                System.out.println("Behaelter: " + kaffeeKlein);
-
-                System.out.println("Heutiger Status: "+benver.getheutigenStatus());
-                benver.getraenkTrinken(kaffeeKlein);
-                System.out.println("Heutiger Status: "+benver.getheutigenStatus());
-
-                System.out.println("SettingsActivity:onClick:UeberButton bei den Einstellungen gedrueckt!");
+                String TrinkMessage = "Feedback ist uns wichtig, rufe uns an und teile uns deine leiden mit. \nMfG, dein Goldfisch ;-)";
+                AlertDialog alertDialog = new AlertDialog.Builder(SettingsActivity.this).create();
+                alertDialog.setTitle("Wir sind nichts ohne dich!");
+                alertDialog.setMessage(TrinkMessage);
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
         }
     }
 }
