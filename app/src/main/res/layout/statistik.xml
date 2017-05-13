@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/text_statistik"
         android:text="@string/statistik"
-        android:textColor="@color/colorAccent"
+        android:textColor="@android:color/background_dark"
         android:textSize="30sp" />
 
 
