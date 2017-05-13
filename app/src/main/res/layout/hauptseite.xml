@@ -71,8 +71,8 @@
 
     <ImageButton
         android:id="@+id/teichButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:background="@drawable/circle"
         android:contentDescription="@string/button_teich_bild"
         android:layout_above="@+id/trinkenKreis"
@@ -80,8 +80,8 @@
 
     <ImageButton
         android:id="@+id/tippsButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:background="@drawable/circle"
         android:contentDescription="@string/button_tipps_bild"
         android:layout_alignTop="@+id/erfolgeButton"
@@ -89,9 +89,9 @@
 
     <ImageButton
         android:id="@+id/erfolgeButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/statistikbuton"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/circle"
         android:contentDescription="@string/button_erfolge_bild"
         android:layout_alignBottom="@+id/trinkenKreis"
         android:layout_alignEnd="@+id/gifTextView" />
@@ -141,24 +141,36 @@
         android:id="@+id/teichText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tippsButton"
+        android:layout_alignEnd="@+id/tippsButton"
+        android:layout_alignStart="@+id/tippsButton"
+        android:layout_marginBottom="26dp"
         android:text="@string/tipps1"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
-        android:textSize="12sp"
-        android:layout_marginBottom="22dp"
-        android:layout_alignBottom="@+id/tippsButton"
-        android:layout_alignStart="@+id/tippsButton"
-        android:layout_toStartOf="@+id/shoppingButton"
-        android:layout_alignEnd="@+id/tippsButton" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/erfolgeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gifTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
+        android:layout_marginBottom="27dp"
         android:text="@string/teich1"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="12sp"
+        android:layout_above="@+id/trinkenKreis"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/StatistikText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/teichText"
+        android:layout_alignEnd="@+id/erfolgeButton"
+        android:layout_alignStart="@+id/erfolgeButton"
+        android:layout_alignTop="@+id/teichText"
+        android:text="@string/statistik2"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="12sp" />

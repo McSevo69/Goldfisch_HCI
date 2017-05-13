@@ -54,7 +54,6 @@
         <activity
             android:name=".Tipps"
             android:label="@string/app_name"
-            android:parentActivityName=".Tipps"
             android:screenOrientation="portrait">
         </activity>
 		

@@ -147,7 +147,7 @@
 	<string name="bronze_stern_offen_trinke_250_einheiten">Bronze Stern: Offen Trinke 250 Einheiten</string>
     <string name="silber_stern_offen_trinke_500_einheiten">Silber Stern: Offen Trinke 500 Einheiten</string>
     <string name="gold_stern_offen_trinke_1000_einheiten">Gold Stern: Offen Trinke 1000 Einheiten</string>
-
+	<string name="statistik2">STATISTIK</string>
 
     <!-- fuer spinner Intervall in einstellungen -->
     <string-array name="intervallArray">
