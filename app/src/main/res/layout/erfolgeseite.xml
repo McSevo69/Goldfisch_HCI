@@ -124,7 +124,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/SternGoldErfolgeSeite"
         android:layout_marginEnd="24dp"
-        android:text="@string/gold_stern_offen_trinke_1000_einheiten"
+        android:text="@string/goldener_stern_offen_trinke_1000_einheiten4"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"

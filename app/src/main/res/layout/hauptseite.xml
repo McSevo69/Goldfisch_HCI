@@ -21,11 +21,11 @@
         android:id="@+id/shoppingButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_alignTop="@+id/trophaeButton"
-        android:layout_toStartOf="@+id/teichButton"
         android:background="@android:color/transparent"
         android:contentDescription="@string/einkaufswagen_button"
-        app:srcCompat="@drawable/shoppincart2" />
+        app:srcCompat="@drawable/shoppincart2"
+        android:layout_alignTop="@+id/settingsButton"
+        android:layout_toStartOf="@+id/erfolgeText" />
 
     <ImageButton
         android:id="@+id/settingsButton"
