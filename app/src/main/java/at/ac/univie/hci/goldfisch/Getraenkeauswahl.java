@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**
- * Created by Snezana on 11/05/2017.
+ * Created on 11/05/2017.
  */
 
 public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickListener {

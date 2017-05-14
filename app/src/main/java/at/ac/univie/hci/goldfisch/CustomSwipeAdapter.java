@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 
 /**
- * Created by Snezana on 07/05/2017.
+ * Created on 07/05/2017.
  */
 
 public class CustomSwipeAdapter extends PagerAdapter {

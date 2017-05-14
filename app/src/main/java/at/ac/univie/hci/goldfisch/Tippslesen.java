@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 /**
- * Created by Mirz'n on 12.05.2017.
+ * Created on 12.05.2017.
  */
 
 public class Tippslesen extends AppCompatActivity {

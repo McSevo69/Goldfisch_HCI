@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by Mirz'n on 13.05.2017.
+ * Created on 13.05.2017.
  */
 
 public class Erfolge extends AppCompatActivity implements View.OnClickListener{
