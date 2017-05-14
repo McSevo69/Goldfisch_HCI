@@ -49,7 +49,7 @@ public class FishStatus extends AppCompatActivity implements View.OnClickListene
 
         fishstatusProgress.setProgress(20);   // hardcode
 
-        textInfoFishStatus.setText("Du hast bereits "+n.format(fishLvl) + "Liter Wasser getrunken. Super weiter so!  Trinke jeden Tag regelmäßig, um dein Fischlevel zu erhöhen");
+        textInfoFishStatus.setText("Du hast bereits "+n.format(fishLvl) + " Liter Wasser getrunken. Super weiter so!  Trinke jeden Tag regelmäßig, um dein Fischlevel zu erhöhen.");
 
     }
 
