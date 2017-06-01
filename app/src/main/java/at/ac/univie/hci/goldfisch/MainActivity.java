@@ -23,6 +23,7 @@ import android.view.animation.AnimationUtils;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int notifID = 33;
     boolean isNotificActive = false;
 
-
     //Verwaltungsklassen
     Benutzerverwaltung benver;
     Behaelterverwaltung behver;
@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton tipps;
     ImageButton teich;
     ImageButton statistikButton;
+    ImageView tutorialBild;
     Button trinkKreis; // Kreis der sich dreht beim Trinken
     TextView trinkInfo;
     GifTextView fischStatusView;
@@ -116,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
             System.out.println("Noch kein Getraenk ausgewaehlt!");
         }
-
 
         benver = Benutzerverwaltung.getInstance(getApplicationContext());
         behver = Behaelterverwaltung.getInstance(getApplicationContext());
@@ -173,6 +173,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean onLongClick(View arg0) {
                 arg0.startAnimation(animRotate);
+
+                tutorialBild = (ImageView) findViewById(R.id.tutorialBild);
+                tutorialBild.setVisibility(View.INVISIBLE);
+
+                //registriert erstes Trinken -> deaktiviert Tutorial-Bild
+                getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("isFirstDrink", false)
+                        .apply();
 
                 try {
                     benver.getraenkTrinken(behver.getBehaeltnisByName(AktiverBehaelter));
@@ -243,6 +252,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Begrueßungstext
         checkFirstRun();
 
+        //erstes mal trinken
+        boolean isFirstDrink = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstDrink", true);
+
+        if (isFirstDrink) {
+            tutorialBild = (ImageView) findViewById(R.id.tutorialBild);
+            tutorialBild.bringToFront();
+            tutorialBild.setVisibility(View.VISIBLE);
+        }
+
     }//oncreate
 
     //Diese Funktion checkt ob der User die App gerade das erste mal geöffnet hat und zeigt ihm ein Tutorial
@@ -252,13 +270,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // Place your dialog code here to display the dialog
 
              //Pop-Up
-            String HelloMessage = "Ziehe einen Fisch groß indem du regelmäßig genug trinkst." +
-                    "\nTrinkst Du zu wenig, sinkt der Wasserstand im Goldfisch Glas und das gilt " +
-                    "es zu vermeiden." +
-                    "\nDrücke kurz auf das Glas um Behältergröße und Getränketyp festzulegen." +
-                    "\nDrückst Du lang auf das Glas wird die effektive Wassermenge (je nach Getränketyp) " +
-                    "dem aktuellen Tagesstand hinzugefügt." +
-                    "\nUm deinen empfohlenen Tagesbedarf ausrechnen zu können gib bitte dein Gewicht " +
+            String HelloMessage = "Ziehe einen coolen Fisch groß, indem du regelmäßig genug trinkst." +
+                    "\n\nUm deinen empfohlenen Tagesbedarf an Wasser ausrechnen zu können, gib bitte dein Gewicht " +
                     "und deine Körpergröße in den Einstellungen an. " +
                     "Keine Sorge - wir speichern keine personenbezogenen Daten ;-)" +
                     "\n\nViel Spaß mit deinem neuen Haustier wünscht Dir dein Goldfisch-Team!";
@@ -360,24 +373,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 case R.id.infoButton:
 
-                    //Pop-Up
-                    String InfoMessage = "Drücke kurz auf das Glas um Behältergröße und Getränketyp festzulegen." +
-                            "\nDrückst du lang auf das Glas wird die effektive Wassermenge (je nach Getränketyp) " +
-                            "dem aktuellen Tagesstand hinzugefügt." +
-                            "\nUm deinen empfohlenen Tagesbedarf ausrechnen zu können gib bitte dein Gewicht " +
-                            "und deine Körpergröße in den Einstellungen an. " +
-                            "\nKeine Sorge - wir speichern keine personenbezogenen Daten ;-)";
-
-                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                    alertDialog.setTitle("Du brauchst Hilfe?");
-                    alertDialog.setMessage(InfoMessage);
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
+                    tutorialBild = (ImageView) findViewById(R.id.tutorialBild);
+                    tutorialBild.bringToFront();
+                    tutorialBild.setVisibility(View.VISIBLE);
                     break;
 
                 case R.id.trophaeButton:

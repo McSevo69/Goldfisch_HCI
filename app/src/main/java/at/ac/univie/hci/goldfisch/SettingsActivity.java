@@ -1,11 +1,14 @@
 package at.ac.univie.hci.goldfisch;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,11 +56,10 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
     Benutzer aktBenutzer;
     AppEinstellungen einstellungen;
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.einstellungenseite);
-
-        System.out.println("Einstellungen gestartet");
 
         benver = Benutzerverwaltung.getInstance(getApplicationContext());
         behver = Behaelterverwaltung.getInstance(getApplicationContext());
@@ -73,6 +75,72 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         taetigkeit_sitzend = (RadioButton) findViewById(R.id.taetigkeit_sitzend);
         taetigkeit_normal = (RadioButton) findViewById(R.id.taetigkeit_normal);
         taetigkeit_aktiv = (RadioButton) findViewById(R.id.taetigkeit_aktiv);
+
+
+        //damit die Tastatur bei Enter geschlossen wird
+        groesse.setOnKeyListener(new View.OnKeyListener() {
+                                     @Override
+                                     public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                                         //-Enter Taste wurde geklickt
+                                         if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+
+                                             //Mach irgend etwas wenn enter gedrückt wurde
+                                             //-Tastatur ausblenden
+                                             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                             imm.hideSoftInputFromWindow(groesse.getWindowToken(), 0);
+
+                                             return true;
+                                         }
+
+                                         return false;
+
+                                     }
+
+                                 });
+
+        gewicht.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                //-Enter Taste wurde geklickt
+                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+
+                    //Mach irgend etwas wenn enter gedrückt wurde
+                    //-Tastatur ausblenden
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(gewicht.getWindowToken(), 0);
+
+                    return true;
+                }
+
+                return false;
+
+            }
+
+        });
+
+
+        name.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                //-Enter Taste wurde geklickt
+                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+
+                    //Mach irgend etwas wenn enter gedrückt wurde
+                    //-Tastatur ausblenden
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(name.getWindowToken(), 0);
+
+                    return true;
+                }
+
+                return false;
+
+            }
+
+        });
 
         tipps = (ToggleButton)findViewById(R.id.tipps);
         intervall = (Spinner) findViewById(R.id.tippsIntervall);
@@ -120,6 +188,7 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
         ueber.setOnClickListener(this);
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -131,7 +200,6 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.saveButtonSettings:
-
 
                 double gewichtDouble;
                 double groesseDouble;
@@ -175,26 +243,49 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
                 benver.aktualisiereBenutzer(aktBenutzer);
                 einver.saveEinstellungen(einstellungen);
 
+                //Beim ersten Mal Settings werden Änderungen sofort wirksam, sonst erst morgen
+                boolean isFirstSettings = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstSettings", true);
 
-                System.out.println("SettingsActivity:onClick:SaveButton bei den Einstellungen gedrueckt!");
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                setContentView(R.layout.hauptseite);
+                if (!isFirstSettings) {
+
+                AlertDialog alertDialog = new AlertDialog.Builder(SettingsActivity.this).create();
+                alertDialog.setMessage("Änderungen werden morgen wirksam.");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                //Intent zur Übertragung der Daten an den Endscreen
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                alertDialog.show();
+
+                } else {
+
+                    getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                            .edit()
+                            .putBoolean("isFirstSettings", false)
+                            .apply();
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
 
                 break;
 
             case R.id.ueberButtonSettings:
                 String TrinkMessage = "Feedback ist uns wichtig, rufe uns an und teile uns deine Leiden mit. \nMfG, dein Goldfisch ;-)";
-                AlertDialog alertDialog = new AlertDialog.Builder(SettingsActivity.this).create();
-                alertDialog.setTitle("Wir sind nichts ohne dich!");
-                alertDialog.setMessage(TrinkMessage);
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                AlertDialog alertDialog2 = new AlertDialog.Builder(SettingsActivity.this).create();
+                alertDialog2.setTitle("Wir sind nichts ohne dich!");
+                alertDialog2.setMessage(TrinkMessage);
+                alertDialog2.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                             }
                         });
-                alertDialog.show();
+                alertDialog2.show();
         }
     }
 }

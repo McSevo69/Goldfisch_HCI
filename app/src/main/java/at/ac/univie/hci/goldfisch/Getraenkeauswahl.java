@@ -31,6 +31,8 @@ public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickL
     ImageButton secondGlass_330ml;
     ImageButton thirdGlass_500ml;
 
+    ImageView tutorialMenue;
+
     LinearLayout sliderDot;
     private int dotscount;
     private ImageView [] dots;
@@ -50,6 +52,17 @@ public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickL
         adapter = new CustomSwipeAdapter(getBaseContext());
         viewPager.setAdapter(adapter);
 
+        tutorialMenue = (ImageView) findViewById(R.id.tutorialMenue);
+
+        //erstes mal trinken
+        boolean isFirstMenu = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstMenu", true);
+
+        if (isFirstMenu) {
+            tutorialMenue = (ImageView) findViewById(R.id.tutorialMenue);
+            tutorialMenue.bringToFront();
+            tutorialMenue.setVisibility(View.VISIBLE);
+        }
+
         viewPager.setOnItemClickListener(new ClickableViewPager.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -58,6 +71,11 @@ public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickL
                 trinkIntent.putExtra(LITER_MESSAGE, MiliLiter);
                 trinkIntent.putExtra(TYP_MESSAGE, Getraenk);
                 startActivity(trinkIntent);
+
+                getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("isFirstMenu", false)
+                        .apply();
             }
         });
 
