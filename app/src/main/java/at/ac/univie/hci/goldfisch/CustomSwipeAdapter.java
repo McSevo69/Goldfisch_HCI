@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -45,7 +46,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
 
     }
     //einstellen des swipes
-    public Object instantiateItem(ViewGroup container, int position){
+    public Object instantiateItem(ViewGroup container,final int position){
         layoutinflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //swipelayout ist zustaendig für die bilder von getraenken.
         View item_view = layoutinflater.inflate(R.layout.swipelayout, container, false);

@@ -152,6 +152,10 @@
     <string name="gold_stern_offen_trinke_1000_einheiten2">Gold Stern: Offen Trinke 1000 Einheiten2</string>
     <string name="gold_stern_offen_trinke_1000_einheiten23">Gold Stern: Offen      Trinke 1000 Einheiten</string>
     <string name="goldener_stern_offen_trinke_1000_einheiten4">Goldener Stern: Offen Trinke 1000 Einheiten</string>
+	<string name="amount">amount</string>
+    <string name="glas2">glas2</string>
+    <string name="glas3">glas3</string>
+    <string name="tutorial_menue">tutorial_menue</string>
 
     <!-- fuer spinner Intervall in einstellungen -->
     <string-array name="intervallArray">

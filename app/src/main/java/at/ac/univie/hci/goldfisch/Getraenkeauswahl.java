@@ -33,7 +33,7 @@ public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickL
 
     ImageView tutorialMenue;
 
-    LinearLayout sliderDot;
+    LinearLayout sliderDotspanel;
     private int dotscount;
     private ImageView [] dots;
 
@@ -48,9 +48,42 @@ public class Getraenkeauswahl extends AppCompatActivity implements View.OnClickL
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.getraenkeseite);
+
+
         ClickableViewPager viewPager = (ClickableViewPager) findViewById(R.id.view_page);
+        sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
         adapter = new CustomSwipeAdapter(getBaseContext());
         viewPager.setAdapter(adapter);
+
+        dotscount = adapter.getCount();
+        dots = new ImageView[dotscount];
+
+        for(int i = 0; i < dotscount; i++){
+            dots[i] = new ImageView(this);
+            dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(8, 0, 8, 0);
+            sliderDotspanel.addView(dots[i], params);
+
+        }
+        dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                for(int i = 0; i< dotscount; i++){
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
+                }
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         tutorialMenue = (ImageView) findViewById(R.id.tutorialMenue);
 
