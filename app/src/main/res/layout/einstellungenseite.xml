@@ -137,7 +137,7 @@
         android:layout_below="@id/labelTaetigkeit"
         android:layout_alignParentLeft="true"
         android:paddingLeft="20dp"
-        android:text="Gewicht:"
+        android:text="Gewicht[kg]:"
         android:textSize="20dp"
         android:layout_marginBottom="5dp"/>
 
@@ -163,7 +163,7 @@
         android:layout_below="@id/labelGewicht"
         android:layout_alignParentLeft="true"
         android:paddingLeft="20dp"
-        android:text="Größe:"
+        android:text="Größe[cm]:"
         android:textSize="20dp"
         android:layout_marginBottom="5dp"/>
 
@@ -212,17 +212,18 @@
         android:layout_below="@id/labelTipps"
         android:layout_alignParentLeft="true"
         android:paddingLeft="20dp"
-        android:text="Intervall:"
+        android:text="Erinnerungsintervall:"
         android:textSize="20dp"
         android:layout_marginBottom="5dp"/>
 
     <Spinner
         android:id="@+id/tippsIntervall"
-        android:layout_width="200dp"
+        android:layout_width="115dp"
         android:layout_height="40dp"
         android:paddingRight="20dp"
         android:layout_below="@id/labelTipps"
         android:layout_alignParentRight="true"
+        android:textSize="20dp"
         android:layout_marginBottom="5dp"/>
 
 
