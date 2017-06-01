@@ -113,7 +113,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (Menge==null) Menge="250";
             if (GetraenkeTyp==null) GetraenkeTyp="Wasser";
             AktiverBehaelter = Menge + "ml" + GetraenkeTyp;
-            trinkInfobutton = GetraenkeTyp+" : "+Menge + "ml";
+            if (GetraenkeTyp.equals("Limo")) {
+                trinkInfobutton = "  " + GetraenkeTyp + " : " + Menge + "ml";
+            } else {
+                trinkInfobutton = GetraenkeTyp + " : " + Menge + "ml";
+            }
         } catch (Exception e) {
             System.out.println("Noch kein Getraenk ausgewaehlt!");
         }
