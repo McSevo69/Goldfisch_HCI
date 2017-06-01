@@ -40,6 +40,9 @@
         android:layout_below="@id/headingSettings"
         android:layout_alignParentRight="true"
         android:hint=""
+        android:singleLine="true"
+        android:maxLines="1"
+        android:inputType="textVisiblePassword"
         android:layout_marginBottom="5dp"/>
 
 
@@ -146,6 +149,9 @@
         android:layout_below="@id/labelTaetigkeit"
         android:layout_alignParentRight="true"
         android:hint=""
+        android:singleLine="true"
+        android:maxLines="1"
+        android:inputType="textVisiblePassword"
         android:layout_marginBottom="5dp"/>
 
 
@@ -169,6 +175,9 @@
         android:layout_below="@id/labelGewicht"
         android:layout_alignParentRight="true"
         android:hint=""
+        android:singleLine="true"
+        android:maxLines="1"
+        android:inputType="textVisiblePassword"
         android:layout_marginBottom="5dp"/>
 
 
