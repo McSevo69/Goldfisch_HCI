@@ -218,7 +218,7 @@
 
     <Spinner
         android:id="@+id/tippsIntervall"
-        android:layout_width="115dp"
+        android:layout_width="100dp"
         android:layout_height="40dp"
         android:paddingRight="20dp"
         android:layout_below="@id/labelTipps"
