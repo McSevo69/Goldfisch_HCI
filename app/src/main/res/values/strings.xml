@@ -156,6 +156,7 @@
     <string name="glas2">glas2</string>
     <string name="glas3">glas3</string>
     <string name="tutorial_menue">tutorial_menue</string>
+    <string name="das_ist_eine_tutorial_bild">das ist eine Tutorial Bild</string>
 
     <!-- fuer spinner Intervall in einstellungen -->
     <string-array name="intervallArray">

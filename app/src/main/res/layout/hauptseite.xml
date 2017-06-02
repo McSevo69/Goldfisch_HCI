@@ -15,8 +15,8 @@
         android:alpha="0.75"
         android:clickable="true"
         android:contentDescription="@string/das_ist_ein_bild_vom_infobutton"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="8dp"
         android:layout_alignTop="@+id/settingsButton"
         android:layout_alignStart="@+id/teichButton" />
 
@@ -27,10 +27,9 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/einkaufswagen_button"
         app:srcCompat="@drawable/shoppincart2"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="6dp"
         android:layout_marginTop="10dp"
-        android:layout_toLeftOf="@+id/trophaeButton"
         android:layout_toStartOf="@+id/trinkenKreis" />
 
     <ImageButton
@@ -41,7 +40,7 @@
         app:srcCompat="@drawable/settings2"
         android:contentDescription="@string/einstellungs_button"
         android:clickable="true"
-        android:layout_marginLeft="-8dp"
+        android:layout_marginStart="-8dp"
         android:layout_alignTop="@+id/shoppingButton"
         android:layout_toEndOf="@+id/trinkInfoText" />
 
@@ -143,7 +142,7 @@
         android:text="@string/_25"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="12sp"
-        android:layout_marginLeft="26dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="9dp"
         android:layout_alignTop="@+id/infoButton"
         android:layout_toEndOf="@+id/settingsButton" />
@@ -203,9 +202,10 @@
         android:id="@+id/tutorialBild"
         android:layout_width="171dp"
         android:layout_height="85dp"
-        android:visibility="invisible"
-        android:background="@drawable/tutorial_hauptseite1"
         android:layout_alignBottom="@+id/teichText"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/tutorial_hauptseite1"
+        android:contentDescription="@string/das_ist_eine_tutorial_bild"
+        android:visibility="invisible" />
 
 </RelativeLayout>
