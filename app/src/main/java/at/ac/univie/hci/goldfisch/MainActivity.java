@@ -43,6 +43,7 @@ import at.ac.univie.hci.goldfisch.model.Benutzer;
 import at.ac.univie.hci.goldfisch.model.Status;
 import pl.droidsonroids.gif.GifTextView;
 
+import static android.view.View.VISIBLE;
 import static java.lang.Double.parseDouble;
 
 
@@ -113,11 +114,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (Menge==null) Menge="250";
             if (GetraenkeTyp==null) GetraenkeTyp="Wasser";
             AktiverBehaelter = Menge + "ml" + GetraenkeTyp;
-            if (GetraenkeTyp.equals("Limo")) {
-                trinkInfobutton = "  " + GetraenkeTyp + " : " + Menge + "ml";
-            } else {
-                trinkInfobutton = GetraenkeTyp + " : " + Menge + "ml";
-            }
+            trinkInfobutton = GetraenkeTyp + " : " + Menge + "ml";
+
         } catch (Exception e) {
             System.out.println("Noch kein Getraenk ausgewaehlt!");
         }
@@ -262,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (isFirstDrink) {
             tutorialBild = (ImageView) findViewById(R.id.tutorialBild);
             tutorialBild.bringToFront();
-            tutorialBild.setVisibility(View.VISIBLE);
+            tutorialBild.setVisibility(VISIBLE);
         }
 
     }//oncreate
@@ -378,8 +376,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.infoButton:
 
                     tutorialBild = (ImageView) findViewById(R.id.tutorialBild);
-                    tutorialBild.bringToFront();
-                    tutorialBild.setVisibility(View.VISIBLE);
+
+                    if (tutorialBild.getVisibility() == VISIBLE) {
+                        String Message = "Hilfestellung bereits eingeblendet.";
+
+                        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                        alertDialog.setMessage(Message);
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                        alertDialog.show();
+                    } else {
+                        tutorialBild.bringToFront();
+                        tutorialBild.setVisibility(VISIBLE);
+                    }
+
                     break;
 
                 case R.id.trophaeButton:
