@@ -40,9 +40,9 @@
         app:srcCompat="@drawable/settings2"
         android:contentDescription="@string/einstellungs_button"
         android:clickable="true"
-        android:layout_marginStart="-8dp"
+        android:layout_marginStart="-10dp"
         android:layout_alignTop="@+id/shoppingButton"
-        android:layout_toEndOf="@+id/trinkInfoText" />
+        android:layout_toEndOf="@+id/trinkenKreis" />
 
     <ImageButton
         android:id="@+id/trophaeButton"
@@ -142,7 +142,7 @@
         android:text="@string/_25"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="12sp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="26dp"
         android:layout_marginTop="9dp"
         android:layout_alignTop="@+id/infoButton"
         android:layout_toEndOf="@+id/settingsButton" />
