@@ -25,7 +25,7 @@ import android.widget.Toast;
  */
 
 public class CustomSwipeAdapter extends PagerAdapter {
-    private int [] getraenke_fotos = {R.drawable.wasserglas, R.drawable.juicewithoutbackround, R.drawable.coffeeeewithoutback, R.drawable.newbeer};
+    private int [] getraenke_fotos = {R.drawable.wasserglas, R.drawable.juicewithoutbackround, R.drawable.kaffee1, R.drawable.newbeer};
     private String [] text = {"Wasser", "Limonade", "Kaffee", "Alkohol"};
     private Context context;
     private LayoutInflater layoutinflater;
