@@ -209,12 +209,14 @@ public class SettingsActivity  extends AppCompatActivity implements View.OnClick
 
                 try{
                     gewichtDouble = Double.parseDouble(gewicht.getText().toString());
+                    if(gewichtDouble<0||gewichtDouble>200) {gewicht.setText("ungültiges Gewicht!!!");break;}
                 }catch (NumberFormatException e){
                     gewicht.setText("ZAHL!!!");
                     break;
                 }
                 try{
                     groesseDouble = Double.parseDouble(groesse.getText().toString());
+                    if(groesseDouble<0||groesseDouble>300) {groesse.setText("ungültige Grösse!!!");break;}
                 }catch (NumberFormatException e){
                     groesse.setText("ZAHL!!!");
                     break;
