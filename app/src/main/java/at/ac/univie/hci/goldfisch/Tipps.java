@@ -48,11 +48,14 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
         gesver = GesundheitstippsVerwaltung.getInstance(getApplicationContext());
         gesver.initialisiere();
 
-        tipp0 = gesver.getRandomTipp();
-        tipp1 = gesver.getRandomTipp();
-        tipp2 = gesver.getRandomTipp();
-        tipp3 = gesver.getRandomTipp();
-        tipp4 = gesver.getRandomTipp();
+
+        List<Gesundheitstipp> alle = gesver.getGesundheitstipps();
+
+        tipp0 = alle.get(0);
+        tipp1 = alle.get(1);
+        tipp2 = alle.get(2);
+        tipp3 = alle.get(3);
+        tipp4 = alle.get(4);
 
         feld0.setText(tipp0.getUeberschrift());
         feld1.setText(tipp1.getUeberschrift());
