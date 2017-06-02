@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import java.util.Collections;
 import java.util.List;
 import at.ac.univie.hci.goldfisch.management.GesundheitstippsVerwaltung;
 import at.ac.univie.hci.goldfisch.model.Gesundheitstipp;
@@ -50,7 +52,7 @@ public class Tipps extends AppCompatActivity implements View.OnClickListener{
 
 
         List<Gesundheitstipp> alle = gesver.getGesundheitstipps();
-
+        Collections.shuffle(alle);
         tipp0 = alle.get(0);
         tipp1 = alle.get(1);
         tipp2 = alle.get(2);
