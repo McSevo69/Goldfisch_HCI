@@ -137,7 +137,6 @@ public class GesundheitsDAOImpl implements GesundheitsDAO{
             alleWerte.add(new Gesundheitstipp("Trinken während des Essens","Immer auf den eigenen Körper hören. Wenn du Durst verspürst, trink was! Im besten Fall sogar dafür sorgen, dass dein Körper garkeine Durst-Signale aussenden muss. Dann stimmt alles."));
 
             alleWerte.add(new Gesundheitstipp("Verdurste nicht sonst stirbst du!","Wer nichts trinkt stirbt leider."));
-            alleWerte.add(new Gesundheitstipp("Bier kann leben retten, glaube an Bier.","Auch Jesus hat schon Bier gebraut, somit ist es heilig, trinke regelmäßtig Bier und beweise deinen Glauben."));
             alleWerte.add(new Gesundheitstipp("Wer nicht trinkt ist doof!","Isso!"));
             alleWerte.add(new Gesundheitstipp("Wer nicht trinkt ist selbst schuld!","Isso!"));
 
